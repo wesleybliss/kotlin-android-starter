@@ -1,0 +1,46 @@
+#Android generated
+bin
+gen
+/captures
+
+#Eclipse
+.project
+.classpath
+.settings
+.checkstyle
+
+#IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+classes
+gen-external-apklibs
+
+#Gradle
+/build
+/app/build
+.gradle
+
+#Maven
+target
+release.properties
+pom.xml.*
+
+#Ant
+build.xml
+ant.properties
+/local.properties
+proguard.cfg
+proguard-project.txt
+
+#Other
+.DS_Store
+tmp
+EnvironmentPrivate.java
+/assets/tapcommerce.properties
+hs_err*.log
+.DS_Store
+
+# Node.js
+node_modules
