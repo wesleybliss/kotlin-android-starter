@@ -114,8 +114,8 @@ dependencies {
     implementation "android.arch.paging:runtime:$android_architecture_components_version-alpha3"
     
     // Rx
-    implementation"io.reactivex.rxjava2:rxandroid:$rx_version"
-    implementation"io.reactivex.rxjava2:rxjava:$rx_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_version"
     
     // DI
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -126,9 +126,10 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     
     // Networking
-    implementation"com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation"com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     
     // Google Services
     /*implementation"com.google.android.gms:play-services-auth:$google_play_services_version"
