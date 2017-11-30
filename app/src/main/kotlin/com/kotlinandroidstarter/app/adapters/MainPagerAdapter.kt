@@ -9,11 +9,21 @@ import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.fragments.AFragment
 import com.kotlinandroidstarter.app.fragments.BFragment
 import com.kotlinandroidstarter.app.fragments.CFragment
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import javax.inject.Inject
+
+
 
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     
-    private val TAG:String = MainPagerAdapter::class.java.simpleName
+    private val TAG = MainPagerAdapter::class.java.simpleName
+    
+    @Inject
+    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    
+    fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
     
     override fun getItem(position: Int): Fragment? {
         

@@ -1,29 +1,33 @@
 package com.kotlinandroidstarter.app
 
+import android.app.Activity
 import android.app.Application
-import com.kotlinandroidstarter.app.api.Api
+import android.os.Bundle
+import com.kotlinandroidstarter.app.di.DaggerAppComponent
+import com.kotlinandroidstarter.app.repos.ApiRepo
 import com.orhanobut.hawk.Hawk
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
-class App : Application() {
+class App : Application(), HasActivityInjector {
     
     companion object {
-        
-        lateinit var instance: App
-            private set
-        
-        lateinit var okHttpClient: OkHttpClient
-            private set
     
-        lateinit var retrofit: Retrofit
+        @JvmStatic lateinit var instance: App
             private set
         
-        lateinit var api: Api
-            private set
+        @JvmStatic lateinit var apiRepo: ApiRepo
         
+    }
+    
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    
+    override fun activityInjector(): AndroidInjector<Activity> {
+        return dispatchingAndroidInjector
     }
     
     override fun onCreate() {
@@ -35,30 +39,30 @@ class App : Application() {
         // Shared preferences helper
         Hawk.init(this).build()
         
-        setupRetrofit()
+        DaggerAppComponent.builder()
+            .app(this)
+            .build()
+            .inject(this)
+    
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks() {
+            override fun onActivityCreated(p0: Activity?, p1: Bundle?) {
+                p0?.let { AndroidInjection.inject(p0) }
+            }
+        })
+    
+        // Realm.init(this)
+        // Realm.setDefaultConfiguration(RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build())
         
     }
     
-    fun setupRetrofit() {
-        
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        
-        okHttpClient = OkHttpClient.Builder()
-            /*.addInterceptor(ApiHeadersInterceptor())*/
-            .addInterceptor(loggingInterceptor)
-            /*.addInterceptor(LogRequestsInterceptor())*/
-            .build()
-        
-        retrofit = Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(Api.BASE_URL)
-            .client(okHttpClient)
-            .build()
-        
-        
-        api = retrofit.create(Api::class.java)
-        
+    abstract class ActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
+        override fun onActivityPaused(p0: Activity?) {}
+        override fun onActivityResumed(p0: Activity?) {}
+        override fun onActivityStarted(p0: Activity?) {}
+        override fun onActivityDestroyed(p0: Activity?) {}
+        override fun onActivitySaveInstanceState(p0: Activity?, p1: Bundle?) {}
+        override fun onActivityStopped(p0: Activity?) {}
+        override fun onActivityCreated(p0: Activity?, p1: Bundle?) {}
     }
     
 }

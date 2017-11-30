@@ -1,12 +1,11 @@
-package com.kotlinandroidstarter.app.api
+package com.kotlinandroidstarter.app.services
 
-import retrofit2.Call
+import com.kotlinandroidstarter.app.models.User
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Header
-import com.kotlinandroidstarter.app.models.User
 
-
-interface Api {
+interface ApiService {
     
     companion object {
         val BASE_URL = "https://jsonplaceholder.typicode.com"
@@ -15,6 +14,6 @@ interface Api {
     @GET("/users")
     fun getUsers(
         @Header("Foo") headerFoo: String
-    ) : Call<List<User>>
+    ) : Observable<List<User>>
     
 }

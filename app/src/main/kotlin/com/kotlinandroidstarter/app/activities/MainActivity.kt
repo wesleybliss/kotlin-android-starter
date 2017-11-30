@@ -4,16 +4,15 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.MainPagerAdapter
 import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     
     //region Class Members
     
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             return
         }*/
-    
+        
         setupNavigation()
         
     }
@@ -85,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     
     //region Navigation
     
-    fun setupNavigation() {
+    private fun setupNavigation() {
         
         // Enable Toolbar as Actionbar
         if (toolbar != null) setSupportActionBar(toolbar)
@@ -109,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         
     }
     
-    fun changeFragment(id: Int): Boolean {
+    private fun changeFragment(id: Int): Boolean {
         
         when (id) {
             R.id.navigation_page_a -> {

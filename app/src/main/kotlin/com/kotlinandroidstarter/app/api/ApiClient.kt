@@ -1,10 +1,5 @@
 package com.kotlinandroidstarter.app.api
 
-import android.util.Log
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import com.kotlinandroidstarter.app.App
 import com.kotlinandroidstarter.app.models.User
 
 object ApiClient {
@@ -13,7 +8,7 @@ object ApiClient {
     
     fun fetchUsers(error: (reason: String) -> Unit, done: (users: List<User>) -> Unit) {
         
-        App.api.getUsers("Test").enqueue(object : Callback<List<User>> {
+        /*App.api.getUsers("Test").enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>?, response: Response<List<User>>?) {
                 if (response == null || !response.isSuccessful) {
                     Log.w(TAG, "onResponse unsuccessful result")
@@ -26,7 +21,7 @@ object ApiClient {
             override fun onFailure(call: Call<List<User>>?, t: Throwable?) {
                 error(t?.message ?: "Unknown reason")
             }
-        })
+        })*/
         
     }
     

@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+//apply plugin: 'realm-android'
 
-ext.AndroidSupportLibVersion = '26.+'
-ext.AndroidArchitectureLibVersion = '1.0.0'
-ext.GooglePlayServicesVersion = '11.0.2'
-ext.RxVersion = '2.0.1'
-ext.RetrofitVersion = '2.3.0'
+ext.android_support_lib_version = '26.+'
+ext.android_architecture_components_version = '1.0.0'
+ext.google_play_services_version = '11.0.2'
+ext.rx_version = '2.0.1'
+ext.retrofit_version = '2.3.0'
+ext.dagger_version = '2.13'
 
 repositories {
     mavenCentral()
@@ -46,8 +48,8 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     
 }
@@ -80,7 +82,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.10.0'
     testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
     testImplementation 'io.kotlintest:kotlintest:2.0.4'
-    androidTestCompile "com.android.support:support-annotations:$AndroidSupportLibVersion"
+    androidTestCompile "com.android.support:support-annotations:$android_support_lib_version"
     androidTestCompile 'com.android.support.test:runner:1.0.1'
     androidTestCompile 'com.android.support.test:rules:1.0.1'
     
@@ -90,43 +92,46 @@ dependencies {
     implementation'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.16'
     
     // Android
-    implementation"com.android.support:appcompat-v7:$AndroidSupportLibVersion"
-    implementation"com.android.support:design:$AndroidSupportLibVersion"
+    implementation"com.android.support:appcompat-v7:$android_support_lib_version"
+    implementation"com.android.support:design:$android_support_lib_version"
     
     // Architecture Components: Lifecycles
-    // implementation"android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
-    kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
+    // implementation"android.arch.lifecycle:runtime:$android_architecture_components_version"
+    kapt "android.arch.lifecycle:compiler:$android_architecture_components_version"
     
     // Architecture Components: LiveData, and ViewModel
-    implementation"android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
-    testImplementation "android.arch.core:core-testing:$AndroidArchitectureLibVersion"
-    // implementation "android.arch.lifecycle:reactivestreams:$AndroidArchitectureLibVersion"
+    implementation"android.arch.lifecycle:extensions:$android_architecture_components_version"
+    testImplementation "android.arch.core:core-testing:$android_architecture_components_version"
+    // implementation "android.arch.lifecycle:reactivestreams:$android_architecture_components_version"
     
     // Architecture Components: Room
-    implementation "android.arch.persistence.room:runtime:$AndroidArchitectureLibVersion"
-    kapt "android.arch.persistence.room:compiler:$AndroidArchitectureLibVersion"
-    testImplementation "android.arch.persistence.room:testing:$AndroidArchitectureLibVersion"
-    implementation "android.arch.persistence.room:rxjava2:$AndroidArchitectureLibVersion"
+    /*implementation "android.arch.persistence.room:runtime:$android_architecture_components_version"
+    kapt "android.arch.persistence.room:compiler:$android_architecture_components_version"
+    testImplementation "android.arch.persistence.room:testing:$android_architecture_components_version"
+    implementation "android.arch.persistence.room:rxjava2:$android_architecture_components_version"*/
     
     // Architecture Components: Paging
-    implementation "android.arch.paging:runtime:$AndroidArchitectureLibVersion-alpha3"
+    implementation "android.arch.paging:runtime:$android_architecture_components_version-alpha3"
     
     // Rx
-    /*implementation"io.reactivex.rxjava2:rxandroid:$RxVersion"
-    implementation"io.reactivex.rxjava2:rxjava:$RxVersion"*/
+    implementation"io.reactivex.rxjava2:rxandroid:$rx_version"
+    implementation"io.reactivex.rxjava2:rxjava:$rx_version"
     
     // DI
-    kapt 'com.google.dagger:dagger-compiler:2.13'
-    implementation 'com.google.dagger:dagger:2.13'
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
     compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     
     // Networking
-    implementation"com.squareup.retrofit2:retrofit:$RetrofitVersion"
-    implementation"com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
+    implementation"com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation"com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation'com.squareup.okhttp3:logging-interceptor:3.9.0'
     
     // Google Services
-    /*implementation"com.google.android.gms:play-services-auth:$GooglePlayServicesVersion"
+    /*implementation"com.google.android.gms:play-services-auth:$google_play_services_version"
     compile('com.google.apis:google-api-services-youtube:v3-rev183-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }*/
