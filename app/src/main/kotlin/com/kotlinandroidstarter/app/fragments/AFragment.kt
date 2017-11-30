@@ -33,7 +33,9 @@ class AFragment : BaseFragment() {
     
         ViewHelper.setupRecyclerView(context, listItems)
         
-        listItems.adapter = UsersAdapter(mutableListOf(), {
+        val adapter = UsersAdapter(mutableListOf())
+        
+        compositeDisposable.add(adapter.clickEvents.subscribe {
             
             Log.d(TAG, "Tapped item " + it)
             
@@ -42,6 +44,8 @@ class AFragment : BaseFragment() {
             })
             
         })
+    
+        listItems.adapter = adapter
         
         apiRepo.fetchUsers(
             { (listItems.adapter as UsersAdapter).setItems(it.toMutableList()) },

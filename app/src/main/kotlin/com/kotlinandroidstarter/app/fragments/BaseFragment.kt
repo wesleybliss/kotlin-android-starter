@@ -7,9 +7,14 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
+
+
 open class BaseFragment : Fragment(), HasSupportFragmentInjector {
+    
+    protected val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
     
     @Inject
     protected lateinit var activityContext: Context
@@ -35,6 +40,11 @@ open class BaseFragment : Fragment(), HasSupportFragmentInjector {
             .beginTransaction()
             .add(containerViewId, fragment)
             .commit()
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
     
 }

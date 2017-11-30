@@ -8,6 +8,8 @@ ext.android_support_lib_version = '26.+'
 ext.android_architecture_components_version = '1.0.0'
 ext.google_play_services_version = '11.0.2'
 ext.rx_version = '2.0.1'
+ext.rx_kotlin_version = '2.2.0'
+ext.rx_bindings_version = '2.0.0'
 ext.retrofit_version = '2.3.0'
 ext.dagger_version = '2.13'
 
@@ -116,6 +118,10 @@ dependencies {
     // Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
     implementation "io.reactivex.rxjava2:rxjava:$rx_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rx_bindings_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rx_bindings_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rx_bindings_version"
     
     // DI
     implementation "com.google.dagger:dagger:$dagger_version"
