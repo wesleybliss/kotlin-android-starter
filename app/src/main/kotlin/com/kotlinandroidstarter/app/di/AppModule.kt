@@ -1,21 +1,21 @@
 package com.kotlinandroidstarter.app.di
 
+import com.kotlinandroidstarter.app.activities.MainActivity
+import com.kotlinandroidstarter.app.di.scopes.PerActivity
+import com.kotlinandroidstarter.app.di.ui.main.MainActivityModule
 import dagger.Module
-import dagger.android.support.AndroidSupportInjectionModule
+import dagger.android.AndroidInjectionModule
+import dagger.android.ContributesAndroidInjector
 
-@Module(
-    includes = [AndroidSupportInjectionModule::class],
-    subcomponents = [MainActivityComponent::class, AFragmentComponent::class]
-)
-internal class AppModule {
+@Module(includes = [AndroidInjectionModule::class])
+abstract class AppModule {
     
-    /*@Provides
-    @Singleton
-    fun provideContext(app: App): Context = app*/
-    
-    /*@Inject
-    @Provides
-    @Singleton
-    fun provideApiRepo @Inject constructor(private apiService: ApiService): ApiRepo = ApiRepo(apiService)*/
+    /**
+     * Provides the injector for the [MainActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = [MainActivityModule::class])
+    internal abstract fun mainActivityInjector(): MainActivity
     
 }

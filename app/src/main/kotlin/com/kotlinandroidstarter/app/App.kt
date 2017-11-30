@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.kotlinandroidstarter.app.di.DaggerAppComponent
-import com.kotlinandroidstarter.app.repos.ApiRepo
 import com.orhanobut.hawk.Hawk
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -18,8 +17,6 @@ class App : Application(), HasActivityInjector {
     
         @JvmStatic lateinit var instance: App
             private set
-        
-        @JvmStatic lateinit var apiRepo: ApiRepo
         
     }
     
@@ -39,10 +36,12 @@ class App : Application(), HasActivityInjector {
         // Shared preferences helper
         Hawk.init(this).build()
         
-        DaggerAppComponent.builder()
+        /*DaggerAppComponent.builder()
             .app(this)
             .build()
-            .inject(this)
+            .inject(this)*/
+    
+        DaggerAppComponent.create().inject(this)
     
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks() {
             override fun onActivityCreated(p0: Activity?, p1: Bundle?) {

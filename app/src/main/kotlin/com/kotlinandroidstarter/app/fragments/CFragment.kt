@@ -1,18 +1,17 @@
 package com.kotlinandroidstarter.app.fragments
 
-import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_c.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
+import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class CFragment : LifecycleFragment() {
+class CFragment : BaseFragment() {
     
     private val TAG: String = AFragment::class.java.simpleName
     

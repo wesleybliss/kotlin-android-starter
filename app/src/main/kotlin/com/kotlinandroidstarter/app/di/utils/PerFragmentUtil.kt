@@ -1,7 +1,7 @@
 package com.kotlinandroidstarter.app.di.utils
 
 import android.support.v4.app.Fragment
-import com.kotlinandroidstarter.app.di.BaseFragmentModule
+import com.kotlinandroidstarter.app.di.ui.shared.BaseFragmentModule
 import com.kotlinandroidstarter.app.di.scopes.PerFragment
 import javax.inject.Inject
 import javax.inject.Named
