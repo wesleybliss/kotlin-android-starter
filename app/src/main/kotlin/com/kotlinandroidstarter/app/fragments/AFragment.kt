@@ -43,10 +43,6 @@ class AFragment : BaseFragment() {
             
         })
         
-        /*ApiClient.fetchUsers(
-            { toast("Failed to fetch users because $it") },
-            { (listItems.adapter as UsersAdapter).setItems(it.toMutableList()) })*/
-        
         apiRepo.fetchUsers(
             { (listItems.adapter as UsersAdapter).setItems(it.toMutableList()) },
             { toast("Failed to fetch users because $it") })
