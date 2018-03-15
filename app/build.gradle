@@ -3,8 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-ext.AndroidSupportLibVersion = '26.+'
-ext.AndroidArchitectureLibVersion = '1.0.0'
+ext.AndroidSupportLibVersion = '27.+'
+ext.AndroidArchitectureLibVersion = '1.1.0'
+ext.AndroidRoomLibVersion = '1.0.0'
+ext.AndroidPagingLibVersion = '1.0.0-alpha6'
 ext.GooglePlayServicesVersion = '11.0.2'
 ext.RxVersion = '2.0.1'
 ext.RetrofitVersion = '2.3.0'
@@ -12,17 +14,18 @@ ext.RetrofitVersion = '2.3.0'
 repositories {
     mavenCentral()
     maven { url "http://dl.bintray.com/jetbrains/spek" }
+    google()
 }
 
 android {
     
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     
     defaultConfig {
         applicationId "com.kotlinandroidstarter.app"
         minSdkVersion 22
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -103,13 +106,13 @@ dependencies {
     // implementation "android.arch.lifecycle:reactivestreams:$AndroidArchitectureLibVersion"
     
     // Architecture Components: Room
-    implementation "android.arch.persistence.room:runtime:$AndroidArchitectureLibVersion"
-    kapt "android.arch.persistence.room:compiler:$AndroidArchitectureLibVersion"
-    testImplementation "android.arch.persistence.room:testing:$AndroidArchitectureLibVersion"
-    implementation "android.arch.persistence.room:rxjava2:$AndroidArchitectureLibVersion"
+    implementation "android.arch.persistence.room:runtime:$AndroidRoomLibVersion"
+    kapt "android.arch.persistence.room:compiler:$AndroidRoomLibVersion"
+    testImplementation "android.arch.persistence.room:testing:$AndroidRoomLibVersion"
+    implementation "android.arch.persistence.room:rxjava2:$AndroidRoomLibVersion"
     
     // Architecture Components: Paging
-    implementation "android.arch.paging:runtime:$AndroidArchitectureLibVersion-alpha3"
+    implementation "android.arch.paging:runtime:$AndroidPagingLibVersion"
     
     // Rx
     /*implementation"io.reactivex.rxjava2:rxandroid:$RxVersion"
