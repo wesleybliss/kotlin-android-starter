@@ -4,9 +4,9 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 ext.AndroidSupportLibVersion = '27.+'
-ext.AndroidArchitectureLibVersion = '1.1.0'
-ext.AndroidRoomLibVersion = '1.0.0'
-ext.AndroidPagingLibVersion = '1.0.0-alpha6'
+ext.AndroidArchitectureLibVersion = '1.1.1'
+ext.AndroidRoomLibVersion = '1.1.0'
+ext.AndroidPagingLibVersion = '1.0.0'
 ext.GooglePlayServicesVersion = '11.0.2'
 ext.RxVersion = '2.0.1'
 ext.RetrofitVersion = '2.3.0'
@@ -74,8 +74,8 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation'org.jetbrains.spek:spek-api:1.1.2'
-    implementation'org.jetbrains.spek:spek-junit-platform-engine:1.1.2'
+    implementation 'org.jetbrains.spek:spek-api:1.1.2'
+    implementation 'org.jetbrains.spek:spek-junit-platform-engine:1.1.2'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
@@ -84,24 +84,24 @@ dependencies {
     testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
     testImplementation 'io.kotlintest:kotlintest:2.0.4'
     androidTestImplementation "com.android.support:support-annotations:$AndroidSupportLibVersion"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     
     // Kotlin
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16'
-    implementation'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.16'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.16'
     
     // Android
-    implementation"com.android.support:appcompat-v7:$AndroidSupportLibVersion"
-    implementation"com.android.support:design:$AndroidSupportLibVersion"
+    implementation "com.android.support:appcompat-v7:$AndroidSupportLibVersion"
+    implementation "com.android.support:design:$AndroidSupportLibVersion"
     
     // Architecture Components: Lifecycles
-    // implementation"android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
+    // implementation "android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
     kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
     
     // Architecture Components: LiveData, and ViewModel
-    implementation"android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
+    implementation "android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
     testImplementation "android.arch.core:core-testing:$AndroidArchitectureLibVersion"
     // implementation "android.arch.lifecycle:reactivestreams:$AndroidArchitectureLibVersion"
     
@@ -115,29 +115,27 @@ dependencies {
     implementation "android.arch.paging:runtime:$AndroidPagingLibVersion"
     
     // Rx
-    /*implementation"io.reactivex.rxjava2:rxandroid:$RxVersion"
-    implementation"io.reactivex.rxjava2:rxjava:$RxVersion"*/
+    /*implementation "io.reactivex.rxjava2:rxandroid:$RxVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$RxVersion"*/
     
     // DI
-    kapt 'com.google.dagger:dagger-compiler:2.13'
-    implementation 'com.google.dagger:dagger:2.13'
-    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+    implementation 'org.kodein.di:kodein-di-generic-jvm:5.0.0'
     
     // Networking
-    implementation"com.squareup.retrofit2:retrofit:$RetrofitVersion"
-    implementation"com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
-    implementation'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$RetrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     
     // Google Services
-    /*implementation"com.google.android.gms:play-services-auth:$GooglePlayServicesVersion"
+    /*implementation "com.google.android.gms:play-services-auth:$GooglePlayServicesVersion"
     compile('com.google.apis:google-api-services-youtube:v3-rev183-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }*/
     
     // Shared Preferences
-    implementation'com.orhanobut:hawk:2.0.1'
+    implementation 'com.orhanobut:hawk:2.0.1'
     
     // WebSockets
-    //implementation'com.neovisionaries:nv-websocket-client:2.3'
+    //implementation 'com.neovisionaries:nv-websocket-client:2.3'
     
 }
