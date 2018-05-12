@@ -11,16 +11,15 @@ import javax.inject.Singleton
 @Singleton
 class UsersViewModel @Inject constructor(val repository: ApiRepo) : ViewModel() {
 
-    val error: MutableLiveData<Throwable> by lazy {
-        MutableLiveData<Throwable>()
-    }
+    val error = MutableLiveData<Throwable>()
+    val users = MutableLiveData<List<User>>()
     
-    val users: MutableLiveData<List<User>> by lazy {
+    /*val users: MutableLiveData<List<User>> by lazy {
         // Initial fetch
         fetchUsers()
         // Default value
         MutableLiveData<List<User>>()
-    }
+    }*/
     
     fun fetchUsers() {
         repository.fetchUsers().subscribe(

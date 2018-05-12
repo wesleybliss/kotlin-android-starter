@@ -1,4 +1,4 @@
-package com.kotlinandroidstarter.app.di.module
+package com.kotlinandroidstarter.app.di.modules
 
 import android.arch.lifecycle.ViewModel
 import com.kotlinandroidstarter.app.di.ViewModelKey

@@ -14,18 +14,10 @@ import javax.inject.Singleton
 @Singleton
 class ApiRepo @Inject constructor(val apiService: ApiService) {
     
-    fun fetchUsers() : Observable<List<User>> {
-        
-//        return apiService.getUsers("foo")
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-        
-        val query = apiService.getUsers("foo")
-        
-        return query.observeOn(AndroidSchedulers.mainThread())
+    fun fetchUsers() : Observable<List<User>> =
+        apiService.getUsers("foo")
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-        
-    }
     
     fun fetchPosts() : Observable<List<Post>> =
         apiService.getPosts()

@@ -1,6 +1,7 @@
 package com.kotlinandroidstarter.app.fragments
 
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,7 @@ class AFragment : BaseFragment(), Injectable {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var usersViewModel: UsersViewModel
-//    private lateinit var binding: AFragmentBinding
+    // @todo: data binding: private lateinit var binding: AFragmentBinding
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -33,7 +34,7 @@ class AFragment : BaseFragment(), Injectable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         
         super.onViewCreated(view, savedInstanceState)
-    
+        
         ViewHelper.setupRecyclerView(context!!, listItems)
         
         listItems.adapter = UsersAdapter(mutableListOf(), {
@@ -44,6 +45,10 @@ class AFragment : BaseFragment(), Injectable {
                 toast("Roger that!")
             })
             
+        })
+        
+        usersViewModel.users.observe(this, Observer {
+            it.let { (listItems.adapter as UsersAdapter).setItems(it!!) }
         })
         
         usersViewModel.fetchUsers()

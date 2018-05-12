@@ -1,4 +1,4 @@
-package com.kotlinandroidstarter.app.di
+package com.kotlinandroidstarter.app.di.modules
 
 import com.kotlinandroidstarter.app.models.*
 import com.kotlinandroidstarter.app.network.DefaultOnDataMismatchAdapter

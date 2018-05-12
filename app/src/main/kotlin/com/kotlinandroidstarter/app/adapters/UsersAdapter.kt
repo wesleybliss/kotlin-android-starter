@@ -30,7 +30,7 @@ class UsersAdapter(val items: MutableList<User>, val onClick: (User) -> Unit)
     
     override fun getItemCount() = items.size
     
-    fun setItems(newItems: MutableList<User>) {
+    fun setItems(newItems: List<User>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()

@@ -7,4 +7,5 @@ interface AppLifecycleCallbacks {
     fun onCreate(application: Application)
 
     fun onTerminate(application: Application)
+    
 }

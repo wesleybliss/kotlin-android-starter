@@ -2,7 +2,7 @@ package com.kotlinandroidstarter.app.di
 
 import android.arch.lifecycle.ViewModelProvider
 import com.kotlinandroidstarter.app.activities.MainActivity
-import com.kotlinandroidstarter.app.di.module.MainModule
+import com.kotlinandroidstarter.app.di.modules.MainModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

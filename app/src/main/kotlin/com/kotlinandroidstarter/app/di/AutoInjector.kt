@@ -22,15 +22,10 @@ fun Application.applyAutoInjector() = registerActivityLifecycleCallbacks(
         }
         
         override fun onActivityStarted(activity: Activity) = Unit
-        
         override fun onActivityResumed(activity: Activity) = Unit
-        
         override fun onActivityPaused(activity: Activity) = Unit
-        
         override fun onActivityStopped(activity: Activity) = Unit
-        
         override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) = Unit
-        
         override fun onActivityDestroyed(activity: Activity) = Unit
         
     }
@@ -39,9 +34,8 @@ fun Application.applyAutoInjector() = registerActivityLifecycleCallbacks(
 
 private fun handleActivity(activity: Activity) {
     
-    if (activity is Injectable || activity is HasSupportFragmentInjector) {
+    if (activity is Injectable || activity is HasSupportFragmentInjector)
         AndroidInjection.inject(activity)
-    }
     
     if (activity is FragmentActivity) {
         activity.supportFragmentManager.registerFragmentLifecycleCallbacks(
