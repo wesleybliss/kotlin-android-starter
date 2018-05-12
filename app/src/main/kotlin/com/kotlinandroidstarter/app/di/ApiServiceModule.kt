@@ -16,7 +16,7 @@ class ApiServiceModule {
     
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
+    fun retrofit(): Retrofit {
         
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -38,12 +38,12 @@ class ApiServiceModule {
     
     @Provides
     @Singleton
-    fun providesApiService(retrofit: Retrofit): ApiService =
+    fun apiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
     
     @Provides
     @Singleton
-    fun providesApiRepo(apiService: ApiService): ApiRepo =
+    fun apiRepo(apiService: ApiService): ApiRepo =
         ApiRepo(apiService)
     
 }

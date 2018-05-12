@@ -17,28 +17,28 @@ fun Activity.hasPermission(permission: String) : Boolean =
     ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
 
 fun Fragment.hasPermission(permission: String) : Boolean =
-    activity.hasPermission(permission)
+    activity!!.hasPermission(permission)
 
-fun Activity.hasPermissions(permissions: Array<String>): Boolean {
+infix fun Activity.hasPermissions(permissions: Array<String>): Boolean {
     var has = true
     permissions.forEach { if (!hasPermission(it)) has = false }
     return has
 }
 
 fun Fragment.hasPermissions(permissions: Array<String>): Boolean =
-    activity.hasPermissions(permissions)
+    activity!!hasPermissions(permissions)
 
 fun Activity.requestPermission(permission: String, code: Int) =
     ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), code)
 
 fun Fragment.requestPermission(permission: String, code: Int) =
-    activity.requestPermission(permission, code)
+    activity?.requestPermission(permission, code)
 
 fun Activity.requestPermissionsCompat(permissions: Array<String>, code: Int) =
     ActivityCompat.requestPermissions(this, permissions, code)
 
 fun Fragment.requestPermissionsCompat(permissions: Array<String>, code: Int) =
-    ActivityCompat.requestPermissions(activity, permissions, code)
+    ActivityCompat.requestPermissions(activity!!, permissions, code)
 
 fun Activity.requirePermissions(permissions: Array<String>, code: Int): Boolean {
     if (hasPermissions(permissions)) return true
@@ -47,7 +47,7 @@ fun Activity.requirePermissions(permissions: Array<String>, code: Int): Boolean 
 }
 
 fun Fragment.requirePermissions(permissions: Array<String>, code: Int): Boolean =
-    activity.requirePermissions(permissions, code)
+    activity!!.requirePermissions(permissions, code)
 
 fun Activity.persistStorageAccess(treeUri: Uri, modeFlags: Int) =
     contentResolver.takePersistableUriPermission(treeUri, modeFlags)
@@ -66,13 +66,13 @@ fun Activity.infoDialog(title: String, message: String, confirmed: () -> Unit) =
         .setPositiveButton("OK", { _, _ -> confirmed() })!!
 
 fun Fragment.simpleDialog(title: String, message: String, confirmed: () -> Unit) =
-    activity.simpleDialog(title, message, confirmed)
+    activity!!.simpleDialog(title, message, confirmed)
 
 fun Activity.toast(message: String) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
 fun Fragment.toast(message: String) =
-    activity.toast(message)
+    activity!!.toast(message)
 
 // @todo Debug
 fun Activity.checkStoragePermission(): Boolean {

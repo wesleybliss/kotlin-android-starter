@@ -1,29 +1,11 @@
 package com.kotlinandroidstarter.app.models
 
 data class User(
-    var id: Int,
-    var name: String,
-    var username: String,
-    var email: String,
-    var address: Address,
-    var phone: String,
-    var website: String,
-    var company: Company) {
-    
-    data class Geo(
-        var lat: Double,
-        var lng: Double)
-    
-    data class Address(
-        var street: String,
-        var suite: String,
-        var city: String,
-        var zipcode: String,
-        var geo: Geo)
-    
-    data class Company(
-        var name: String,
-        var catchPhrase: String,
-        var bs: String)
-    
-}
+    val id: Int,
+    val name: String,
+    val username: String,
+    val email: String,
+    val address: Address,
+    val phone: String,
+    val website: String,
+    val company: Company)

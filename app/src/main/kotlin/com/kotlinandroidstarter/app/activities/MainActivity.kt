@@ -1,26 +1,37 @@
 package com.kotlinandroidstarter.app.activities
 
-import android.arch.lifecycle.ViewModelProviders
+import android.arch.lifecycle.ViewModelProvider
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.MainPagerAdapter
-import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), HasSupportFragmentInjector {
     
     //region Class Members
     
     private val TAG: String = MainActivity::class.java.simpleName
+
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
+
+    override fun supportFragmentInjector() = androidInjector
     
-    private val model: SharedViewModel by lazy(mode = LazyThreadSafetyMode.NONE) {
+    /*private val model: SharedViewModel by lazy(mode = LazyThreadSafetyMode.NONE) {
         ViewModelProviders.of(this).get(SharedViewModel::class.java)
-    }
+    }*/
+    
+    /*internal var model: SharedViewModel? = null
+        @Inject set*/
     
     private val pagerAdapter by lazy(mode = LazyThreadSafetyMode.NONE) {
         MainPagerAdapter(supportFragmentManager)

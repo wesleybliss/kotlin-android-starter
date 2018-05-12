@@ -1,5 +1,6 @@
 package com.kotlinandroidstarter.app.services
 
+import com.kotlinandroidstarter.app.models.Post
 import com.kotlinandroidstarter.app.models.User
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -15,5 +16,8 @@ interface ApiService {
     fun getUsers(
         @Header("Foo") headerFoo: String
     ) : Observable<List<User>>
+
+    @GET("/posts")
+    fun getPosts() : Observable<List<Post>>
     
 }

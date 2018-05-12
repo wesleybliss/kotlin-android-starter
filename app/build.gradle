@@ -4,14 +4,17 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'realm-android'
 
-ext.AndroidSupportLibVersion = '27.+'
-ext.AndroidArchitectureLibVersion = '1.1.1'
-ext.AndroidRoomLibVersion = '1.1.0'
-ext.AndroidPagingLibVersion = '1.0.0'
-ext.GooglePlayServicesVersion = '11.0.2'
-ext.RxVersion = '2.0.1'
-ext.RetrofitVersion = '2.3.0'
-ext.daggerVersion = '2.13'
+ext.android_support_lib_version = '27.+'
+ext.android_architecture_lib_version = '1.1.1'
+ext.android_room_lib_version = '1.1.0'
+ext.android_paging_lib_version = '1.0.0'
+ext.google_play_services_version = '11.0.2'
+ext.timber_version = '4.7.0'
+ext.rx_version = '2.0.1'
+ext.rx_kotlin_version = '2.2.0'
+ext.moshi_version = '1.6.0-RC1' //''1.5.0'
+ext.retrofit_version = '2.3.0'
+ext.dagger_version = '2.13'
 
 repositories {
     mavenCentral()
@@ -43,7 +46,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    
+
+    dexOptions {
+        javaMaxHeapSize "2048M"
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -53,6 +60,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
     }
     
 }
@@ -85,47 +96,62 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.10.0'
     testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
     testImplementation 'io.kotlintest:kotlintest:2.0.4'
-    androidTestImplementation "com.android.support:support-annotations:$AndroidSupportLibVersion"
+    androidTestImplementation "com.android.support:support-annotations:$android_support_lib_version"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.16'
     
     // Android
-    implementation "com.android.support:appcompat-v7:$AndroidSupportLibVersion"
-    implementation "com.android.support:design:$AndroidSupportLibVersion"
+    implementation "com.android.support:appcompat-v7:$android_support_lib_version"
+    implementation "com.android.support:design:$android_support_lib_version"
     
-    // Architecture Components: Lifecycles
-    // implementation "android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
-    kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
+    // Architecture components: lifecycles
+    // implementation "android.arch.lifecycle:runtime:$android_architecture_lib_version"
+    kapt "android.arch.lifecycle:compiler:$android_architecture_lib_version"
     
-    // Architecture Components: LiveData, and ViewModel
-    implementation "android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
-    testImplementation "android.arch.core:core-testing:$AndroidArchitectureLibVersion"
-    // implementation "android.arch.lifecycle:reactivestreams:$AndroidArchitectureLibVersion"
+    // Architecture components: live_data, and view_model
+    implementation "android.arch.lifecycle:extensions:$android_architecture_lib_version"
+    testImplementation "android.arch.core:core-testing:$android_architecture_lib_version"
+    // implementation "android.arch.lifecycle:reactivestreams:$android_architecture_lib_version"
     
-    // Architecture Components: Room
-    implementation "android.arch.persistence.room:runtime:$AndroidRoomLibVersion"
-    kapt "android.arch.persistence.room:compiler:$AndroidRoomLibVersion"
-    testImplementation "android.arch.persistence.room:testing:$AndroidRoomLibVersion"
-    implementation "android.arch.persistence.room:rxjava2:$AndroidRoomLibVersion"
+    // Architecture components: room
+    implementation "android.arch.persistence.room:runtime:$android_room_lib_version"
+    kapt "android.arch.persistence.room:compiler:$android_room_lib_version"
+    testImplementation "android.arch.persistence.room:testing:$android_room_lib_version"
+    implementation "android.arch.persistence.room:rxjava2:$android_room_lib_version"
     
-    // Architecture Components: Paging
-    implementation "android.arch.paging:runtime:$AndroidPagingLibVersion"
+    // Architecture components: paging
+    implementation "android.arch.paging:runtime:$android_paging_lib_version"
+    
+    // Logging
+    implementation "com.jakewharton.timber:timber:$timber_version"
     
     // Rx
-    /*implementation "io.reactivex.rxjava2:rxandroid:$RxVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$RxVersion"*/
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
     
     // DI
-    implementation 'org.kodein.di:kodein-di-generic-jvm:5.0.0'
+    // implementation 'org.kodein.di:kodein-di-generic-jvm:5.0.0'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     
     // Networking
-    implementation "com.squareup.retrofit2:retrofit:$RetrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     
     // Google Services

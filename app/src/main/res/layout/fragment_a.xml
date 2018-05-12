@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.kotlinandroidstarter.app.activities.MainActivity">
-
+    
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listItems"
         android:layout_width="match_parent"

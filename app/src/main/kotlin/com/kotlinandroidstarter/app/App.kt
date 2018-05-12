@@ -3,57 +3,66 @@ package com.kotlinandroidstarter.app
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import com.kotlinandroidstarter.app.di.AppComponent
 import com.kotlinandroidstarter.app.di.DaggerAppComponent
+import com.kotlinandroidstarter.app.di.applyAutoInjector
+import com.kotlinandroidstarter.app.utils.CrashReportingTree
 import com.orhanobut.hawk.Hawk
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.support.DaggerApplication
 import javax.inject.Inject
+import timber.log.Timber
+import timber.log.Timber.DebugTree
 
-class App : Application(), HasActivityInjector {
+
+
+class App : DaggerApplication() {
     
-    companion object {
+    /*companion object {
     
-        @JvmStatic lateinit var instance: App
+        @JvmStatic lateinit var instance: AppComponent
             private set
         
-    }
+    }*/
     
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    @Inject lateinit var appLifecycleCallbacks: AppLifecycleCallbacks
     
-    override fun activityInjector(): AndroidInjector<Activity> {
-        return dispatchingAndroidInjector
-    }
-    
+    /*@Inject
+    * lateinit var locationManager: LocationManager*/
+
+    override fun applicationInjector() = DaggerAppComponent.builder()
+        .application(this)
+        .build()
+
+
     override fun onCreate() {
-    
+        
         super.onCreate()
-    
-        instance = this
+
+        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+        else Timber.plant(CrashReportingTree())
         
         // Shared preferences helper
         Hawk.init(this).build()
         
-        /*DaggerAppComponent.builder()
-            .app(this)
-            .build()
-            .inject(this)*/
-    
-        DaggerAppComponent.create().inject(this)
-    
-        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks() {
+        applyAutoInjector()
+        appLifecycleCallbacks.onCreate(this)
+        
+        /*registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks() {
             override fun onActivityCreated(p0: Activity?, p1: Bundle?) {
                 p0?.let { AndroidInjection.inject(p0) }
             }
-        })
-    
+        })*/
+        
         // Realm.init(this)
         // Realm.setDefaultConfiguration(RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build())
         
     }
-    
+
+    override fun onTerminate() {
+        appLifecycleCallbacks.onTerminate(this)
+        super.onTerminate()
+    }
+
     abstract class ActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
         override fun onActivityPaused(p0: Activity?) {}
         override fun onActivityResumed(p0: Activity?) {}

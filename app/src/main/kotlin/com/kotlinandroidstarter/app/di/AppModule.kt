@@ -1,21 +1,16 @@
 package com.kotlinandroidstarter.app.di
 
-import com.kotlinandroidstarter.app.activities.MainActivity
-import com.kotlinandroidstarter.app.di.scopes.PerActivity
-import com.kotlinandroidstarter.app.di.ui.main.MainActivityModule
+import com.kotlinandroidstarter.app.AppLifecycleCallbacks
 import dagger.Module
-import dagger.android.AndroidInjectionModule
-import dagger.android.ContributesAndroidInjector
+import dagger.Provides
+import javax.inject.Singleton
 
-@Module(includes = [AndroidInjectionModule::class])
-abstract class AppModule {
-    
-    /**
-     * Provides the injector for the [MainActivity], which has access to the dependencies
-     * provided by this application instance (singleton scoped objects).
-     */
-    @PerActivity
-    @ContributesAndroidInjector(modules = [MainActivityModule::class])
-    internal abstract fun mainActivityInjector(): MainActivity
-    
+@Module(includes = [DataModule::class])
+internal object AppModule {
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun provideAppLifecycleCallbacks(): AppLifecycleCallbacks = DebugAppLifecycleCallbacks()
+
 }
