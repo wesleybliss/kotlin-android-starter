@@ -4,7 +4,6 @@ import com.kotlinandroidstarter.app.models.*
 import com.kotlinandroidstarter.app.network.DefaultOnDataMismatchAdapter
 import com.kotlinandroidstarter.app.network.FilterNullValuesFromListAdapter
 import com.kotlinandroidstarter.app.services.ApiService
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -22,13 +21,13 @@ internal object DataModule {
     @Provides
     @JvmStatic
     fun provideMoshi(): Moshi = Moshi.Builder()
-//        .add(KotlinJsonAdapterFactory())
         .add(DefaultOnDataMismatchAdapter.newFactory(User::class.java, null))
         .add(DefaultOnDataMismatchAdapter.newFactory(Post::class.java, null))
         .add(DefaultOnDataMismatchAdapter.newFactory(Geo::class.java, null))
         .add(FilterNullValuesFromListAdapter.newFactory(Company::class.java))
         .add(DefaultOnDataMismatchAdapter.newFactory(Address::class.java, null))
-        .add(com.squareup.moshi.kotlin.KotlinJsonAdapterFactory())
+        // Note: This is broken in Moshi 1.5 due to some Kotlin reflection issues
+        //.add(KotlinJsonAdapterFactory())
         .build()
 
     @Singleton

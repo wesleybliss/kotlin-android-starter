@@ -12,7 +12,7 @@ ext.google_play_services_version = '11.0.2'
 ext.timber_version = '4.7.0'
 ext.rx_version = '2.0.1'
 ext.rx_kotlin_version = '2.2.0'
-ext.moshi_version = '1.6.0-RC1' //''1.5.0'
+ext.moshi_version = '1.4.0' //''1.6.0-RC1' //''1.5.0'
 ext.retrofit_version = '2.3.0'
 ext.dagger_version = '2.13'
 
@@ -147,8 +147,8 @@ dependencies {
     
     // Networking
     implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+//    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+//    implementation "com.squareup.moshi:moshi-kotlin:1.5.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
