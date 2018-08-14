@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 
 class App : Application() {
     
@@ -32,6 +33,9 @@ class App : Application() {
     
         instance = this
         
+        if (BuildConfig.DEBUG)
+            Timber.plant(Timber.DebugTree())
+        
         // Shared preferences helper
         Hawk.init(this).build()
         
@@ -39,7 +43,7 @@ class App : Application() {
         
     }
     
-    fun setupRetrofit() {
+    private fun setupRetrofit() {
         
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

@@ -11,19 +11,17 @@ import com.kotlinandroidstarter.app.R
 
 class BFragment : Fragment() {
     
-    private val TAG: String = BFragment::class.java.simpleName
-    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_b, container, false)
     
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
     
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         
         super.onViewCreated(view, savedInstanceState)
     
-        textFragmentB.text = "Fragment B"
+        textFragmentB.text = getString(R.string.fragment_b_body)
         
     }
     

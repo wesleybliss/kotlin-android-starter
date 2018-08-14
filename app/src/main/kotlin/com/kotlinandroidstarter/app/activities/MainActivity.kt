@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
     
     //region Class Members
     
-    private val TAG: String = MainActivity::class.java.simpleName
-    
     private val model: SharedViewModel by lazy(mode = LazyThreadSafetyMode.NONE) {
         ViewModelProviders.of(this).get(SharedViewModel::class.java)
     }
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     
     //region Navigation
     
-    fun setupNavigation() {
+    private fun setupNavigation() {
         
         // Enable Toolbar as Actionbar
         if (toolbar != null) setSupportActionBar(toolbar)
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         
     }
     
-    fun changeFragment(id: Int): Boolean {
+    private fun changeFragment(id: Int): Boolean {
         
         when (id) {
             R.id.navigation_page_a -> {
@@ -137,6 +135,8 @@ class MainActivity : AppCompatActivity() {
     
     
     //region Permissions
+    
+    
     
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         

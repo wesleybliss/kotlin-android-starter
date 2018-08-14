@@ -1,11 +1,11 @@
 package com.kotlinandroidstarter.app.api
 
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.kotlinandroidstarter.app.App
 import com.kotlinandroidstarter.app.models.User
+import timber.log.Timber
 
 object ApiClient {
     
@@ -16,8 +16,8 @@ object ApiClient {
         App.api.getUsers("Test").enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>?, response: Response<List<User>>?) {
                 if (response == null || !response.isSuccessful) {
-                    Log.w(TAG, "onResponse unsuccessful result")
-                    done(listOf<User>())
+                    Timber.w("onResponse unsuccessful result")
+                    done(listOf())
                 }
                 else {
                     done(response.body()!!)

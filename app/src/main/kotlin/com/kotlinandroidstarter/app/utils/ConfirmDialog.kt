@@ -11,7 +11,7 @@ class ConfirmDialog(context: Context, title: String, message: String, onYes: () 
             .setTitle(title)
             .setMessage(message)
             .setNegativeButton("No", null)
-            .setPositiveButton("Yes", { _, _ -> onYes() })
+            .setPositiveButton("Yes") { _, _ -> onYes() }
             .show()
         
     }

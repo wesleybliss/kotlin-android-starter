@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-ext.AndroidSupportLibVersion = '28.0.0-beta01'
+ext.AndroidSupportLibVersion = '28.0.0-rc01'
 ext.AndroidArchitectureLibVersion = '1.1.1'
 ext.AndroidRoomLibVersion = '1.1.1'
 ext.AndroidPagingLibVersion = '1.0.1'
@@ -32,14 +32,21 @@ android {
     }
     
     buildTypes {
+        
         debug {
+            ext.enableCrashlytics = false
+            debuggable true
             minifyEnabled false
             versionNameSuffix "-DEBUG"
+            applicationIdSuffix '.dev'
         }
+        
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        
     }
     
     sourceSets {
@@ -51,6 +58,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    dexOptions {
+        preDexLibraries true
     }
     
 }
@@ -94,17 +105,18 @@ dependencies {
     
     // Android
     implementation "com.android.support:appcompat-v7:$AndroidSupportLibVersion"
+    implementation "com.android.support:support-v4:$AndroidSupportLibVersion"
     implementation "com.android.support:recyclerview-v7:$AndroidSupportLibVersion"
-    /*implementation "com.android.support:support-compat:$AndroidSupportLibVersion"
+    implementation "com.android.support:support-compat:$AndroidSupportLibVersion"
     implementation "com.android.support:support-core-utils:$AndroidSupportLibVersion"
     implementation "com.android.support:support-core-ui:$AndroidSupportLibVersion"
     implementation "com.android.support:support-fragment:$AndroidSupportLibVersion"
     implementation "com.android.support:design:$AndroidSupportLibVersion"
-    implementation "com.android.support:customtabs:$AndroidSupportLibVersion"*/
+    /*implementation "com.android.support:customtabs:$AndroidSupportLibVersion"*/
     
     // Architecture Components: Lifecycles
-    // implementation"android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
-    // kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
+    implementation"android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
+    kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
     
     // Architecture Components: LiveData, and ViewModel
     implementation "android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
@@ -119,6 +131,9 @@ dependencies {
     
     // Architecture Components: Paging
     implementation "android.arch.paging:runtime:$AndroidPagingLibVersion"
+    
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
     
     // Rx
     /*implementation"io.reactivex.rxjava2:rxandroid:$RxVersion"

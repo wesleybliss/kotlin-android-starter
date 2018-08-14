@@ -7,8 +7,8 @@ import android.widget.TextView
 import com.kotlinandroidstarter.app.utils.inflate
 
 class SimpleRecyclerAdapter(
-    val items: MutableList<String>,
-    val onItemClicked: (String, Int) -> Unit)
+    private val items: MutableList<String>,
+    private val onItemClicked: (String, Int) -> Unit)
     : RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

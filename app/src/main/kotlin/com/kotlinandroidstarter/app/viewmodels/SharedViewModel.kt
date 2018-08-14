@@ -9,7 +9,7 @@ import com.orhanobut.hawk.Hawk
 class SharedViewModel : ViewModel() {
     
     companion object {
-        val KEY_TEST_VALUE = "key_test_value"
+        const val KEY_TEST_VALUE = "key_test_value"
     }
     
     private val testValue: MutableLiveData<String> by lazy(mode = LazyThreadSafetyMode.NONE) {

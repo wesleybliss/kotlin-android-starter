@@ -9,7 +9,7 @@ import com.kotlinandroidstarter.app.models.User
 interface Api {
     
     companion object {
-        val BASE_URL = "https://jsonplaceholder.typicode.com"
+        const val BASE_URL = "https://jsonplaceholder.typicode.com"
     }
     
     @GET("/users")

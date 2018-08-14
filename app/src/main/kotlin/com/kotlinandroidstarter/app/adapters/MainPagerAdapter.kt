@@ -4,16 +4,14 @@ import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.util.Log
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.fragments.AFragment
 import com.kotlinandroidstarter.app.fragments.BFragment
 import com.kotlinandroidstarter.app.fragments.CFragment
+import timber.log.Timber
 
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-    
-    private val TAG:String = MainPagerAdapter::class.java.simpleName
     
     override fun getItem(position: Int): Fragment? {
         
@@ -23,7 +21,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
             2 -> return CFragment()
         }
         
-        Log.e(TAG, "Invalid page")
+        Timber.e("Invalid page")
         //Toast.makeText(this@MainActivity, "Invalid page", Toast.LENGTH_SHORT).show()
         return null
         

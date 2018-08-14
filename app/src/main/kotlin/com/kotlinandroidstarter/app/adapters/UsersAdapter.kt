@@ -9,7 +9,7 @@ import com.kotlinandroidstarter.app.models.User
 import com.kotlinandroidstarter.app.utils.inflate
 
 
-class UsersAdapter(val items: MutableList<User>, val onClick: (User) -> Unit)
+class UsersAdapter(private val items: MutableList<User>, val onClick: (User) -> Unit)
     : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
