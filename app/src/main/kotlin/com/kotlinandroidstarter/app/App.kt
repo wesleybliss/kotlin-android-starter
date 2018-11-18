@@ -2,9 +2,14 @@ package com.kotlinandroidstarter.app
 
 import android.app.Application
 import com.kotlinandroidstarter.app.api.ApiService
+import com.kotlinandroidstarter.app.di.apiModule
+import com.kotlinandroidstarter.app.di.appModule
+import com.kotlinandroidstarter.app.di.repositoryModule
+import com.kotlinandroidstarter.app.di.viewModule
 import com.orhanobut.hawk.Hawk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.android.startKoin
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
@@ -40,6 +45,16 @@ class App : Application() {
         Hawk.init(this).build()
         
         setupRetrofit()
+
+        startKoin(this, listOf(
+            appModule,
+            apiModule,
+            viewModule,
+            repositoryModule
+            /*interactorsModule,
+            mappersModule,
+            networkModule*/
+        ))
         
     }
     
