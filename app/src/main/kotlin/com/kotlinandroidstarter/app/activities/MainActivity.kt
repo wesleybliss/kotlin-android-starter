@@ -1,6 +1,5 @@
 package com.kotlinandroidstarter.app.activities
 
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -10,23 +9,16 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.MainPagerAdapter
-import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
-
 
 class MainActivity : AppCompatActivity() {
     
     //region Class Members
-    
-    private val model: SharedViewModel by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ViewModelProviders.of(this).get(SharedViewModel::class.java)
-    }
     
     private val pagerAdapter by lazy(mode = LazyThreadSafetyMode.NONE) {
         MainPagerAdapter(supportFragmentManager)
     }
     
     //endregion Class Members
-    
     
     //region Lifecycle
     
@@ -60,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     
     //endregion Lifecycle
     
-    
     //region Menus
     
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -79,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
     
     //endregion Menus
-    
     
     //region Navigation
     
@@ -132,7 +122,6 @@ class MainActivity : AppCompatActivity() {
     }
     
     //endregion Navigation
-    
     
     //region Permissions
     

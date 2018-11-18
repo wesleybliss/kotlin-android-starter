@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name">Kotlin Android Starter</string>
     <string name="title_page_a">Page A</string>
@@ -11,7 +11,7 @@
     <string name="tab_page_b_title">PAGE B</string>
     <string name="tab_page_c_title">PAGE C</string>
     
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior" tools:override="true">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="fragment_c_body">Fragment C</string>
     <string name="fragment_b_body">Fragment B</string>
 
