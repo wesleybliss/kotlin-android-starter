@@ -1,7 +1,7 @@
 package com.kotlinandroidstarter.app
 
 import android.app.Application
-import com.kotlinandroidstarter.app.api.Api
+import com.kotlinandroidstarter.app.api.ApiService
 import com.orhanobut.hawk.Hawk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,7 +22,7 @@ class App : Application() {
         lateinit var retrofit: Retrofit
             private set
         
-        lateinit var api: Api
+        lateinit var apiService: ApiService
             private set
         
     }
@@ -56,12 +56,12 @@ class App : Application() {
         
         retrofit = Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(Api.BASE_URL)
+            .baseUrl(BuildConfig.API_BASE_URL)
             .client(okHttpClient)
             .build()
         
         
-        api = retrofit.create(Api::class.java)
+        apiService = retrofit.create(ApiService::class.java)
         
     }
     

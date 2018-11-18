@@ -6,11 +6,7 @@ import retrofit2.http.Header
 import com.kotlinandroidstarter.app.models.User
 
 
-interface Api {
-    
-    companion object {
-        const val BASE_URL = "https://jsonplaceholder.typicode.com"
-    }
+interface ApiService {
     
     @GET("/users")
     fun getUsers(

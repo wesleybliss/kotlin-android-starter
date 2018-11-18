@@ -1,11 +1,10 @@
 package com.kotlinandroidstarter.app.fragments
 
-
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_a.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.UsersAdapter
@@ -15,14 +14,11 @@ import com.kotlinandroidstarter.app.utils.ViewHelper
 import com.kotlinandroidstarter.app.utils.toast
 import timber.log.Timber
 
-
 class AFragment : Fragment() {
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_a, container, false)
-    
-    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         
