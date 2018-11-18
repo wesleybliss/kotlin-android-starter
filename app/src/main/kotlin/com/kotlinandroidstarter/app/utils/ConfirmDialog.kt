@@ -1,7 +1,7 @@
 package com.kotlinandroidstarter.app.utils
 
 import android.content.Context
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 
 class ConfirmDialog(context: Context, title: String, message: String, onYes: () -> Unit) {
     

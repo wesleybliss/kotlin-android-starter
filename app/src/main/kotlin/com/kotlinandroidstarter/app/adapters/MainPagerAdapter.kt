@@ -1,15 +1,14 @@
 package com.kotlinandroidstarter.app.adapters
 
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.annotation.IdRes
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.fragments.AFragment
 import com.kotlinandroidstarter.app.fragments.BFragment
 import com.kotlinandroidstarter.app.fragments.CFragment
 import timber.log.Timber
-
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     
