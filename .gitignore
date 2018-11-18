@@ -1,6 +1,5 @@
-# Android keystore(s) / secrets
+# Android keystore(s)
 *.jks
-gradle.properties
 
 # Android generated
 bin
