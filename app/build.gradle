@@ -1,50 +1,76 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-
-ext.AndroidSupportLibVersion = '28.0.0-rc02'
-ext.AndroidArchitectureLibVersion = '1.1.1'
-ext.AndroidRoomLibVersion = '1.1.1'
-ext.AndroidPagingLibVersion = '1.0.1'
-ext.GooglePlayServicesVersion = '11.0.2'
-ext.RxVersion = '2.0.1'
-ext.RetrofitVersion = '2.3.0'
-
-repositories {
-    mavenCentral()
-    maven { url "http://dl.bintray.com/jetbrains/spek" }
-    google()
-}
+apply plugin: 'kotlin-kapt'
+//apply plugin: "com.github.ben-manes.versions"
 
 android {
-    
-    compileSdkVersion 28
-    buildToolsVersion '27.0.3'
-    
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
     defaultConfig {
-        applicationId "com.kotlinandroidstarter.app"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    
-    buildTypes {
         
+        applicationId "com.kotlinandroidstarter.app"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        dataBinding {
+            enabled = true
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+    }
+
+    signingConfigs {
+
         debug {
-            ext.enableCrashlytics = false
-            debuggable true
-            minifyEnabled false
-            versionNameSuffix "-DEBUG"
-            applicationIdSuffix '.dev'
+            storeFile project.rootProject.file('debug.jks').getCanonicalFile()
+            storePassword "android"
+            keyAlias "debug"
+            keyPassword "android"
         }
         
         release {
-            minifyEnabled true
-            shrinkResources true
+            storeFile project.rootProject.file('Todo.jks').getCanonicalFile()
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
+        
+    }
+
+    buildTypes {
+        
+        all {
+            minifyEnabled false
+        }
+        
+        debug {
+            debuggable true
+            versionNameSuffix "-DEBUG"
+            applicationIdSuffix '.dev'
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
+        }
+        
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
+
         }
         
     }
@@ -56,36 +82,43 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility versions.java
+        targetCompatibility versions.java
     }
 
     dexOptions {
+        javaMaxHeapSize "4g"
         preDexLibraries true
     }
-    
+
+    packagingOptions {
+        exclude 'META-INF/core.kotlin_module'
+        exclude 'META-INF/main.kotlin_module'
+    }
+
 }
 
 configurations.all {
-    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-reflect:1.0.6'
+    //resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-reflect:1.0.6'
     resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    resolutionStrategy.force "com.google.android.gms:play-services-gcm:${versions.playServices}"
 }
 
 /*android.buildTypes.each { type ->
     type.buildConfigField 'String', 'FOO_KEY', FOO_KEY
 }*/
 
-kapt {
-    generateStubs = true
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
     
     // Testing
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    /*androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'org.jetbrains.spek:spek-api:1.1.2'
+    implementation 'org.jetbrains.spek:spek-apiService:1.1.2'
     implementation 'org.jetbrains.spek:spek-junit-platform-engine:1.1.2'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -96,69 +129,81 @@ dependencies {
     testImplementation 'io.kotlintest:kotlintest:2.0.4'
     androidTestImplementation "com.android.support:support-annotations:$AndroidSupportLibVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
     
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.20'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.16'
+    implementation libraries.kotlin
+    implementation libraries.coroutines
+    implementation libraries.coroutinesAndroid
     
-    // Android
-    implementation "com.android.support:appcompat-v7:$AndroidSupportLibVersion"
-    implementation "com.android.support:support-v4:$AndroidSupportLibVersion"
-    implementation "com.android.support:recyclerview-v7:$AndroidSupportLibVersion"
-    implementation "com.android.support:support-compat:$AndroidSupportLibVersion"
-    implementation "com.android.support:support-core-utils:$AndroidSupportLibVersion"
-    implementation "com.android.support:support-core-ui:$AndroidSupportLibVersion"
-    implementation "com.android.support:support-fragment:$AndroidSupportLibVersion"
-    implementation "com.android.support:design:$AndroidSupportLibVersion"
-    /*implementation "com.android.support:customtabs:$AndroidSupportLibVersion"*/
+    implementation libraries.appCompat
+    implementation libraries.recyclerview
+    implementation libraries.constraintlayout
+    implementation libraries.cardview
+//    implementation libraries.browser
     
-    // Architecture Components: Lifecycles
-    implementation"android.arch.lifecycle:runtime:$AndroidArchitectureLibVersion"
-    kapt "android.arch.lifecycle:compiler:$AndroidArchitectureLibVersion"
+    implementation libraries.androidKtx
+    implementation libraries.fragmentsKtx
     
-    // Architecture Components: LiveData, and ViewModel
-    implementation "android.arch.lifecycle:extensions:$AndroidArchitectureLibVersion"
-    testImplementation "android.arch.core:core-testing:$AndroidArchitectureLibVersion"
-    // implementation "android.arch.lifecycle:reactivestreams:$AndroidArchitectureLibVersion"
+//    implementation libraries.flexbox
+    implementation libraries.material
     
-    // Architecture Components: Room
-    implementation "android.arch.persistence.room:runtime:$AndroidRoomLibVersion"
-    kapt "android.arch.persistence.room:compiler:$AndroidRoomLibVersion"
-    testImplementation "android.arch.persistence.room:testing:$AndroidRoomLibVersion"
-    implementation "android.arch.persistence.room:rxjava2:$AndroidRoomLibVersion"
+//    implementation libraries.room
+//    kapt libraries.roomProcessor
+    implementation libraries.lifecycleExtensions
+    kapt libraries.lifecycleCompiler
+    implementation libraries.viewmodelKtx
+    implementation libraries.livedataKtx
+    implementation libraries.workmanager
+//    implementation libraries.paging
     
-    // Architecture Components: Paging
-    implementation "android.arch.paging:runtime:$AndroidPagingLibVersion"
+    implementation libraries.legacy
+    implementation libraries.legacyUtils
+    implementation libraries.legacyUI
     
-    // Logging
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation libraries.koin
+    implementation libraries.koinViewModel
     
-    // Rx
-    /*implementation"io.reactivex.rxjava2:rxandroid:$RxVersion"
-    implementation"io.reactivex.rxjava2:rxjava:$RxVersion"*/
+    implementation libraries.timber
+    implementation libraries.hawk
     
-    // DI
-    /*kapt 'com.google.dagger:dagger-compiler:2.15'
-    implementation 'com.google.dagger:dagger:2.15'
-    compileOnly 'org.glassfish:javax.annotation:10.0-b28'*/
+    //VAR:RX implementation libraries.rxKotlin
+    //VAR:RX implementation libraries.rxAndroid
     
-    // Networking
-    implementation "com.squareup.retrofit2:retrofit:$RetrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
-    implementation'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation libraries.moshi
+    implementation libraries.okhttp
+    implementation libraries.okhttpLogger
     
-    // Google Services
-    /*implementation"com.google.android.gms:play-services-auth:$GooglePlayServicesVersion"
-    compile('com.google.apis:google-api-services-youtube:v3-rev183-1.22.0') {
-        exclude group: 'org.apache.httpcomponents'
-    }*/
+    implementation libraries.retrofit
+    implementation libraries.retrofitMoshi
+    implementation libraries.retrofitCoroutines
+    implementation libraries.retrofitLogging
     
-    // Shared Preferences
-    implementation 'com.orhanobut:hawk:2.0.1'
+    implementation libraries.threeTenABP
     
-    // WebSockets
-    //implementation'com.neovisionaries:nv-websocket-client:2.3'
+    implementation libraries.fresco
+    //apiService libraries.frescoOkHttp
+    implementation libraries.frescoAnimatedGif
+    implementation libraries.frescoWebP
+    implementation libraries.frescoAnimatedWebP
+    
+    implementation libraries.glide
+    kapt libraries.glideProcessor
+
+    kapt libraries.kotshiCompiler
+    implementation libraries.kotshiApi
+
+    implementation libraries.frescoImageViewer
+    
+    // Proprietary libraries
+    //implementation libraries.fcm
+    //implementation libraries.firebaseAnalytics
+    //implementation libraries.playServicesAuth
+    //implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
+    //implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') { transitive = true }
+    
+    testImplementation libraries.junit
+    testImplementation libraries.truth
+    androidTestImplementation libraries.espressoCore
+    androidTestImplementation libraries.espressoIntents
     
 }

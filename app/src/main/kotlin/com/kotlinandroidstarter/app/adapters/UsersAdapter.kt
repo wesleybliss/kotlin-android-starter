@@ -1,6 +1,6 @@
 package com.kotlinandroidstarter.app.adapters
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.row_user.view.*
@@ -8,9 +8,8 @@ import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.models.User
 import com.kotlinandroidstarter.app.utils.inflate
 
-
 class UsersAdapter(private val items: MutableList<User>, val onClick: (User) -> Unit)
-    : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+    : androidx.recyclerview.widget.RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         

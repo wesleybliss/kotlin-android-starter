@@ -1,6 +1,6 @@
 package com.kotlinandroidstarter.app.adapters
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -9,7 +9,7 @@ import com.kotlinandroidstarter.app.utils.inflate
 class SimpleRecyclerAdapter(
     private val items: MutableList<String>,
     private val onItemClicked: (String, Int) -> Unit)
-    : RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder>() {
+    : androidx.recyclerview.widget.RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         
