@@ -5,16 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_a.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.UsersAdapter
 import com.kotlinandroidstarter.app.api.ApiClient
+import com.kotlinandroidstarter.app.api.Result
+import com.kotlinandroidstarter.app.repositories.UsersRepository
 import com.kotlinandroidstarter.app.utils.ConfirmDialog
 import com.kotlinandroidstarter.app.utils.ViewHelper
 import com.kotlinandroidstarter.app.utils.toast
+import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
+import com.kotlinandroidstarter.extensions.launch
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class AFragment : Fragment() {
+    
+    private val vm: SharedViewModel by viewModel()
+    
+    private val adapter by lazy {
+        UsersAdapter(mutableListOf()) {
+            Timber.d("Tapped item %s", it)
+            ConfirmDialog(context!!, "Item Clicked", "Item: $it") {
+                toast("Roger that!")
+            }
+        }
+    }
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -26,19 +44,13 @@ class AFragment : Fragment() {
     
         ViewHelper.setupRecyclerView(context!!, listItems)
         
-        listItems.adapter = UsersAdapter(mutableListOf()) {
-
-            Timber.d("Tapped item %s", it)
-
-            ConfirmDialog(context!!, "Item Clicked", "Item: $it") {
-                toast("Roger that!")
-            }
-
-        }
-
-        ApiClient.fetchUsers(
-            { toast("Failed to fetch users because $it") },
-            { (listItems.adapter as UsersAdapter).setItems(it.toMutableList()) })
+        listItems.adapter = adapter
+        
+        vm.users.observe(this, Observer {
+            adapter.setItems(it)
+        })
+        
+        vm.fetchUsers()
         
     }
     
