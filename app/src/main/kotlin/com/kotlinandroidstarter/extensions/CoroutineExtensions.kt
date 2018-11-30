@@ -10,6 +10,7 @@ import java.util.concurrent.Executors
  * network calls via Kotlin's native coroutines.
  */
 
+/*
 val executorService = Executors.newFixedThreadPool(100)!!
 val networkDispatcher = executorService.asCoroutineDispatcher()
 
@@ -20,11 +21,14 @@ suspend fun <T> asyncAwait(block: suspend CoroutineScope.() -> T) : T =
     async(block).await()
 
 fun launch(block: suspend CoroutineScope.() -> Unit) : Job {
-    /*val job: Job = launch(UI) { block() }
+    */
+/*val job: Job = launch(UI) { block() }
     asyncJobs.add(job)
-    job.invokeOnCompletion { asyncJobs.remove(job) }*/
+    job.invokeOnCompletion { asyncJobs.remove(job) }*//*
+
     return GlobalScope.launch(Dispatchers.Main) { block() }
 }
 
 suspend inline fun <T> Unit.awesome(crossinline block: Unit.() -> T) : T =
     asyncAwait { block() }
+*/

@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
  * Base, native, Android Architecture Components ViewModel,
  * useful to extend for any ViewModel that needs error & loading states
  */
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel : ScopedViewModel() {
 
     open val error = MutableLiveData<String>().apply { value = null }
     open val loading = MutableLiveData<Boolean>().apply { value = false }

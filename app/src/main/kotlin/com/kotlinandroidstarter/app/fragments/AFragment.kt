@@ -9,15 +9,10 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_a.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.UsersAdapter
-import com.kotlinandroidstarter.app.api.ApiClient
-import com.kotlinandroidstarter.app.api.Result
-import com.kotlinandroidstarter.app.repositories.UsersRepository
 import com.kotlinandroidstarter.app.utils.ConfirmDialog
 import com.kotlinandroidstarter.app.utils.ViewHelper
 import com.kotlinandroidstarter.app.utils.toast
 import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
-import com.kotlinandroidstarter.extensions.launch
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -47,7 +42,7 @@ class AFragment : Fragment() {
         listItems.adapter = adapter
         
         vm.users.observe(this, Observer {
-            adapter.setItems(it)
+            adapter.setItems(it.toMutableList())
         })
         
         vm.fetchUsers()

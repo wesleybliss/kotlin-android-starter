@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import com.kotlinandroidstarter.app.models.User
 import kotlinx.coroutines.Deferred
+import retrofit2.Response
 
 
 interface ApiService {
@@ -12,6 +13,6 @@ interface ApiService {
     @GET("/users")
     fun getUsers(
         @Header("Foo") headerFoo: String
-    ) : Deferred<List<User>>
+    ) : Deferred<Response<List<User>>>
     
 }

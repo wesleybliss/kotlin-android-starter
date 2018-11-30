@@ -7,6 +7,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.kotlinandroidstarter.app.App
 
+inline fun <T> liveDataOf(initialValue: T?, defaultValue: T? = null, post: Boolean = false) : LiveData<T> =
+    mutableLiveDataOf(initialValue, defaultValue, post)
+
 inline fun <T> mutableLiveDataOf(initialValue: T?, defaultValue: T? = null, post: Boolean = false) =
     MutableLiveData<T>().apply {
         if (!post) value = initialValue ?: defaultValue
