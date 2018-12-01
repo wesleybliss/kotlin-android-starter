@@ -2,7 +2,6 @@ package com.kotlinandroidstarter.app.viewmodels
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
 /**
  * Base, native, Android Architecture Components ViewModel,

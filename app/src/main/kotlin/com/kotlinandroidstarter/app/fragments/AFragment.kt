@@ -42,7 +42,8 @@ class AFragment : Fragment() {
         listItems.adapter = adapter
         
         vm.users.observe(this, Observer {
-            adapter.setItems(it.toMutableList())
+            Timber.d("fragment - data changed to ${it.data}")
+            if (it.data != null) adapter.setItems(it.data.toMutableList())
         })
         
         vm.fetchUsers()

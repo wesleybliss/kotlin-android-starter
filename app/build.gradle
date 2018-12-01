@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 //apply plugin: "com.github.ben-manes.versions"
 
 android {
@@ -134,7 +135,18 @@ dependencies {
     implementation libraries.kotlin
     implementation libraries.coroutines
     implementation libraries.coroutinesAndroid
-    
+
+    debugImplementation libraries.leakCanary
+    debugImplementation libraries.leakCanaryDebug
+    releaseImplementation libraries.leakCanaryRelease
+    implementation libraries.stetho
+    implementation libraries.stethoOkHttp
+    implementation libraries.stethoJsRhino
+    implementation libraries.stethoRealm
+    implementation(libraries.crashlytics) {
+        transitive = true
+    }
+
     implementation libraries.appCompat
     implementation libraries.recyclerview
     implementation libraries.constraintlayout
@@ -177,6 +189,8 @@ dependencies {
     implementation libraries.retrofitMoshi
     implementation libraries.retrofitCoroutines
     implementation libraries.retrofitLogging
+
+    implementation libraries.realmExtensions
     
     implementation libraries.threeTenABP
     

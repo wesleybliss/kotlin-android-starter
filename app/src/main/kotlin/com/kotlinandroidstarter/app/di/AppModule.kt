@@ -1,20 +1,35 @@
 package com.kotlinandroidstarter.app.di
 
+import com.kotlinandroidstarter.app.api.AppExecutors
 import com.kotlinandroidstarter.app.repositories.UsersRepository
 import com.kotlinandroidstarter.app.viewmodels.SharedViewModel
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
-val appModule = module {}
-
-val viewModule = module {
+object AppModule {
     
-    viewModel { SharedViewModel(get()) }
+    val module = module {}
     
 }
 
-val repositoryModule = module {
+object ViewModule {
     
-    single { UsersRepository(get()) }
+    val module = module {
+        
+        viewModel { SharedViewModel(get()) }
+        
+        single { AppExecutors() }
+        
+    }
+    
+}
+
+object RepositoryModule {
+    
+    val module = module {
+        
+        single { UsersRepository(get(), get()) }
+        
+    }
     
 }
