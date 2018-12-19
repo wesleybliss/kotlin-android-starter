@@ -48,15 +48,7 @@ class App : Application() {
         initRealm()
         initLogger()
 
-        startKoin(this, listOf(
-            AppModule.module,
-            ApiModule.module,
-            ViewModule.module,
-            RepositoryModule.module
-            /*interactorsModule,
-            mappersModule,
-            networkModule*/
-        ))
+        startKoin(this, koinModules)
         
     }
     

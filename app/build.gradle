@@ -131,93 +131,104 @@ dependencies {
     androidTestImplementation "com.android.support:support-annotations:$AndroidSupportLibVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
-    
-    implementation libraries.kotlin
-    implementation libraries.coroutines
-    implementation libraries.coroutinesAndroid
 
-    debugImplementation libraries.leakCanary
-    debugImplementation libraries.leakCanaryDebug
-    releaseImplementation libraries.leakCanaryRelease
-    implementation libraries.stetho
-    implementation libraries.stethoOkHttp
-    implementation libraries.stethoJsRhino
-    implementation libraries.stethoRealm
-    implementation(libraries.crashlytics) {
+    // Required for local unit tests (JUnit 4 framework)
+    testImplementation libs.junit
+    
+    // Required for instrumented tests
+    androidTestImplementation libs.supportAnnotations
+    androidTestImplementation libs.supportTestRunner
+    
+    testImplementation libs.koinTest
+    
+    //
+    
+    implementation libs.kotlin
+    implementation libs.coroutines
+    implementation libs.coroutinesAndroid
+
+    debugImplementation libs.leakCanary
+    debugImplementation libs.leakCanaryDebug
+    releaseImplementation libs.leakCanaryRelease
+    implementation libs.stetho
+    implementation libs.stethoOkHttp
+    implementation libs.stethoJsRhino
+    implementation libs.stethoRealm
+    implementation(libs.crashlytics) {
         transitive = true
     }
 
-    implementation libraries.appCompat
-    implementation libraries.recyclerview
-    implementation libraries.constraintlayout
-    implementation libraries.cardview
-//    implementation libraries.browser
+    implementation libs.appCompat
+    implementation libs.recyclerview
+    implementation libs.constraintlayout
+    implementation libs.cardview
+//    implementation libs.browser
     
-    implementation libraries.androidKtx
-    implementation libraries.fragmentsKtx
+    implementation libs.androidKtx
+    implementation libs.fragmentsKtx
     
-//    implementation libraries.flexbox
-    implementation libraries.material
+//    implementation libs.flexbox
+    implementation libs.material
     
-//    implementation libraries.room
-//    kapt libraries.roomProcessor
-    implementation libraries.lifecycleExtensions
-    kapt libraries.lifecycleCompiler
-    implementation libraries.viewmodelKtx
-    implementation libraries.livedataKtx
-    implementation libraries.workmanager
-//    implementation libraries.paging
+//    implementation libs.room
+//    kapt libs.roomProcessor
+    implementation libs.lifecycleExtensions
+    kapt libs.lifecycleCompiler
+    implementation libs.viewmodelKtx
+    implementation libs.livedataKtx
+    implementation libs.workmanager
+//    implementation libs.paging
     
-    implementation libraries.legacy
-    implementation libraries.legacyUtils
-    implementation libraries.legacyUI
+    implementation libs.legacy
+    implementation libs.legacyUtils
+    implementation libs.legacyUI
     
-    implementation libraries.koin
-    implementation libraries.koinViewModel
+    implementation libs.koin
+    implementation libs.koinViewModel
     
-    implementation libraries.timber
-    implementation libraries.hawk
+    implementation libs.timber
+    implementation libs.hawk
     
-    //VAR:RX implementation libraries.rxKotlin
-    //VAR:RX implementation libraries.rxAndroid
+    //VAR:RX implementation libs.rxKotlin
+    //VAR:RX implementation libs.rxAndroid
     
-    implementation libraries.moshi
-    implementation libraries.okhttp
-    implementation libraries.okhttpLogger
+    implementation libs.moshi
+    implementation libs.okhttp
+    implementation libs.okhttpLogger
     
-    implementation libraries.retrofit
-    implementation libraries.retrofitMoshi
-    implementation libraries.retrofitCoroutines
-    implementation libraries.retrofitLogging
+    implementation libs.retrofit
+    implementation libs.retrofitMoshi
+    implementation libs.retrofitCoroutines
+    implementation libs.retrofitLogging
 
-    implementation libraries.realmExtensions
+    implementation libs.realmExtensions
     
-    implementation libraries.threeTenABP
+    implementation libs.threeTenABP
     
-    implementation libraries.fresco
-    //apiService libraries.frescoOkHttp
-    implementation libraries.frescoAnimatedGif
-    implementation libraries.frescoWebP
-    implementation libraries.frescoAnimatedWebP
+    implementation libs.fresco
+    //apiService libs.frescoOkHttp
+    implementation libs.frescoAnimatedGif
+    implementation libs.frescoWebP
+    implementation libs.frescoAnimatedWebP
     
-    implementation libraries.glide
-    kapt libraries.glideProcessor
+    implementation libs.glide
+    kapt libs.glideProcessor
 
-    kapt libraries.kotshiCompiler
-    implementation libraries.kotshiApi
+    kapt libs.kotshiCompiler
+    implementation libs.kotshiApi
 
-    implementation libraries.frescoImageViewer
+    implementation libs.frescoImageViewer
     
     // Proprietary libraries
-    //implementation libraries.fcm
-    //implementation libraries.firebaseAnalytics
-    //implementation libraries.playServicesAuth
+    //implementation libs.fcm
+    //implementation libs.firebaseAnalytics
+    //implementation libs.playServicesAuth
     //implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
     //implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') { transitive = true }
     
-    testImplementation libraries.junit
-    testImplementation libraries.truth
-    androidTestImplementation libraries.espressoCore
-    androidTestImplementation libraries.espressoIntents
+    testImplementation libs.junit
+    testImplementation libs.truth
+    androidTestImplementation libs.espressoCore
+    androidTestImplementation libs.espressoIntents
     
 }
