@@ -10,10 +10,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.kotlinandroidstarter.app.activities.MainActivity">
     
-    <TextView
-        android:id="@+id/textFragmentB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Fragment B"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/checkFilterItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:layout_alignParentStart="true"
+            tools:text="Only items > 5"/>
+        <Button
+            android:id="@+id/buttonDeleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/buttonAddMore"
+            android:text="Delete All"/>
+        <Button
+            android:id="@+id/buttonAddMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Add More"/>
+    </RelativeLayout>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listItemsB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/row_user" />
 
 </LinearLayout>

@@ -6,11 +6,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 //apply plugin: "com.github.ben-manes.versions"
 
+apply plugin: "de.mannodermaus.android-junit5"
+
 android {
 
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
-
+    
     defaultConfig {
         
         applicationId "com.kotlinandroidstarter.app"
@@ -19,20 +21,22 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         dataBinding {
             enabled = true
         }
-
+        
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
-
+        
     }
-
+    
     signingConfigs {
 
         debug {
@@ -50,7 +54,7 @@ android {
         }
         
     }
-
+    
     buildTypes {
         
         all {
@@ -86,15 +90,25 @@ android {
         sourceCompatibility versions.java
         targetCompatibility versions.java
     }
-
+    
     dexOptions {
         javaMaxHeapSize "4g"
         preDexLibraries true
     }
-
+    
     packagingOptions {
         exclude 'META-INF/core.kotlin_module'
         exclude 'META-INF/main.kotlin_module'
+    }
+    
+    // Gradle automatically adds 'android.test.runner' as a dependency.
+    useLibrary 'android.test.runner'
+    
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+    
+    testOptions {
+        unitTests.includeAndroidResources = true
     }
 
 }
@@ -132,14 +146,27 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
 
+    testRuntimeOnly libs.kotlinReflect
+    
     // Required for local unit tests (JUnit 4 framework)
+    //testImplementation libs.junit
+
     testImplementation libs.junit
+    testImplementation libs.supportTestArchCore
+    testImplementation libs.supportAnnotations
+    testImplementation libs.supportTestRules
+    testImplementation libs.truth
+    testImplementation libs.koinTest
+    testImplementation libs.mockitoKotlin2
     
     // Required for instrumented tests
     androidTestImplementation libs.supportAnnotations
     androidTestImplementation libs.supportTestRunner
-    
-    testImplementation libs.koinTest
+
+    androidTestImplementation libs.espressoCore
+    androidTestImplementation libs.espressoIntents
+    androidTestImplementation libs.mockitoKotlin2
+    androidTestImplementation libs.mockitoAndroid
     
     //
     
@@ -225,10 +252,5 @@ dependencies {
     //implementation libs.playServicesAuth
     //implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
     //implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') { transitive = true }
-    
-    testImplementation libs.junit
-    testImplementation libs.truth
-    androidTestImplementation libs.espressoCore
-    androidTestImplementation libs.espressoIntents
     
 }

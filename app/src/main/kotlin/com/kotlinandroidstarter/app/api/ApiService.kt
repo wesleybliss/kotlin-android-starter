@@ -8,7 +8,7 @@ import com.kotlinandroidstarter.app.models.User
 
 interface ApiService {
     
-    @GET("/users")
+    @GET("/things")
     fun getUsers(
         @Header("Foo") headerFoo: String
     ) : MutableLiveData<ApiResponse<List<User>>>
