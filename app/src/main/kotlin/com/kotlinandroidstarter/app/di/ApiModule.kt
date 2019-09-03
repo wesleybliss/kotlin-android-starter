@@ -1,6 +1,5 @@
 package com.kotlinandroidstarter.app.di
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.kotlinandroidstarter.app.BuildConfig
 import com.kotlinandroidstarter.app.api.ApiService
 import com.squareup.moshi.Moshi
@@ -45,7 +44,6 @@ fun createMoshi() : Moshi = Moshi.Builder()
 // which does not return an eveloped response (just raw JSON)
 fun createRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .client(okHttpClient)
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .addConverterFactory(MoshiConverterFactory.create())
     .baseUrl(BuildConfig.API_BASE_URL)
     .build()
@@ -60,7 +58,6 @@ fun createRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
 fun createRetrofitProxy(okHttpClient: OkHttpClient, moshi: Moshi) = RetrofitProxy(
     Retrofit.Builder()
         .client(okHttpClient)
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BuildConfig.API_BASE_URL)
         .build()

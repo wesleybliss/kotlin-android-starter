@@ -10,7 +10,7 @@ class UsersRepository(private val apiService: ApiService) {
 
     suspend fun fetchUsers() : Deferred<Result<List<User>>> =
         safeApiCall(
-            { Result.Success(apiService.getUsers("Test").await()) },
+            { Result.Success(apiService.getUsers("Test")) },
             "Failed to fetch users"
         )
     

@@ -8,7 +8,7 @@ object ApiClient {
     
     suspend fun fetchUsers() : Deferred<Result<List<User>>> =
         safeApiCall(
-            { Result.Success(App.apiService.getUsers("Test").await()) },
+            { Result.Success(App.apiService.getUsers("Test")) },
             "Failed to fetch users"
         )
     

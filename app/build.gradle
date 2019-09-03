@@ -133,9 +133,7 @@ dependencies {
     
     implementation libraries.kotlin
     implementation libraries.coroutines
-    implementation libraries.coroutinesAndroid
     
-    implementation libraries.appCompat
     implementation libraries.recyclerview
     implementation libraries.constraintlayout
     implementation libraries.cardview
@@ -175,24 +173,15 @@ dependencies {
     
     implementation libraries.retrofit
     implementation libraries.retrofitMoshi
-    implementation libraries.retrofitCoroutines
     implementation libraries.retrofitLogging
     
     implementation libraries.threeTenABP
     
-    implementation libraries.fresco
-    //apiService libraries.frescoOkHttp
-    implementation libraries.frescoAnimatedGif
-    implementation libraries.frescoWebP
-    implementation libraries.frescoAnimatedWebP
-    
     implementation libraries.glide
     kapt libraries.glideProcessor
-
+    
     kapt libraries.kotshiCompiler
     implementation libraries.kotshiApi
-
-    implementation libraries.frescoImageViewer
     
     // Proprietary libraries
     //implementation libraries.fcm
