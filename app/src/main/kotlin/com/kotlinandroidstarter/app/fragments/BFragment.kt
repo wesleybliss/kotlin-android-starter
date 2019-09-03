@@ -12,6 +12,7 @@ import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.adapters.FragBAdapter
 import com.kotlinandroidstarter.app.models.Thing
 import com.kotlinandroidstarter.app.utils.ViewHelper
+import com.kotlinandroidstarter.app.utils.toast
 import com.kotlinandroidstarter.app.viewmodels.FragBViewModel
 import com.vicpin.krealmextensions.save
 import io.realm.Realm
@@ -43,7 +44,8 @@ class BFragment : Fragment() {
         vm.things.observe(this, Observer { 
             adapter.apply {
                 things.clear()
-                things.addAll(it)
+                toast("added ${it.size} items to list")
+                things.addAll(it.toList())
                 notifyDataSetChanged()
             }
         })
@@ -60,8 +62,10 @@ class BFragment : Fragment() {
         }
         
         buttonAddMore.setOnClickListener { _ ->
+            val lastOffset = Realm.getDefaultInstance().where<Thing>().count().toInt()
+            val nextOffset = lastOffset + 10
             GlobalScope.launch(Dispatchers.Main) {
-                (1..10).forEach {
+                (lastOffset..nextOffset).forEach {
                     
                     val fuckyou = Date()
                     val dtf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
