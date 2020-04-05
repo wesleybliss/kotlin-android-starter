@@ -1,0 +1,2 @@
+apply plugin: 'com.android.dynamic-feature'
+apply from:"$rootDir/${GradleTemplates.base}"

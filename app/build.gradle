@@ -5,16 +5,19 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 //apply plugin: "com.github.ben-manes.versions"
 
+apply from: rootProject.file('ext.gradle')
+apply from: rootProject.file('template-base.gradle')
+
 android {
 
-    compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
+    compileSdkVersion Meta.CompileSdkVersion
+    buildToolsVersion Meta.BuildToolsVersion
 
     defaultConfig {
         
         applicationId "com.kotlinandroidstarter.app"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        minSdkVersion Meta.MinSdkVersion
+        targetSdkVersion Meta.TargetSdkVersion
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -82,8 +85,8 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility versions.java
-        targetCompatibility versions.java
+        sourceCompatibility Versions.Java
+        targetCompatibility Versions.Java
     }
 
     dexOptions {
@@ -101,7 +104,7 @@ android {
 configurations.all {
     //resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-reflect:1.0.6'
     resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
-    resolutionStrategy.force "com.google.android.gms:play-services-gcm:${versions.playServices}"
+    resolutionStrategy.force "com.google.android.gms:play-services-gcm:${Versions.PlayServices}"
 }
 
 /*android.buildTypes.each { type ->
@@ -131,70 +134,69 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
     
-    implementation libraries.kotlin
-    implementation libraries.coroutines
+    // Core
+    implementation Libraries.Coroutines
+    implementation Libraries.CoroutinesAndroid
     
-    implementation libraries.recyclerview
-    implementation libraries.constraintlayout
-    implementation libraries.cardview
-//    implementation libraries.browser
+    // Android
+    implementation Libraries.LifecycleCompiler
+    implementation Libraries.LifecycleExtensions
+    implementation Libraries.RecyclerView
+    implementation Libraries.ConstraintLayout
+    implementation Libraries.CardView
     
-    implementation libraries.androidKtx
-    implementation libraries.fragmentsKtx
+    // Android KTX
+    implementation Libraries.AndroidKtx
+    implementation Libraries.FragmentsKtx
+    implementation Libraries.LiveDataKtx
+    implementation Libraries.ViewModelKtx
+    implementation Libraries.WorkmanagerKtx
     
-//    implementation libraries.flexbox
-    implementation libraries.material
+    // Android Extra
+    implementation Libraries.GoogleMaterial
+    //implementation Libraries.GoogleFlexbox
     
-//    implementation libraries.room
-//    kapt libraries.roomProcessor
-    implementation libraries.lifecycleExtensions
-    kapt libraries.lifecycleCompiler
-    implementation libraries.viewmodelKtx
-    implementation libraries.livedataKtx
-    implementation libraries.workmanager
-//    implementation libraries.paging
+    // Logging
+    implementation Libraries.Timber
     
-    implementation libraries.legacy
-    implementation libraries.legacyUtils
-    implementation libraries.legacyUI
+    // DI
+    implementation Libraries.Koin
+    implementation Libraries.KoinViewModel
     
-    implementation libraries.koin
-    implementation libraries.koinViewModel
+    // Storage
+    implementation Libraries.Hawk
+    //implementation Libraries.Room
+    //kapt Libraries.RoomCompiler
     
-    implementation libraries.timber
-    implementation libraries.hawk
+    // Networking
+    implementation Libraries.ThreeTenABP
+    implementation Libraries.OkHttp
+    implementation Libraries.OkHttpLogger
+    implementation Libraries.Retrofit
+    implementation Libraries.RetrofitMoshi
+    implementation Libraries.RetrofitLogging
+    //implementation Libraries.Paging
     
-    //VAR:RX implementation libraries.rxKotlin
-    //VAR:RX implementation libraries.rxAndroid
+    // JSON
+    implementation Libraries.Moshi
+    implementation Libraries.MoshiKotlin
+    implementation Libraries.KotshiApi
+    implementation Libraries.KotshiCompiler
     
-    implementation libraries.materialDesignIcons
+    /*implementation Libraries.legacy
+    implementation Libraries.legacyUtils
+    implementation Libraries.legacyUI*/
     
-    implementation libraries.moshi
-    implementation libraries.okhttp
-    implementation libraries.okhttpLogger
+    implementation Libraries.MaterialDesignIcons
     
-    implementation libraries.retrofit
-    implementation libraries.retrofitMoshi
-    implementation libraries.retrofitLogging
+    // Google Proprietary
+    implementation Libraries.PlayServices
+    implementation Libraries.FirebaseAnalytics
+    implementation Libraries.FirebaseCloudMessage
     
-    implementation libraries.threeTenABP
-    
-    implementation libraries.glide
-    kapt libraries.glideProcessor
-    
-    kapt libraries.kotshiCompiler
-    implementation libraries.kotshiApi
-    
-    // Proprietary libraries
-    //implementation libraries.fcm
-    //implementation libraries.firebaseAnalytics
-    //implementation libraries.playServicesAuth
-    //implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
-    //implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') { transitive = true }
-    
-    testImplementation libraries.junit
-    testImplementation libraries.truth
-    androidTestImplementation libraries.espressoCore
-    androidTestImplementation libraries.espressoIntents
+    testImplementation Libraries.JUnit
+    testImplementation Libraries.Truth
+    androidTestImplementation Libraries.EspressoCore
+    androidTestImplementation Libraries.EspressoIntents
     
 }

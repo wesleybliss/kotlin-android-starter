@@ -2,7 +2,7 @@
 
 buildscript {
     
-    apply from: rootProject.file('dependencies.gradle')
+    apply from: rootProject.file('versions.gradle')
     
     repositories {
         google()
@@ -14,7 +14,7 @@ buildscript {
     dependencies {
         
         classpath 'com.android.tools.build:gradle:3.6.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin}"
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -36,8 +36,13 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://jitpack.io" }
     }
-
-    apply from: rootProject.file('dependencies.gradle')
+    
+    //apply from: rootProject.file('dependencies.gradle')
+    
+    apply from: rootProject.file('versions.gradle')
+    apply from: rootProject.file('libraries.gradle')
+    
+    
 
 }
 

@@ -1,0 +1,74 @@
+apply from: rootProject.file('versions.gradle')
+
+ext.Libraries = [
+    
+    // Core
+    Kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}",
+    Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutine}",
+    CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutine}",
+    
+    // Android
+    LifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${Versions.Lifecycle}",
+    LifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${Versions.Lifecycle}",
+    AppCompat: "androidx.appcompat:appcompat:${Versions.AppCompat}",
+    RecyclerView: "androidx.recyclerview:recyclerview:${Versions.RecyclerView}",
+    ConstraintLayout: "androidx.constraintlayout:constraintlayout:${Versions.ConstraintLayout}",
+    CardView: "androidx.cardview:cardview:${Versions.CardView}",
+    
+    // Android KTX
+    AndroidKtx: "androidx.core:core-ktx:${Versions.AndroidKtx}",
+    FragmentsKtx: "androidx.fragment:fragment-ktx:${Versions.FragmentKtx}",
+    LiveDataKtx: "com.shopify:livedata-ktx:${Versions.LiveDataKtx}",
+    ViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Lifecycle}",
+    WorkmanagerKtx: "android.arch.work:work-runtime-ktx:${Versions.WorkManager}",
+    
+    // Android Extra
+    GoogleMaterial: "com.google.android.material:material:${Versions.GoogleMaterial}",
+    GoogleFlexbox: "com.google.android:flexbox:${Versions.GoogleFlexbox}",
+    
+    // Logging
+    Timber: "com.jakewharton.timber:timber:${Versions.Timber}",
+    
+    // DI
+    Koin: "org.koin:koin-androidx-scope:${Versions.Koin}",
+    KoinViewModel: "org.koin:koin-androidx-viewmodel:${Versions.Koin}",
+    
+    // Storage
+    Hawk: "com.orhanobut:hawk:${Versions.Hawk}",
+    Room: "androidx.room:room-runtime:${Versions.Room}",
+    RoomCompiler: "androidx.room:room-compiler:${Versions.Room}",
+    
+    // Networking
+    ThreeTenABP: "com.jakewharton.threetenabp:threetenabp:${Versions.ThreeTenABP}",
+    OkHttp: "com.squareup.okhttp3:okhttp:${Versions.OkHttp}",
+    OkHttpLogger: "com.squareup.okhttp3:logging-interceptor:${Versions.OkHttp}",
+    Retrofit: "com.squareup.retrofit2:retrofit:${Versions.Retrofit}",
+    RetrofitMoshi: "com.squareup.retrofit2:converter-moshi:${Versions.Retrofit}",
+    RetrofitLogging: "com.squareup.okhttp3:logging-interceptor:${Versions.RetrofitLogging}",
+    Paging: "androidx.paging:paging-runtime:${Versions.Paging}",
+    
+    // JSON
+    Moshi: "com.squareup.moshi:moshi:${Versions.Moshi}",
+    MoshiKotlin: "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}",
+    KotshiApi: "se.ansman.kotshi:api:${Versions.Kotshi}",
+    KotshiCompiler: "se.ansman.kotshi:compiler:${Versions.Kotshi}",
+    
+    /*legacy                : "androidx.legacy:legacy-support-v4:${Versions.legacy}", 
+    legacyUtils           : "androidx.legacy:legacy-support-core-utils:${Versions.legacy}",
+    legacyUI              : "androidx.legacy:legacy-support-core-ui:${Versions.legacy}",*/
+    
+    MaterialDesignIcons   : "com.pavelsikun:materialdesignicons:${Versions.MaterialDesignIcons}",
+    
+    // Google Proprietary
+    PlayServices: "com.google.android.gms:play-services-auth:${Versions.PlayServices}",
+    FirebaseAnalytics: "com.google.firebase:firebase-core:${Versions.FirebaseAnalytics}",
+    FirebaseCloudMessage: "com.google.firebase:firebase-messaging:${Versions.FirebaseCloudMessage}",
+    
+    // For testing
+    JUnit: "junit:junit:${Versions.JUnit}",
+    Truth: "com.google.truth:truth:${Versions.Truth}",
+    EspressoCore: "androidx.test.espresso:espresso-core:${Versions.Espresso}",
+    EspressoIntents: "androidx.test.espresso:espresso-intents:${Versions.Espresso}",
+    RoomTest: "android.arch.persistence.room:testing:${Versions.Toom}"
+    
+]

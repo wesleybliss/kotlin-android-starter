@@ -1,0 +1,58 @@
+
+def MIN_SDK = 21
+def MAX_SDK = 28
+
+Properties properties = new Properties()
+def propertiesFile = project.rootProject.file('local.properties')
+if (propertiesFile.exists()) {
+    properties.load(propertiesFile.newDataInputStream())
+}
+
+ext.Meta = [
+    
+    MinSdkVersion      : MIN_SDK,
+    CompileSdkVersion  : MAX_SDK,
+    TargetSdkVersion   : MAX_SDK,
+    
+    BuildToolsVersion  : '28.0.3'
+    
+]
+
+ext.Modules = [
+    
+    application     : ':application',
+    
+    core            : ':core',
+    di              : ':di',
+    logging         : ':logging',
+    domain          : ':domain',
+    library         : ':library',
+    navigation      : ':navigation',
+    network         : ':network',
+    storage         : ':storage',
+    
+    views           : ':views',
+    
+    ui              : ':ui',
+    uiShared        : ':ui_shared',
+    
+    splash          : ':ui_splash',
+    main            : ':ui_main',
+    preview         : ':ui_preview',
+    
+    home            : ':ui_home',
+    favorites       : ':ui_favorites',
+    settings        : ':ui_settings'
+    
+]
+
+ext.GradleTemplates = [
+    
+    base            : "template-base.gradle",
+    dynamicFeature  : "template-dynamic-feature.gradle",
+    kotlinLibrary   : "template-kotlin-library.gradle",
+    androidLibrary  : "template-android-library.gradle"
+    
+]
+    
+//ext.foo = properties.getProperty('foo')

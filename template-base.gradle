@@ -1,0 +1,62 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: rootProject.file('ext.gradle')
+apply from: rootProject.file('versions.gradle')
+apply from: rootProject.file('buildTypes.gradle')
+
+android {
+    
+    compileSdkVersion Meta.compileSdkVersion
+    
+    defaultConfig {
+        minSdkVersion Meta.minSdkVersion
+        targetSdkVersion Meta.targetSdkVersion
+        versionCode Meta.versionCode
+        versionName Meta.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+    buildTypes {
+        all {}
+        debug {}
+        release {}
+    }
+    
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries true
+    }
+    
+    packagingOptions {
+        exclude 'META-INF/core.kotlin_module'
+        exclude 'META-INF/main.kotlin_module'
+    }
+    
+}
+
+dependencies {
+    
+    /*if (name != "logging")
+        implementation project(Modules.logging)*/
+    
+    implementation Libraries.Kotlin
+    implementation Libraries.Koin
+    
+    testImplementation Libraries.JUnit
+    /*testImplementation Libraries.KoinTest
+    androidTestImplementation Libraries.TestRunner
+    androidTestImplementation Libraries.TestEspresso*/
+    
+}
