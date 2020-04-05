@@ -9,10 +9,10 @@ import com.kotlinandroidstarter.app.di.viewModule
 import com.orhanobut.hawk.Hawk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.android.startKoin
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.core.logger.PrintLogger
+import org.koin.core.module.Module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
@@ -23,6 +23,8 @@ class App : Application() {
         
         lateinit var instance: App
             private set
+        
+        // @todo move all this shit to koin
         
         lateinit var okHttpClient: OkHttpClient
             private set
@@ -53,7 +55,7 @@ class App : Application() {
     
             logger(PrintLogger(Level.INFO))
             
-            modules(listOf(
+            modules(listOf<Module>(
                 appModule,
                 apiModule,
                 viewModule,

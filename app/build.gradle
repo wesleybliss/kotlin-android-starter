@@ -167,6 +167,8 @@ dependencies {
     //VAR:RX implementation libraries.rxKotlin
     //VAR:RX implementation libraries.rxAndroid
     
+    implementation libraries.materialDesignIcons
+    
     implementation libraries.moshi
     implementation libraries.okhttp
     implementation libraries.okhttpLogger

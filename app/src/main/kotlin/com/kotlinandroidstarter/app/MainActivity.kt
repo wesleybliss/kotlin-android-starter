@@ -1,16 +1,16 @@
-package com.kotlinandroidstarter.app.activities
+package com.kotlinandroidstarter.app
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
-import com.kotlinandroidstarter.app.R
+import androidx.viewpager.widget.ViewPager
 import com.kotlinandroidstarter.app.adapters.MainPagerAdapter
+import com.kotlinandroidstarter.app.databinding.ActivityMainBinding
+import com.kotlinandroidstarter.app.shared.ui.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     //region Class Members
     
@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         
         /*if (is not signed in) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -102,17 +101,17 @@ class MainActivity : AppCompatActivity() {
         when (id) {
             R.id.navigation_page_a -> {
                 container.currentItem = 0
-                toolbar.title = getString(R.string.title_page_a)
+                toolbar.title = getString(R.string.home_title)
                 return true
             }
             R.id.navigation_page_b -> {
                 container.currentItem = 1
-                toolbar.title = getString(R.string.title_page_b)
+                toolbar.title = getString(R.string.feed_title)
                 return true
             }
             R.id.navigation_page_c -> {
                 container.currentItem = 2
-                toolbar.title = getString(R.string.title_page_c)
+                toolbar.title = getString(R.string.about_title)
                 return true
             }
         }

@@ -60,6 +60,8 @@ ext.versions = [
     frescoImageViewer     : '0.5.0',
     glide                 : '4.10.0',
 
+    materialDesignIcons   : '1.0',
+
     // For testing
     junit                 : '4.13',
     truth                 : '1.0',
@@ -135,6 +137,8 @@ ext.libraries = [
     frescoImageViewer     : "com.github.stfalcon:frescoimageviewer:${versions.frescoImageViewer}",
     glide                 : "com.github.bumptech.glide:glide:${versions.glide}",
     glideProcessor        : "com.github.bumptech.glide:compiler:${versions.glide}",
+
+    materialDesignIcons   : "com.pavelsikun:materialdesignicons:${versions.materialDesignIcons}",
     
     // Proprietary libraries
     fcm                   : "com.google.firebase:firebase-messaging:${versions.firebaseCloudMessage}",

@@ -4,16 +4,16 @@
     <item
         android:id="@+id/navigation_page_a"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="@string/tab_page_a_title"/>
+        android:title="@string/tab_home"/>
     
     <item
         android:id="@+id/navigation_page_b"
         android:icon="@android:drawable/ic_dialog_alert"
-        android:title="@string/tab_page_b_title"/>
+        android:title="@string/tab_feed"/>
     
     <item
         android:id="@+id/navigation_page_c"
         android:icon="@android:drawable/ic_dialog_map"
-        android:title="@string/tab_page_c_title"/>
+        android:title="@string/tab_about"/>
 
 </menu>
