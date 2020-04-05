@@ -10,6 +10,9 @@ import com.orhanobut.hawk.Hawk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.android.startKoin
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
+import org.koin.core.logger.PrintLogger
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
@@ -46,15 +49,21 @@ class App : Application() {
         
         setupRetrofit()
 
-        startKoin(this, listOf(
-            appModule,
-            apiModule,
-            viewModule,
-            repositoryModule
-            /*interactorsModule,
-            mappersModule,
-            networkModule*/
-        ))
+        startKoin {
+    
+            logger(PrintLogger(Level.INFO))
+            
+            modules(listOf(
+                appModule,
+                apiModule,
+                viewModule,
+                repositoryModule
+                /*interactorsModule,
+                mappersModule,
+                networkModule*/
+            ))
+            
+        }
         
     }
     

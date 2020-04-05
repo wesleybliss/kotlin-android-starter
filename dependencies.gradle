@@ -11,32 +11,32 @@ ext.versions = [
     gradleVersions        : '0.20.0',
 
     // For app
-    kotlin                : '1.3.50',
+    kotlin                : '1.3.71',
     coroutine             : '1.0.0',
     
     appCompat             : '1.1.0-rc01',
-    recyclerview          : '1.1.0-beta03',
-    constraintLayout      : '2.0.0-beta2',
+    recyclerview          : '1.2.0-alpha01',
+    constraintLayout      : '2.0.0-beta4',
     cardview              : '1.0.0',
     browser               : '1.0.0-rc02',
-    androidKtx            : '1.0.2',
-    fragmentKtx           : '1.2.0-alpha02',
+    androidKtx            : '1.1.0',
+    fragmentKtx           : '1.2.0-rc05',
     workmanager           : '1.0.1',
     
-    koin                  : '1.0.2',
+    koin                  : '2.0.1',
     firebaseCloudMessage  : '17.3.0',
     firebaseAnalytics     : '16.0.3',
     playServices          : '16.0.0',
     flexbox               : '1.0.0',
-    material              : '1.1.0-alpha09',
+    material              : '1.2.0-alpha03',
     
     hawk                  : '2.0.1',
     
-    retrofit              : '2.6.1',
-    retrofitLogging       : '4.1.0',
+    retrofit              : '2.7.1',
+    retrofitLogging       : '4.3.0',
     
     room                  : '2.0.0-rc01',
-    lifecycle             : '2.2.0-alpha03',
+    lifecycle             : '2.2.0-rc03',
     paging                : '2.1.0-beta01',
 
     livedataKtx           : '2.0.1',
@@ -46,8 +46,8 @@ ext.versions = [
     rxKotlin              : '2.3.0',
     rxAndroid             : '2.1.0',
 
-    moshi                 : '1.8.0',
-    okhttp                : '4.1.0',
+    moshi                 : '1.9.2',
+    okhttp                : '4.3.0',
 
     timber                : '4.7.1',
     threeTenABP           : '1.2.1',
@@ -58,12 +58,12 @@ ext.versions = [
     kotshi                : '1.0.5',
 
     frescoImageViewer     : '0.5.0',
-    glide                 : '4.9.0',
+    glide                 : '4.10.0',
 
     // For testing
-    junit                 : '4.12',
+    junit                 : '4.13',
     truth                 : '1.0',
-    espresso              : '3.3.0-alpha02',
+    espresso              : '3.3.0-alpha03',
     mockito               : '2.21.0'
         
 ]
