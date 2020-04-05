@@ -37,12 +37,53 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
     
-    //apply from: rootProject.file('dependencies.gradle')
-    
     apply from: rootProject.file('versions.gradle')
     apply from: rootProject.file('libraries.gradle')
     
+    gradle.projectsEvaluated {
+        
+        // Allow Kotlin to output more errors, so the root cause is not obscured
+        tasks.withType(JavaCompile.class) {
+            options.compilerArgs << "-Xmaxerrs" << "10000"
+        }
+        
+        // Ensure Kotlin is targeting the correct JVM version
+        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+        
+        // Add some options for JUnit5
+        tasks.withType(Test) {
+            //jacoco.includeNoLocationClasses = true
+            //useJUnitPlatform()
+            /*useJUnitPlatform {
+                //includeTags 'fast', 'smoke & feature-a'
+                //excludeTags 'slow', 'ci'
+                includeEngines 'junit-jupiter'
+                //excludeEngines 'junit-vintage'
+            }*/
+        }
+        
+    }
     
+    afterEvaluate {
+    
+        try {
+            // Allow Kotlin's APT compiler to output more errors, so the root cause is not obscured
+            if (project.plugins.hasPlugin("kotlin-kapt")) {
+                kapt {
+                    javacOptions {
+                        option("-Xmaxerrs", 10000)
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+        
+    }
 
 }
 
