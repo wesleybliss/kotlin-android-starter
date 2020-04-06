@@ -1,12 +1,9 @@
 package com.kotlinandroidstarter.app.features.about
 
-import androidx.lifecycle.Observer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_about.*
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.databinding.FragmentAboutBinding
 import com.kotlinandroidstarter.app.shared.ui.BaseFragment

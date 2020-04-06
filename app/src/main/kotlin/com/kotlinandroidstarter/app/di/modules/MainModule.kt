@@ -1,0 +1,21 @@
+package com.kotlinandroidstarter.app.di.modules
+
+import com.kotlinandroidstarter.app.MainViewModel
+import com.kotlinandroidstarter.app.repositories.UsersRepository
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
+
+val MainModule = module {
+    
+    viewModel { MainViewModel() }
+    
+    single { UsersRepository(get()) }
+    
+    /*factory<AArticlesAdapter<*>> {
+        (
+            items: MutableList<IArticle>,
+            onRowClick: (IArticle, Int) -> Unit
+        ) -> ArticlesAdapter(items, onRowClick)
+    }*/
+    
+}

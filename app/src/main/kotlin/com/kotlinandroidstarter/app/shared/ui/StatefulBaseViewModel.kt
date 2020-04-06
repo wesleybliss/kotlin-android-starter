@@ -1,8 +1,8 @@
 package com.kotlinandroidstarter.app.shared.ui
 
 import androidx.lifecycle.MediatorLiveData
-import com.gammagamma.dailyminimal.ui_shared.extensions.mediatorLiveDataOf
-import com.gammagamma.dailyminimal.ui_shared.net.ConnectivityLiveData
+import com.kotlinandroidstarter.app.extensions.mediatorLiveDataOf
+import com.kotlinandroidstarter.app.shared.net.ConnectivityLiveData
 
 interface IViewModelEvents
 

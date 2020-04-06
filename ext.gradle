@@ -56,3 +56,7 @@ ext.GradleTemplates = [
 ]
     
 //ext.foo = properties.getProperty('foo')
+ext.BuildConstants = [
+    API_TIMEOUT_SECONDS: properties.getProperty('API_TIMEOUT_SECONDS'),
+    HTTP_LOGGING_ENABLED: properties.getProperty('HTTP_LOGGING_ENABLED')
+]

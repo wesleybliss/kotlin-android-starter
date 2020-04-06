@@ -57,6 +57,8 @@ android {
         
         all {
             minifyEnabled false
+            buildConfigField "long", "API_TIMEOUT_SECONDS", BuildConstants.API_TIMEOUT_SECONDS
+            buildConfigField "Boolean", "HTTP_LOGGING_ENABLED", BuildConstants.HTTP_LOGGING_ENABLED
         }
         
         debug {
@@ -139,7 +141,9 @@ dependencies {
     implementation Libraries.CoroutinesAndroid
     
     // Android
-    implementation Libraries.LifecycleCompiler
+    kapt(Libraries.LifecycleCompiler) {
+        exclude group: 'com.google.guava'
+    }
     implementation Libraries.LifecycleExtensions
     implementation Libraries.RecyclerView
     implementation Libraries.ConstraintLayout
@@ -150,7 +154,9 @@ dependencies {
     implementation Libraries.FragmentsKtx
     implementation Libraries.LiveDataKtx
     implementation Libraries.ViewModelKtx
-    implementation Libraries.WorkmanagerKtx
+    implementation(Libraries.WorkmanagerKtx) {
+        exclude group: 'com.google.guava'
+    }
     
     // Android Extra
     implementation Libraries.GoogleMaterial
@@ -175,13 +181,16 @@ dependencies {
     implementation Libraries.Retrofit
     implementation Libraries.RetrofitMoshi
     implementation Libraries.RetrofitLogging
+    implementation Libraries.CoilBase
+    implementation Libraries.CoilGif
+    implementation Libraries.CoilTransformations
     //implementation Libraries.Paging
     
     // JSON
     implementation Libraries.Moshi
     implementation Libraries.MoshiKotlin
     implementation Libraries.KotshiApi
-    implementation Libraries.KotshiCompiler
+    kapt Libraries.KotshiCompiler
     
     /*implementation Libraries.legacy
     implementation Libraries.legacyUtils

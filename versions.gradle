@@ -42,6 +42,8 @@ ext.Versions = [
     OkHttp: '4.3.0',
     Retrofit: '2.7.1',
     RetrofitLogging: '4.3.0',
+    Coil: "0.7.0",
+    CoilTransformations: "0.0.3",
     Paging: '2.1.0-beta01',
     
     // JSON

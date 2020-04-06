@@ -75,24 +75,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun setupNavigation() {
         
         // Enable Toolbar as Actionbar
-        if (toolbar != null) setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         
         // Bottom tab navigation handler
-        bottomNavigation.setOnNavigationItemSelectedListener { item -> changeFragment(item.itemId) }
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { changeFragment(it.itemId) }
         
         // Watch page swipes & update bottom nav to reflect changes
-        container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        binding.container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageSelected(position: Int) {
-            
+                
                 val itemId = pagerAdapter.getItemId(position)
                 if (itemId != null) bottomNavigation.selectedItemId = itemId
-            
+                
             }
         })
         
-        container.adapter = pagerAdapter
+        binding.container.adapter = pagerAdapter
         
     }
     
@@ -100,18 +100,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         
         when (id) {
             R.id.navigation_page_a -> {
-                container.currentItem = 0
-                toolbar.title = getString(R.string.home_title)
+                binding.container.currentItem = 0
+                binding.toolbar.title = getString(R.string.home_title)
                 return true
             }
             R.id.navigation_page_b -> {
-                container.currentItem = 1
-                toolbar.title = getString(R.string.feed_title)
+                binding.container.currentItem = 1
+                binding.toolbar.title = getString(R.string.feed_title)
                 return true
             }
             R.id.navigation_page_c -> {
-                container.currentItem = 2
-                toolbar.title = getString(R.string.about_title)
+                binding.container.currentItem = 2
+                binding.toolbar.title = getString(R.string.about_title)
                 return true
             }
         }

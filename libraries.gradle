@@ -8,7 +8,7 @@ ext.Libraries = [
     CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutine}",
     
     // Android
-    LifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${Versions.Lifecycle}",
+    LifecycleCompiler: "androidx.lifecycle:lifecycle-common-java8:${Versions.Lifecycle}",
     LifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${Versions.Lifecycle}",
     AppCompat: "androidx.appcompat:appcompat:${Versions.AppCompat}",
     RecyclerView: "androidx.recyclerview:recyclerview:${Versions.RecyclerView}",
@@ -45,6 +45,9 @@ ext.Libraries = [
     Retrofit: "com.squareup.retrofit2:retrofit:${Versions.Retrofit}",
     RetrofitMoshi: "com.squareup.retrofit2:converter-moshi:${Versions.Retrofit}",
     RetrofitLogging: "com.squareup.okhttp3:logging-interceptor:${Versions.RetrofitLogging}",
+    CoilBase: "io.coil-kt:coil-base:${Versions.Coil}",
+    CoilGif: "io.coil-kt:coil-gif:${Versions.Coil}",
+    CoilTransformations: "com.github.Commit451.coil-transformations:transformations:${Versions.CoilTransformations}",
     Paging: "androidx.paging:paging-runtime:${Versions.Paging}",
     
     // JSON
