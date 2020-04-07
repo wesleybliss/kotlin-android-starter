@@ -14,7 +14,10 @@ ext.Meta = [
     CompileSdkVersion  : MAX_SDK,
     TargetSdkVersion   : MAX_SDK,
     
-    BuildToolsVersion  : '28.0.3'
+    BuildToolsVersion  : '28.0.3',
+    
+    VersionCode        : 1,
+    VersionName        : '1.0.0'
     
 ]
 
@@ -24,11 +27,11 @@ ext.Modules = [
     
     core            : ':core',
     di              : ':di',
-    logging         : ':logging',
-    domain          : ':domain',
+    Logging         : ':logging',
+    Domain          : ':domain',
     library         : ':library',
     navigation      : ':navigation',
-    network         : ':network',
+    Net             : ':net',
     storage         : ':storage',
     
     views           : ':views',
@@ -50,8 +53,8 @@ ext.GradleTemplates = [
     
     base            : "template-base.gradle",
     dynamicFeature  : "template-dynamic-feature.gradle",
-    kotlinLibrary   : "template-kotlin-library.gradle",
-    androidLibrary  : "template-android-library.gradle"
+    KotlinLibrary   : "template-kotlin-library.gradle",
+    AndroidLibrary  : "template-android-library.gradle"
     
 ]
     

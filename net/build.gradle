@@ -1,0 +1,26 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    
+    implementation Libraries.ThreeTenABP
+    
+    implementation Libraries.OkHttp
+    implementation Libraries.OkHttpLogger
+    
+    implementation Libraries.Retrofit
+    implementation Libraries.RetrofitMoshi
+    implementation Libraries.RetrofitLogging
+    
+    // JSON
+    implementation Libraries.Moshi
+    //implementation Libraries.MoshiKotlin
+    kapt Libraries.MoshiKotlinCodeGen
+    //implementation Libraries.KotshiApi
+    //kapt Libraries.KotshiCompiler
+    
+    implementation Libraries.CoilBase
+    implementation Libraries.CoilGif
+    implementation Libraries.CoilTransformations
+    
+}

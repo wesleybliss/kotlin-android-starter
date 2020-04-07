@@ -47,5 +47,8 @@ EnvironmentPrivate.java
 hs_err*.log
 .DS_Store
 
+/AndroidSqlEditorDatabases
+
+
 # Node.js
-node_modules/kas-demo-server
+node_modules

@@ -1,20 +1,28 @@
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply from: rootProject.file('ext.gradle')
 apply from: rootProject.file('versions.gradle')
 apply from: rootProject.file('buildTypes.gradle')
 
 android {
     
-    compileSdkVersion Meta.compileSdkVersion
+    compileSdkVersion Meta.CompileSdkVersion
     
     defaultConfig {
-        minSdkVersion Meta.minSdkVersion
-        targetSdkVersion Meta.targetSdkVersion
-        versionCode Meta.versionCode
-        versionName Meta.versionName
+        
+        minSdkVersion Meta.MinSdkVersion
+        targetSdkVersion Meta.TargetSdkVersion
+        versionCode Meta.VersionCode
+        versionName Meta.VersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+        
     }
     
     buildTypes {
@@ -30,8 +38,8 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility Versions.Java
+        targetCompatibility Versions.Java
     }
     
     dexOptions {
@@ -46,13 +54,32 @@ android {
     
 }
 
+/*configurations.all {
+    //resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-reflect:1.0.6'
+    resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    resolutionStrategy.force "com.google.android.gms:play-services-gcm:${Versions.PlayServices}"
+}*/
+
+/*android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'FOO_KEY', FOO_KEY
+}*/
+
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     
-    /*if (name != "logging")
-        implementation project(Modules.logging)*/
+    if (name != "logging")
+        implementation project(Modules.Logging)
+    
+    if (name != "domain")
+        implementation project(Modules.Domain)
     
     implementation Libraries.Kotlin
+    
     implementation Libraries.Koin
+    implementation Libraries.KoinViewModel
     
     testImplementation Libraries.JUnit
     /*testImplementation Libraries.KoinTest

@@ -3,6 +3,9 @@
 buildscript {
     
     apply from: rootProject.file('versions.gradle')
+    ext {
+        kotlin_version = '1.4-M1'
+    }
     
     repositories {
         google()
@@ -37,6 +40,7 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
     
+    apply from: rootProject.file('ext.gradle')
     apply from: rootProject.file('versions.gradle')
     apply from: rootProject.file('libraries.gradle')
     

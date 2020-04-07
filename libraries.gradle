@@ -53,6 +53,7 @@ ext.Libraries = [
     // JSON
     Moshi: "com.squareup.moshi:moshi:${Versions.Moshi}",
     MoshiKotlin: "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}",
+    MoshiKotlinCodeGen: "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Moshi}",
     KotshiApi: "se.ansman.kotshi:api:${Versions.Kotshi}",
     KotshiCompiler: "se.ansman.kotshi:compiler:${Versions.Kotshi}",
     

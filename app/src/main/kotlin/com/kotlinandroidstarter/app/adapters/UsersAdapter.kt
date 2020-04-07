@@ -3,18 +3,19 @@ package com.kotlinandroidstarter.app.adapters
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import com.gammagamma.domain.model.IUser
 import kotlinx.android.synthetic.main.row_user.view.*
 import com.kotlinandroidstarter.app.R
-import com.kotlinandroidstarter.app.models.User
+import com.gammagamma.kotlinandroidstarter.net.models.User
 import com.kotlinandroidstarter.app.utils.inflate
 
-class UsersAdapter(private val items: MutableList<User>, val onClick: (User) -> Unit)
-    : androidx.recyclerview.widget.RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+class UsersAdapter(private var items: List<IUser>, val onClick: (IUser) -> Unit)
+    : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         
-        fun bind(item: User, listener: (User) -> Unit) = with(itemView) {
-            textName.text = item.name
+        fun bind(item: IUser, listener: (IUser) -> Unit) = with(itemView) {
+            textName.text = item.fullName
             textEmail.text = item.email
             setOnClickListener { listener(item) }
         }
@@ -29,9 +30,8 @@ class UsersAdapter(private val items: MutableList<User>, val onClick: (User) -> 
     
     override fun getItemCount() = items.size
     
-    fun setItems(newItems: MutableList<User>) {
-        items.clear()
-        items.addAll(newItems)
+    fun setItems(newItems: List<IUser>) {
+        items = newItems
         notifyDataSetChanged()
     }
     

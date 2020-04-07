@@ -1,0 +1,8 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+
+dependencies {
+    
+    // Logging
+    implementation Libraries.Timber
+    
+}

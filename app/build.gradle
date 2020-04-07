@@ -1,123 +1,39 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'io.fabric'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: rootProject.file(GradleTemplates.base)
 apply plugin: 'kotlin-kapt'
 //apply plugin: "com.github.ben-manes.versions"
 
-apply from: rootProject.file('ext.gradle')
 apply from: rootProject.file('template-base.gradle')
+apply from: rootProject.file('signingConfigs.gradle')
+apply from: rootProject.file('buildTypes.gradle')
 
 android {
-
-    compileSdkVersion Meta.CompileSdkVersion
+    
     buildToolsVersion Meta.BuildToolsVersion
-
+    
     defaultConfig {
         
         applicationId "com.kotlinandroidstarter.app"
-        minSdkVersion Meta.MinSdkVersion
-        targetSdkVersion Meta.TargetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-        vectorDrawables.useSupportLibrary = true
+        
         dataBinding {
             enabled = true
         }
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
-            }
-        }
-
-    }
-
-    signingConfigs {
-
-        debug {
-            storeFile project.rootProject.file('debug.jks').getCanonicalFile()
-            storePassword "android"
-            keyAlias "debug"
-            keyPassword "android"
-        }
-        
-        release {
-            storeFile project.rootProject.file('Todo.jks').getCanonicalFile()
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
-        }
         
     }
-
+    
     buildTypes {
-        
-        all {
-            minifyEnabled false
-            buildConfigField "long", "API_TIMEOUT_SECONDS", BuildConstants.API_TIMEOUT_SECONDS
-            buildConfigField "Boolean", "HTTP_LOGGING_ENABLED", BuildConstants.HTTP_LOGGING_ENABLED
-        }
-        
         debug {
-            debuggable true
             versionNameSuffix "-DEBUG"
             applicationIdSuffix '.dev'
-            signingConfig signingConfigs.debug
-            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
         }
-        
-        release {
-            minifyEnabled false
-            shrinkResources false
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
-
-        }
-        
     }
     
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        test.java.srcDirs += 'src/test/kotlin'
-        androidTest.java.srcDirs += 'src/androidTest/kotlin'
-    }
-    
-    compileOptions {
-        sourceCompatibility Versions.Java
-        targetCompatibility Versions.Java
-    }
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-        preDexLibraries true
-    }
-
-    packagingOptions {
-        exclude 'META-INF/core.kotlin_module'
-        exclude 'META-INF/main.kotlin_module'
-    }
-
-}
-
-configurations.all {
-    //resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-reflect:1.0.6'
-    resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
-    resolutionStrategy.force "com.google.android.gms:play-services-gcm:${Versions.PlayServices}"
-}
-
-/*android.buildTypes.each { type ->
-    type.buildConfigField 'String', 'FOO_KEY', FOO_KEY
-}*/
-
-androidExtensions {
-    experimental = true
 }
 
 dependencies {
+    
+    implementation project(Modules.Domain)
+    implementation project(Modules.Net)
     
     // Testing
     /*androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -154,20 +70,20 @@ dependencies {
     implementation Libraries.FragmentsKtx
     implementation Libraries.LiveDataKtx
     implementation Libraries.ViewModelKtx
-    implementation(Libraries.WorkmanagerKtx) {
+    /*implementation(Libraries.WorkmanagerKtx) {
         exclude group: 'com.google.guava'
-    }
+    }*/
     
     // Android Extra
     implementation Libraries.GoogleMaterial
     //implementation Libraries.GoogleFlexbox
     
     // Logging
-    implementation Libraries.Timber
+    //implementation Libraries.Timber
     
     // DI
-    implementation Libraries.Koin
-    implementation Libraries.KoinViewModel
+    /*implementation Libraries.Koin
+    implementation Libraries.KoinViewModel*/
     
     // Storage
     implementation Libraries.Hawk
@@ -175,7 +91,7 @@ dependencies {
     //kapt Libraries.RoomCompiler
     
     // Networking
-    implementation Libraries.ThreeTenABP
+    /*implementation Libraries.ThreeTenABP
     implementation Libraries.OkHttp
     implementation Libraries.OkHttpLogger
     implementation Libraries.Retrofit
@@ -183,14 +99,10 @@ dependencies {
     implementation Libraries.RetrofitLogging
     implementation Libraries.CoilBase
     implementation Libraries.CoilGif
-    implementation Libraries.CoilTransformations
+    implementation Libraries.CoilTransformations*/
     //implementation Libraries.Paging
     
-    // JSON
-    implementation Libraries.Moshi
-    implementation Libraries.MoshiKotlin
-    implementation Libraries.KotshiApi
-    kapt Libraries.KotshiCompiler
+    
     
     /*implementation Libraries.legacy
     implementation Libraries.legacyUtils

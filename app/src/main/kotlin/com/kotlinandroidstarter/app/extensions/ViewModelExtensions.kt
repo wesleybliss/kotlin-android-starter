@@ -10,10 +10,13 @@ inline fun <reified T> liveDataOf(initialValue: T?, defaultValue: T? = null, pos
 inline fun <reified T> mutableLiveDataOf(
     initialValue: T?,
     defaultValue: T? = null,
-    post: Boolean = false) =
+    post: Boolean = false,
+    noinline fn: (MutableLiveData<T>.() -> Unit)? = null
+) =
     MutableLiveData<T>().apply {
         if (!post) value = initialValue ?: defaultValue
         else postValue(initialValue ?: defaultValue)
+        fn?.invoke(this)
     }
 
 inline fun <reified T> mediatorLiveDataOf(

@@ -4,7 +4,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.kotlinandroidstarter.app.R
-import com.kotlinandroidstarter.app.shared.logging.plankE
+import com.gammagamma.logging.plankE
 
 fun Fragment.toast(message: String) =
     activity?.toast(message)

@@ -1,7 +1,8 @@
 package com.kotlinandroidstarter.app.di.modules
 
+import com.gammagamma.kotlinandroidstarter.net.repository.IUsersRepository
+import com.gammagamma.kotlinandroidstarter.net.repository.impl.UsersRepository
 import com.kotlinandroidstarter.app.MainViewModel
-import com.kotlinandroidstarter.app.repositories.UsersRepository
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -9,7 +10,7 @@ val MainModule = module {
     
     viewModel { MainViewModel() }
     
-    single { UsersRepository(get()) }
+    single<IUsersRepository> { UsersRepository(get()) }
     
     /*factory<AArticlesAdapter<*>> {
         (

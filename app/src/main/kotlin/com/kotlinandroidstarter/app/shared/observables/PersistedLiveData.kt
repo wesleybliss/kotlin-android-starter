@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.lifecycle.MutableLiveData
-import com.kotlinandroidstarter.app.shared.logging.plank
+import com.gammagamma.logging.plank
 import com.kotlinandroidstarter.app.shared.storage.Storage
 import org.koin.core.KoinComponent
 import org.koin.core.get
