@@ -2,6 +2,7 @@ package com.kotlinandroidstarter.app.features.home
 
 import androidx.lifecycle.viewModelScope
 import com.gammagamma.domain.model.IUser
+import com.gammagamma.domain.net.Result
 import com.gammagamma.kotlinandroidstarter.net.models.User
 import com.gammagamma.kotlinandroidstarter.net.repository.IUsersRepository
 import com.kotlinandroidstarter.app.R
@@ -20,7 +21,9 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
     val title = getString(R.string.home_title)
     val users = mutableLiveDataOf(listOf<IUser>()) {
         viewModelScope.launch(Dispatchers.IO) {
-            postValue(usersRepository.fetchAll())
+            val res = usersRepository.fetchAll()
+            if (res is Result.Error) error.postValue(res.exception.message)
+            else postValue((res as Result.Success<List<IUser>>).data)
         }
     }
     

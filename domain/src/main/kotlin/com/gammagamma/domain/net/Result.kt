@@ -1,6 +1,6 @@
-package com.gammagamma.kotlinandroidstarter.net
+package com.gammagamma.domain.net
 
-sealed class Result<out T : Any> {
+sealed class Result<out T> {
     
     data class Error(val exception: Exception) : Result<Nothing>()
     
