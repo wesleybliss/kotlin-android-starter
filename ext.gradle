@@ -31,7 +31,7 @@ ext.Modules = [
     Domain          : ':domain',
     library         : ':library',
     navigation      : ':navigation',
-    Net             : ':net',
+    Network         : ':network',
     storage         : ':storage',
     
     views           : ':views',

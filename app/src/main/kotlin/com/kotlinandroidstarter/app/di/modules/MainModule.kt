@@ -1,7 +1,7 @@
 package com.kotlinandroidstarter.app.di.modules
 
-import com.gammagamma.kotlinandroidstarter.net.repository.IUsersRepository
-import com.gammagamma.kotlinandroidstarter.net.repository.impl.UsersRepository
+import com.gammagamma.kotlinandroidstarter.network.repository.IUsersRepository
+import com.gammagamma.kotlinandroidstarter.network.repository.impl.UsersRepository
 import com.kotlinandroidstarter.app.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

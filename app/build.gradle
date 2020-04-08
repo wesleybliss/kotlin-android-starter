@@ -33,7 +33,7 @@ android {
 dependencies {
     
     implementation project(Modules.Domain)
-    implementation project(Modules.Net)
+    implementation project(Modules.Network)
     
     // Testing
     /*androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {

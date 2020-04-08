@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import com.gammagamma.domain.model.IUser
 import kotlinx.android.synthetic.main.row_user.view.*
 import com.kotlinandroidstarter.app.R
-import com.gammagamma.kotlinandroidstarter.net.models.User
 import com.kotlinandroidstarter.app.utils.inflate
 
 class UsersAdapter(

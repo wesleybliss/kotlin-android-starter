@@ -3,8 +3,7 @@ package com.kotlinandroidstarter.app.features.home
 import androidx.lifecycle.viewModelScope
 import com.gammagamma.domain.model.IUser
 import com.gammagamma.domain.net.Result
-import com.gammagamma.kotlinandroidstarter.net.models.User
-import com.gammagamma.kotlinandroidstarter.net.repository.IUsersRepository
+import com.gammagamma.kotlinandroidstarter.network.repository.IUsersRepository
 import com.kotlinandroidstarter.app.R
 import com.kotlinandroidstarter.app.extensions.getString
 import com.kotlinandroidstarter.app.extensions.mutableLiveDataOf

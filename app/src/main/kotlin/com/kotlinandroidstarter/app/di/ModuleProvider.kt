@@ -1,9 +1,9 @@
 package com.kotlinandroidstarter.app.di
 
-import com.gammagamma.kotlinandroidstarter.net.modules.CoilModule
-import com.gammagamma.kotlinandroidstarter.net.modules.MoshiModule
-import com.gammagamma.kotlinandroidstarter.net.modules.OkHttpModule
-import com.gammagamma.kotlinandroidstarter.net.modules.RetrofitModule
+import com.gammagamma.kotlinandroidstarter.network.modules.CoilModule
+import com.gammagamma.kotlinandroidstarter.network.modules.MoshiModule
+import com.gammagamma.kotlinandroidstarter.network.modules.OkHttpModule
+import com.gammagamma.kotlinandroidstarter.network.modules.RetrofitModule
 import com.kotlinandroidstarter.app.di.modules.*
 import org.koin.core.module.Module
 
