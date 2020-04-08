@@ -19,11 +19,15 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
     private val usersRepository: IUsersRepository by inject()
     
     val title = getString(R.string.home_title)
-    val users = mutableLiveDataOf(listOf<IUser>()) {
+    val users = mutableLiveDataOf(listOf<IUser>()) { fetchUsers() }
+    
+    fun fetchUsers() {
         viewModelScope.launch(Dispatchers.IO) {
+            loading.postValue(true)
             val res = usersRepository.fetchAll()
             if (res is Result.Error) error.postValue(res.exception.message)
-            else postValue((res as Result.Success<List<IUser>>).data)
+            else users.postValue((res as Result.Success<List<IUser>>).data)
+            loading.postValue(false)
         }
     }
     

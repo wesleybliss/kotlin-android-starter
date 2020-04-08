@@ -1,6 +1,7 @@
 package com.kotlinandroidstarter.app.features.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.kotlinandroidstarter.app.shared.ui.BaseFragment
 import com.kotlinandroidstarter.app.utils.ViewHelper
 import com.kotlinandroidstarter.app.utils.toast
 import com.shopify.livedataktx.observe
+import kotlinx.android.synthetic.main.content_home.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,7 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val vm: HomeViewModel by viewModel()
     
     private val adapter by lazy {
-        UsersAdapter(listOf()) {
+        UsersAdapter {
             plank("Tapped item %s", it)
             confirm(
                 getString(R.string.home_item_clicked_title),
@@ -31,30 +33,38 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
     }
     
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         
         super.onCreateView(inflater, container, savedInstanceState)
         
         binding.vm = vm
+        binding.swipeRefresh.setOnRefreshListener { vm.fetchUsers() }
         
-        return binding.root
-        
-    }
+        setupViewModelObservers()
     
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        ViewHelper.setupRecyclerView(requireContext(), binding.content.listItems)
         
-        super.onViewCreated(view, savedInstanceState)
+        binding.content.listItems.adapter = adapter
     
-        ViewHelper.setupRecyclerView(requireContext(), listItems)
-        
-        listItems.adapter = adapter
-        
         vm.users.observe(this) {
             if (it.isNullOrEmpty()) return@observe
             adapter.setItems(it)
         }
         
-        //vm.fetchUsers()
+        return binding.root
+        
+    }
+    
+    private fun setupViewModelObservers() {
+        
+        // @todo might be able to remove this with databinding adapter
+        vm.observeLoading(this) {
+            binding.swipeRefresh.isRefreshing = it
+        }
         
     }
     

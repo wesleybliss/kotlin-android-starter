@@ -23,6 +23,7 @@ ext.Versions = [
     WorkManagerKtx      : '1.0.1',
     
     // Android Extra
+    SwipeRefreshLayout  : '1.0.0',
     GoogleMaterial      : '1.2.0-alpha05',
     GoogleFlexbox       : '1.0.0',
     

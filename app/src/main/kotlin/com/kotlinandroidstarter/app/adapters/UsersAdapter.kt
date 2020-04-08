@@ -9,15 +9,17 @@ import com.kotlinandroidstarter.app.R
 import com.gammagamma.kotlinandroidstarter.net.models.User
 import com.kotlinandroidstarter.app.utils.inflate
 
-class UsersAdapter(private var items: List<IUser>, val onClick: (IUser) -> Unit)
-    : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+class UsersAdapter(
+    private var items: List<IUser>? = listOf(),
+    var onClick: ((IUser) -> Unit)? = null
+) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         
-        fun bind(item: IUser, listener: (IUser) -> Unit) = with(itemView) {
+        fun bind(item: IUser, listener: ((IUser) -> Unit)? = null) = with(itemView) {
             textName.text = item.fullName
             textEmail.text = item.email
-            setOnClickListener { listener(item) }
+            setOnClickListener { listener?.invoke(item) }
         }
         
     }
@@ -25,10 +27,11 @@ class UsersAdapter(private var items: List<IUser>, val onClick: (IUser) -> Unit)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent.inflate(R.layout.row_user))
     
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(items[position], onClick)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        items?.get(position)?.let { item -> holder.bind(item, onClick) }
+    }
     
-    override fun getItemCount() = items.size
+    override fun getItemCount() = items?.size ?: 0
     
     fun setItems(newItems: List<IUser>) {
         items = newItems

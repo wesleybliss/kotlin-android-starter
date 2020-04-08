@@ -23,6 +23,7 @@ ext.Libraries = [
     WorkmanagerKtx: "android.arch.work:work-runtime-ktx:${Versions.WorkManager}",
     
     // Android Extra
+    SwipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SwipeRefreshLayout}",
     GoogleMaterial: "com.google.android.material:material:${Versions.GoogleMaterial}",
     GoogleFlexbox: "com.google.android:flexbox:${Versions.GoogleFlexbox}",
     

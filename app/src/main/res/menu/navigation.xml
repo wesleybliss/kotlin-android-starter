@@ -3,17 +3,17 @@
     
     <item
         android:id="@+id/navigation_page_a"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/zzz_account_multiple"
         android:title="@string/tab_home"/>
     
     <item
         android:id="@+id/navigation_page_b"
-        android:icon="@android:drawable/ic_dialog_alert"
+        android:icon="@drawable/zzz_format_list_bulleted"
         android:title="@string/tab_feed"/>
     
     <item
         android:id="@+id/navigation_page_c"
-        android:icon="@android:drawable/ic_dialog_map"
+        android:icon="@drawable/zzz_settings"
         android:title="@string/tab_about"/>
 
 </menu>

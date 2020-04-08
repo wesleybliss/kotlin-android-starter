@@ -75,6 +75,7 @@ dependencies {
     }*/
     
     // Android Extra
+    implementation Libraries.SwipeRefreshLayout
     implementation Libraries.GoogleMaterial
     //implementation Libraries.GoogleFlexbox
     

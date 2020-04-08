@@ -1,6 +1,8 @@
 package com.kotlinandroidstarter.app.shared.ui
 
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import com.kotlinandroidstarter.app.extensions.mediatorLiveDataOf
 import com.kotlinandroidstarter.app.shared.net.ConnectivityLiveData
 
@@ -60,5 +62,17 @@ abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewM
                 && error.value.isNullOrBlank()
                 && offline.value == false
         } catch (e: Exception) { false }
+    
+    fun observeError(owner: LifecycleOwner, done: (error: String) -> Unit) {
+        error.observe(owner, Observer { 
+            if (it.isNotBlank()) done(it)
+        })
+    }
+    
+    fun observeLoading(owner: LifecycleOwner, done: (loading: Boolean) -> Unit) {
+        loading.observe(owner, Observer { 
+            done(it)
+        })
+    }
     
 }
