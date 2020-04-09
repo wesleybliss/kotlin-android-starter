@@ -1,4 +1,4 @@
-package com.kotlinandroidstarter.app.shared.coroutines
+package com.gammagamma.kotlinandroidstarter.network.coroutines
 
 import kotlinx.coroutines.*
 
