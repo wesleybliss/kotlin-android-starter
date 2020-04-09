@@ -45,13 +45,25 @@ ext.Modules = [
     
 ]
 
+ext.FeatureModules = [
+    //Modules.Splash,
+    Modules.Main,
+    Modules.Home,
+    Modules.About,
+    Modules.Feed
+]
+
 ext.GradleTemplates = [
-    
-    base            : "template-base.gradle",
-    dynamicFeature  : "template-dynamic-feature.gradle",
-    KotlinLibrary   : "template-kotlin-library.gradle",
-    AndroidLibrary  : "template-android-library.gradle"
-    
+    Base            : 'template-base.gradle',
+    DynamicFeature  : 'template-dynamic-feature.gradle',
+    KotlinLibrary   : 'template-kotlin-library.gradle',
+    AndroidLibrary  : 'template-android-library.gradle'
+]
+
+ext.GradleIncludes = [
+    BuildTypes      : 'include-build-types.gradle',
+    SigningConfigs  : 'include-signing-configs.gradle',
+    FeatureModules  : 'include-feature-modules.gradle'
 ]
     
 //ext.foo = properties.getProperty('foo')

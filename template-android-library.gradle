@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from:"$rootDir/${GradleTemplates.base}"
+apply from: rootProject.file(GradleTemplates.Base)
 
 dependencies {
     

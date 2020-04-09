@@ -1,4 +1,4 @@
-apply from: rootProject.file('signingConfigs.gradle')
+apply from: rootProject.file(GradleIncludes.SigningConfigs)
 
 android {
     

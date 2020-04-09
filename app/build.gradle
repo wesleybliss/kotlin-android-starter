@@ -1,24 +1,19 @@
 apply plugin: 'com.android.application'
-apply from: rootProject.file(GradleTemplates.base)
+apply from: rootProject.file(GradleTemplates.Base)
 apply plugin: 'kotlin-kapt'
 //apply plugin: "com.github.ben-manes.versions"
 
-apply from: rootProject.file('template-base.gradle')
-apply from: rootProject.file('signingConfigs.gradle')
-apply from: rootProject.file('buildTypes.gradle')
+apply from: rootProject.file(GradleIncludes.BuildTypes)
+apply from: rootProject.file(GradleIncludes.SigningConfigs)
+apply from: rootProject.file(GradleIncludes.FeatureModules)
 
 android {
     
     buildToolsVersion Meta.BuildToolsVersion
     
     defaultConfig {
-        
         applicationId "com.kotlinandroidstarter.app"
-        
-        dataBinding {
-            enabled = true
-        }
-        
+        dataBinding.enabled = true
     }
     
     buildTypes {
@@ -39,10 +34,10 @@ dependencies {
     implementation project(Modules.UIResources)
     
     // @todo Consolidate to one config (also is in DI)
-    implementation project(Modules.Main)
+    /*implementation project(Modules.Main)
     implementation project(Modules.Home)
     implementation project(Modules.About)
-    implementation project(Modules.Feed)
+    implementation project(Modules.Feed)*/
     
     // @todo remove once Main is it's own module
     implementation project(Modules.UI)

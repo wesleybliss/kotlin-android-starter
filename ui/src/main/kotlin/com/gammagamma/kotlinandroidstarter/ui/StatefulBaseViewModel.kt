@@ -46,9 +46,6 @@ abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewM
     }
     
     open val ready = mediatorLiveDataOf(false) {
-        /*addSource(loading) { postValue(isReady) }
-        addSource(error) { postValue(isReady) }
-        addSource(offline) { postValue(isReady) }*/
         addSources(loading, hasError, offline) {
             value = try {
                 loading.value == false &&
@@ -58,22 +55,20 @@ abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewM
         }
     }
     
-    private val isReady get() = try {
-        loading.value == false && error.value.isNullOrBlank() && offline.value == false
-    } catch (e: Exception) { false }
-    
     init {
         
         this.networkAware = networkAware ?: false
         
     }
     
+    @Suppress("unused")
     fun observeError(owner: LifecycleOwner, done: (error: String) -> Unit) {
         error.observe(owner, Observer { 
             if (it.isNotBlank()) done(it)
         })
     }
     
+    @Suppress("unused")
     fun observeLoading(owner: LifecycleOwner, done: (loading: Boolean) -> Unit) {
         loading.observe(owner, Observer { 
             done(it)
@@ -92,6 +87,7 @@ abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewM
      * @param retryIntervalMillis Optional delay between retries (requires [retryLimit] to be > 0)
      * @param isRetry Flag to improve some UX, like not clearing the error state between retries
      */
+    @Suppress("MemberVisibilityCanBePrivate")
     fun <T : Any> networkRequest(
         requestId: Long = Instant.now().toEpochMilli(),
         onRequest: suspend () -> Result<T>,

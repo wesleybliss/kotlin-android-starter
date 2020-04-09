@@ -2,7 +2,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply from: rootProject.file('versions.gradle')
-apply from: rootProject.file('buildTypes.gradle')
+apply from: rootProject.file(GradleIncludes.BuildTypes)
 
 android {
     

@@ -14,6 +14,7 @@
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:isRefreshing="@{vm.loading}"
         tools:context="com.gammagamma.kotlinandroidstarter.main.MainActivity">
         
         <FrameLayout
@@ -24,8 +25,7 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:goneUnless="@{vm.ready}"
-                android:visibility="gone">
+                app:goneUnless="@{vm.ready}">
                 <include layout="@layout/content_home" />
             </FrameLayout>
             

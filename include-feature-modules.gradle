@@ -1,0 +1,9 @@
+// Consolidated config to load all feature modules
+
+dependencies {
+    
+    FeatureModules.each {
+        implementation project(it)
+    }
+    
+}

@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.ViewModel
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
@@ -106,6 +107,15 @@ fun hiddenWhen(view: View, data: Boolean) {
 }
 
 //endregion When
+
+//region Android Views
+
+@BindingAdapter("isRefreshing")
+fun SwipeRefreshLayout.setIsRefreshing(value: Boolean? = null) {
+    isRefreshing = value == true
+}
+
+//endregion Android Views
 
 //region Uncategorized
 

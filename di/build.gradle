@@ -1,4 +1,5 @@
 apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+apply from: rootProject.file(GradleIncludes.FeatureModules)
 
 dependencies {
     
@@ -7,10 +8,10 @@ dependencies {
     implementation project(Modules.Storage)
     
     // @todo Consolidate to one config (also is in app)
-    implementation project(Modules.Main)
+    /*implementation project(Modules.Main)
     implementation project(Modules.Home)
     implementation project(Modules.About)
-    implementation project(Modules.Feed)
+    implementation project(Modules.Feed)*/
     
     // Required for the ViewModel domain abstractions
     implementation Libraries.ViewModelKtx

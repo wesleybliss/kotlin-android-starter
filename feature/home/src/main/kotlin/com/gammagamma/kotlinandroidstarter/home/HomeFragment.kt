@@ -41,7 +41,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.vm = vm
         binding.swipeRefresh.setOnRefreshListener { vm.fetchUsers() }
         
-        setupViewModelObservers()
         binding.content.listItems.initWithDefaults(requireContext(), adapter)
         
         vm.users.observe(viewLifecycleOwner) {
@@ -49,15 +48,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
         
         return binding.root
-        
-    }
-    
-    private fun setupViewModelObservers() {
-        
-        // @todo might be able to remove this with databinding adapter
-        vm.observeLoading(this) {
-            binding.swipeRefresh.isRefreshing = it
-        }
         
     }
     
