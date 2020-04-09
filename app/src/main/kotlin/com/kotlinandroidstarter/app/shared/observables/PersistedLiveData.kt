@@ -10,8 +10,8 @@ import org.koin.core.KoinComponent
 import org.koin.core.get
 
 /**
- * A [LiveData] implementation that reads and persists
- * it's value using [SharedPreferences] via [Hawk]
+ * A [androidx.lifecycle.LiveData] implementation that reads and persists
+ * it's value using [SharedPreferences] via [com.orhanobut.hawk.Hawk]
  */
 open class PersistedLiveData<T>(
     @Suppress("MemberVisibilityCanBePrivate")

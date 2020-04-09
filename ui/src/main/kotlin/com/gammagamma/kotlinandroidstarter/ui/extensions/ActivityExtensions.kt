@@ -5,7 +5,6 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.Build
 import android.view.Gravity
-import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -96,12 +95,12 @@ fun Activity.showBehindStatusBar(@ColorRes color: Int = android.R.color.transpar
     setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
     
     val flags =
-        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+            SYSTEM_UI_FLAG_LAYOUT_STABLE
     
     window.decorView.systemUiVisibility =
         if (!includeNavBar) flags
-        else flags or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        else flags or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
     
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         @ColorInt
@@ -116,7 +115,7 @@ fun Activity.setLightStatusBar(@ColorInt color: Int = Color.WHITE) {
     val view = window.decorView
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         var flags = view.systemUiVisibility
-        flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        flags = flags or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         view.systemUiVisibility = flags
         //window.statusBarColor = color
     }
@@ -140,9 +139,9 @@ fun Activity.makeStatusBarTransparent() {
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 decorView.systemUiVisibility =
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             } else {
-                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                decorView.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             }
             statusBarColor = Color.TRANSPARENT
         }
@@ -170,7 +169,7 @@ fun Activity.setLightNavigationBar(@ColorInt color: Int = Color.WHITE, setFlag: 
     
     if (setFlag) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            flags = flags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            flags = flags or SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         view.systemUiVisibility = flags
     }
     
@@ -205,8 +204,8 @@ fun Activity.setNavigationBarColor(@ColorInt color: Int) {
     
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        window.decorView.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+            SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or SYSTEM_UI_FLAG_LAYOUT_STABLE
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.navigationBarColor = color
         return
