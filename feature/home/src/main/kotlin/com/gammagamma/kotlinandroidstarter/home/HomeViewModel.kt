@@ -14,16 +14,6 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
     val users = mutableLiveDataOf(listOf<IUser>()) { fetchUsers() }
     
     fun fetchUsers() {
-        /*viewModelScope.launch(Dispatchers.IO) {
-            loading.postValue(true)
-            val res = usersRepository.fetchAll()
-            if (res is Result.Error) error.postValue(filterError(res.exception).message)
-            else users.postValue((res as Result.Success<List<IUser>>).data)
-            loading.postValue(false)
-        }*/
-        /*networkRequest({ usersRepository.fetchAll() }) {
-            users.postValue(it)
-        }*/
         networkRequest(usersRepository::fetchAll, { users.postValue(it) }, 5)
     }
     

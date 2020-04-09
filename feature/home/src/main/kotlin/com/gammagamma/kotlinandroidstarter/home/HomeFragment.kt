@@ -45,9 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.content.listItems.initWithDefaults(requireContext(), adapter)
         
         vm.users.observe(viewLifecycleOwner) {
-            plank("@@@@ users updated", it)
-            if (it.isNullOrEmpty()) return@observe
-            adapter.setItems(it)
+            if (!it.isNullOrEmpty()) adapter.setItems(it)
         }
         
         return binding.root
