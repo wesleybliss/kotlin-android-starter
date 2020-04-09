@@ -1,9 +1,9 @@
 package com.gammagamma.kotlinandroidstarter.network.repository.impl
 
-import com.gammagamma.domain.model.IUser
-import com.gammagamma.domain.net.Result
+import com.gammagamma.kotlinandroidstarter.domain.model.IUser
+import com.gammagamma.kotlinandroidstarter.domain.net.Result
 import com.gammagamma.kotlinandroidstarter.network.service.ApiService
-import com.gammagamma.kotlinandroidstarter.network.repository.IUsersRepository
+import com.gammagamma.kotlinandroidstarter.domain.net.IUsersRepository
 import com.gammagamma.logging.plankE
 
 class UsersRepository(private val apiService: ApiService) : IUsersRepository {

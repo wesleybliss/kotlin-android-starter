@@ -2,7 +2,7 @@ package com.kotlinandroidstarter.app
 
 import android.app.Application
 import com.gammagamma.logging.Plank
-import com.kotlinandroidstarter.app.di.ModuleProvider
+import com.gammagamma.di.ModuleProvider
 import com.orhanobut.hawk.Hawk
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

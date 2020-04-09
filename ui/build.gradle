@@ -1,0 +1,47 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+apply plugin: 'kotlin-kapt'
+
+android {
+    
+    defaultConfig {
+    
+        dataBinding {
+            enabled = true
+        }
+        
+    }
+    
+}
+
+dependencies {
+    
+    api project(Modules.UIResources)
+    
+    // Core
+    api Libraries.Coroutines
+    api Libraries.CoroutinesAndroid
+    
+    // Android
+    kapt(Libraries.LifecycleCompiler) {
+        exclude group: 'com.google.guava'
+    }
+    api Libraries.LifecycleExtensions
+    api Libraries.RecyclerView
+    api Libraries.ConstraintLayout
+    api Libraries.CardView
+    
+    // Android KTX
+    api Libraries.AndroidKtx
+    api Libraries.FragmentsKtx
+    api Libraries.LiveDataKtx
+    api Libraries.ViewModelKtx
+    /*api(Libraries.WorkmanagerKtx) {
+        exclude group: 'com.google.guava'
+    }*/
+    
+    // Android Extra
+    api Libraries.SwipeRefreshLayout
+    api Libraries.GoogleMaterial
+    //api Libraries.GoogleFlexbox
+    
+}

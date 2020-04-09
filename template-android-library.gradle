@@ -1,2 +1,12 @@
 apply plugin: 'com.android.library'
 apply from:"$rootDir/${GradleTemplates.base}"
+
+dependencies {
+    
+    if (!["logging", "res-shared"].any { name.contains(it) })
+        api project(Modules.SharedResources)
+    
+    api Libraries.Koin
+    api Libraries.KoinViewModel
+    
+}

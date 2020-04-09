@@ -1,0 +1,20 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        dataBinding {
+            enabled = true
+        }
+    }
+}
+
+dependencies {
+    
+    implementation project(Modules.UI)
+    
+    implementation project(Modules.Home)
+    implementation project(Modules.Feed)
+    implementation project(Modules.About)
+    
+}

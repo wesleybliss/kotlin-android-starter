@@ -4,8 +4,8 @@ ext.Libraries = [
     
     // Core
     Kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}",
-    Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutine}",
-    CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutine}",
+    Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines}",
+    CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines}",
     
     // Android
     LifecycleCompiler: "androidx.lifecycle:lifecycle-common-java8:${Versions.Lifecycle}",

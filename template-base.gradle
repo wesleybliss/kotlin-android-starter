@@ -71,17 +71,20 @@ androidExtensions {
 dependencies {
     
     if (name != "logging")
-        implementation project(Modules.Logging)
+        api project(Modules.Logging)
     
     if (name != "domain")
-        implementation project(Modules.Domain)
+        api project(Modules.Domain)
     
-    implementation Libraries.Kotlin
+    /*if (!["logging", "res-shared", "di", "network"].any { name.contains(it) })
+        api project(Modules.DI)*/
     
-    implementation Libraries.Koin
-    implementation Libraries.KoinViewModel
+    api Libraries.Kotlin
     
-    testImplementation Libraries.JUnit
+    api Libraries.Koin
+    api Libraries.KoinViewModel
+    
+    testApi Libraries.JUnit
     /*testImplementation Libraries.KoinTest
     androidTestImplementation Libraries.TestRunner
     androidTestImplementation Libraries.TestEspresso*/

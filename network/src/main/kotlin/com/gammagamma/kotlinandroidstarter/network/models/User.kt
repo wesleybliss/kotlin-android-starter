@@ -1,6 +1,6 @@
 package com.gammagamma.kotlinandroidstarter.network.models
 
-import com.gammagamma.domain.model.IUser
+import com.gammagamma.kotlinandroidstarter.domain.model.IUser
 import com.squareup.moshi.JsonClass
 import org.threeten.bp.OffsetDateTime
 

@@ -26,9 +26,11 @@ ext.Modules = [
     application     : ':application',
     
     core            : ':core',
-    di              : ':di',
+    DI              : ':di',
     Logging         : ':logging',
     Domain          : ':domain',
+    UIResources     : ':resources:res-ui',
+    SharedResources : ':resources:res-shared',
     library         : ':library',
     navigation      : ':navigation',
     Network         : ':network',
@@ -36,12 +38,14 @@ ext.Modules = [
     
     views           : ':views',
     
-    ui              : ':ui',
+    UI              : ':ui',
     uiShared        : ':ui_shared',
     
-    splash          : ':ui_splash',
-    main            : ':ui_main',
-    preview         : ':ui_preview',
+    Splash          : ':ui_splash',
+    Main            : ':feature:main',
+    Home            : ':feature:home',
+    About           : ':feature:about',
+    Feed            : ':feature:feed',
     
     home            : ':ui_home',
     favorites       : ':ui_favorites',

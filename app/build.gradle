@@ -32,8 +32,20 @@ android {
 
 dependencies {
     
-    implementation project(Modules.Domain)
+    implementation project(Modules.DI)
+    //implementation project(Modules.Domain)
     implementation project(Modules.Network)
+    //implementation project(Modules.SharedResources)
+    implementation project(Modules.UIResources)
+    
+    // @todo Consolidate to one config (also is in DI)
+    implementation project(Modules.Main)
+    implementation project(Modules.Home)
+    implementation project(Modules.About)
+    implementation project(Modules.Feed)
+    
+    // @todo remove once Main is it's own module
+    implementation project(Modules.UI)
     
     // Testing
     /*androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -52,7 +64,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
     
-    // Core
+    /*// Core
     implementation Libraries.Coroutines
     implementation Libraries.CoroutinesAndroid
     
@@ -70,14 +82,14 @@ dependencies {
     implementation Libraries.FragmentsKtx
     implementation Libraries.LiveDataKtx
     implementation Libraries.ViewModelKtx
-    /*implementation(Libraries.WorkmanagerKtx) {
+    *//*implementation(Libraries.WorkmanagerKtx) {
         exclude group: 'com.google.guava'
-    }*/
+    }*//*
     
     // Android Extra
     implementation Libraries.SwipeRefreshLayout
     implementation Libraries.GoogleMaterial
-    //implementation Libraries.GoogleFlexbox
+    //implementation Libraries.GoogleFlexbox*/
     
     // Logging
     //implementation Libraries.Timber
@@ -109,7 +121,7 @@ dependencies {
     implementation Libraries.legacyUtils
     implementation Libraries.legacyUI*/
     
-    implementation Libraries.MaterialDesignIcons
+    //implementation Libraries.MaterialDesignIcons
     
     // Google Proprietary
     implementation Libraries.PlayServices
