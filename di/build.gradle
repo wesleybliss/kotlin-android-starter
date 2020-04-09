@@ -7,12 +7,6 @@ dependencies {
     implementation project(Modules.Network)
     implementation project(Modules.Storage)
     
-    // @todo Consolidate to one config (also is in app)
-    /*implementation project(Modules.Main)
-    implementation project(Modules.Home)
-    implementation project(Modules.About)
-    implementation project(Modules.Feed)*/
-    
     // Required for the ViewModel domain abstractions
     implementation Libraries.ViewModelKtx
     

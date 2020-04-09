@@ -76,9 +76,6 @@ dependencies {
     if (name != "domain")
         api project(Modules.Domain)
     
-    /*if (!["logging", "res-shared", "di", "network"].any { name.contains(it) })
-        api project(Modules.DI)*/
-    
     api Libraries.Kotlin
     
     api Libraries.Koin

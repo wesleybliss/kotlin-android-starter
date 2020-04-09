@@ -28,19 +28,27 @@ android {
 dependencies {
     
     implementation project(Modules.DI)
-    //implementation project(Modules.Domain)
     implementation project(Modules.Network)
-    //implementation project(Modules.SharedResources)
     implementation project(Modules.UIResources)
     
-    // @todo Consolidate to one config (also is in DI)
-    /*implementation project(Modules.Main)
-    implementation project(Modules.Home)
-    implementation project(Modules.About)
-    implementation project(Modules.Feed)*/
+    /*
+    // Android KTX
+    implementation Libraries.AndroidKtx
+    implementation Libraries.FragmentsKtx
+    implementation Libraries.LiveDataKtx
+    implementation Libraries.ViewModelKtx
+    *//*implementation(Libraries.WorkmanagerKtx) {
+        exclude group: 'com.google.guava'
+    }*//*
     
-    // @todo remove once Main is it's own module
-    implementation project(Modules.UI)
+    /*implementation Libraries.legacy
+    implementation Libraries.legacyUtils
+    implementation Libraries.legacyUI*/
+    
+    // Google Proprietary
+    /*implementation Libraries.PlayServices
+    implementation Libraries.FirebaseAnalytics
+    implementation Libraries.FirebaseCloudMessage*/
     
     // Testing
     /*androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -58,70 +66,6 @@ dependencies {
     androidTestImplementation "com.android.support:support-annotations:$AndroidSupportLibVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'*/
-    
-    /*// Core
-    implementation Libraries.Coroutines
-    implementation Libraries.CoroutinesAndroid
-    
-    // Android
-    kapt(Libraries.LifecycleCompiler) {
-        exclude group: 'com.google.guava'
-    }
-    implementation Libraries.LifecycleExtensions
-    implementation Libraries.RecyclerView
-    implementation Libraries.ConstraintLayout
-    implementation Libraries.CardView
-    
-    // Android KTX
-    implementation Libraries.AndroidKtx
-    implementation Libraries.FragmentsKtx
-    implementation Libraries.LiveDataKtx
-    implementation Libraries.ViewModelKtx
-    *//*implementation(Libraries.WorkmanagerKtx) {
-        exclude group: 'com.google.guava'
-    }*//*
-    
-    // Android Extra
-    implementation Libraries.SwipeRefreshLayout
-    implementation Libraries.GoogleMaterial
-    //implementation Libraries.GoogleFlexbox*/
-    
-    // Logging
-    //implementation Libraries.Timber
-    
-    // DI
-    /*implementation Libraries.Koin
-    implementation Libraries.KoinViewModel*/
-    
-    // Storage
-    //implementation Libraries.Hawk
-    //implementation Libraries.Room
-    //kapt Libraries.RoomCompiler
-    
-    // Networking
-    /*implementation Libraries.ThreeTenABP
-    implementation Libraries.OkHttp
-    implementation Libraries.OkHttpLogger
-    implementation Libraries.Retrofit
-    implementation Libraries.RetrofitMoshi
-    implementation Libraries.RetrofitLogging
-    implementation Libraries.CoilBase
-    implementation Libraries.CoilGif
-    implementation Libraries.CoilTransformations*/
-    //implementation Libraries.Paging
-    
-    
-    
-    /*implementation Libraries.legacy
-    implementation Libraries.legacyUtils
-    implementation Libraries.legacyUI*/
-    
-    //implementation Libraries.MaterialDesignIcons
-    
-    // Google Proprietary
-    implementation Libraries.PlayServices
-    implementation Libraries.FirebaseAnalytics
-    implementation Libraries.FirebaseCloudMessage
     
     testImplementation Libraries.JUnit
     testImplementation Libraries.Truth
