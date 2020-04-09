@@ -1,0 +1,10 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+
+dependencies {
+    
+    implementation Libraries.Hawk
+    
+    //implementation Libraries.Room
+    //kapt Libraries.RoomCompiler
+    
+}

@@ -17,21 +17,29 @@
         tools:context="com.gammagamma.kotlinandroidstarter.main.MainActivity">
         
         <FrameLayout
-            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include layout="@layout/content_home" />
+            
+            <FrameLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:goneUnless="@{vm.ready}"
+                android:visibility="gone">
+                <include layout="@layout/content_home" />
+            </FrameLayout>
+            
+            <FrameLayout
+                android:id="@+id/contentError"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:goneUnless="@{vm.hasError}">
+                <include
+                    app:vm="@{vm}"
+                    layout="@layout/content_home_error" />
+            </FrameLayout>
+            
         </FrameLayout>
-    
-        <FrameLayout
-            android:id="@+id/contentError"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include
-                app:vm="@{vm}"
-                layout="@layout/content_home_error" />
-        </FrameLayout>
-        
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     
 </layout>

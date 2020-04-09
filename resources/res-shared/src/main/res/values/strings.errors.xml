@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="error_api_connection">We\'re having trouble connecting. Please try again.</string>
+    
+</resources>

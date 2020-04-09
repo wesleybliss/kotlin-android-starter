@@ -9,4 +9,6 @@ dependencies {
     api Libraries.Koin
     api Libraries.KoinViewModel
     
+    api Libraries.ThreeTenABP
+    
 }

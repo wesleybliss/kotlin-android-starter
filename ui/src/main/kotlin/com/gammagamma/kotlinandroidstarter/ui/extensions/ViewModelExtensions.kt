@@ -23,9 +23,16 @@ inline fun <reified T> mediatorLiveDataOf(
     initialValue: T?,
     defaultValue: T? = null,
     post: Boolean = false,
-    crossinline fn: MediatorLiveData<T>.() -> Unit) =
+    noinline block: (MediatorLiveData<T>.() -> Unit)? = null
+) =
     MediatorLiveData<T>().apply {
         if (!post) value = initialValue ?: defaultValue
         else postValue(initialValue ?: defaultValue)
-        fn()
+        block?.invoke(this)
     }
+
+fun <T, S> MediatorLiveData<T>.addSources(vararg sources: LiveData<S>, onChanged: (S) -> Unit) {
+    sources.forEach { source ->
+        addSource(source) { onChanged(it) }
+    }
+}

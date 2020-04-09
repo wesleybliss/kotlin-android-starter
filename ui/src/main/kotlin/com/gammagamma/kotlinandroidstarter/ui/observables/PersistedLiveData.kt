@@ -1,13 +1,14 @@
-package com.kotlinandroidstarter.app.shared.observables
+package com.gammagamma.kotlinandroidstarter.ui.observables
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.lifecycle.MutableLiveData
+import com.gammagamma.kotlinandroidstarter.domain.storage.IStorageProvider
 import com.gammagamma.logging.plank
-import com.kotlinandroidstarter.app.shared.storage.Storage
 import org.koin.core.KoinComponent
 import org.koin.core.get
+import org.koin.core.inject
 
 /**
  * A [androidx.lifecycle.LiveData] implementation that reads and persists
@@ -17,7 +18,7 @@ open class PersistedLiveData<T>(
     @Suppress("MemberVisibilityCanBePrivate")
     val key: String,
     private val defaultValue: T? = null
-) : MutableLiveData<T>(), SharedPreferences.OnSharedPreferenceChangeListener {
+) : KoinComponent, MutableLiveData<T>(), SharedPreferences.OnSharedPreferenceChangeListener {
     
     companion object {
     
@@ -27,6 +28,8 @@ open class PersistedLiveData<T>(
         }
         
     }
+    
+    private val storage: IStorageProvider by inject()
     
     override fun onActive() {
         
@@ -65,13 +68,13 @@ open class PersistedLiveData<T>(
     
     @Suppress("MemberVisibilityCanBePrivate")
     fun restoreValue() {
-        value = Storage.get(key, defaultValue)
+        value = storage.get(key, defaultValue)
         plank("#persistedLiveData value restored, $key, $value")
     }
     
     @Suppress("MemberVisibilityCanBePrivate")
     fun persistValue() {
-        Storage.put(key, value)
+        storage.put(key, value)
         plank("#persistedLiveData value saved, $key, $value")
     }
     

@@ -4,6 +4,7 @@ dependencies {
     
     implementation project(Modules.UI)
     implementation project(Modules.Network)
+    implementation project(Modules.Storage)
     
     // @todo Consolidate to one config (also is in app)
     implementation project(Modules.Main)
