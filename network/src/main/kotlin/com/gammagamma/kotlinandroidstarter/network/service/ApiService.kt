@@ -1,6 +1,6 @@
 package com.gammagamma.kotlinandroidstarter.network.service
 
-import com.gammagamma.kotlinandroidstarter.network.models.User
+import com.gammagamma.kotlinandroidstarter.domain.model.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

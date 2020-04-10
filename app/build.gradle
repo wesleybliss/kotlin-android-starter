@@ -31,20 +31,6 @@ dependencies {
     implementation project(Modules.Network)
     implementation project(Modules.UIResources)
     
-    /*
-    // Android KTX
-    implementation Libraries.AndroidKtx
-    implementation Libraries.FragmentsKtx
-    implementation Libraries.LiveDataKtx
-    implementation Libraries.ViewModelKtx
-    *//*implementation(Libraries.WorkmanagerKtx) {
-        exclude group: 'com.google.guava'
-    }*//*
-    
-    /*implementation Libraries.legacy
-    implementation Libraries.legacyUtils
-    implementation Libraries.legacyUI*/
-    
     // Google Proprietary
     /*implementation Libraries.PlayServices
     implementation Libraries.FirebaseAnalytics

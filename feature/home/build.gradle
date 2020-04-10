@@ -3,9 +3,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
-        dataBinding {
-            enabled = true
-        }
+        dataBinding.enabled = true
     }
 }
 

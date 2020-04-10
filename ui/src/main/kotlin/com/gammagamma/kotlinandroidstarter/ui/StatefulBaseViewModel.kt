@@ -18,9 +18,10 @@ import org.threeten.bp.Instant
  * Base, native, Android Architecture Components ViewModel,
  * useful to extend for any ViewModel that needs error & loading states
  */
-abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewModel() {
+abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseViewModel() {
     
-    open var networkAware = false
+    @Suppress("unused")
+    open var networkAware = isNetworkAware ?: false
         set(value) {
             field = value
             if (value) {
@@ -53,12 +54,6 @@ abstract class StatefulBaseViewModel(networkAware: Boolean? = false) : BaseViewM
                     offline.value == false
             } catch (e: Exception) { false }
         }
-    }
-    
-    init {
-        
-        this.networkAware = networkAware ?: false
-        
     }
     
     @Suppress("unused")

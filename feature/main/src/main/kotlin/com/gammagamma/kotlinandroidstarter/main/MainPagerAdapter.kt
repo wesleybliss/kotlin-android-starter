@@ -1,34 +1,26 @@
 package com.gammagamma.kotlinandroidstarter.main
 
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.gammagamma.kotlinandroidstarter.about.AboutFragment
 import com.gammagamma.kotlinandroidstarter.feed.FeedFragment
 import com.gammagamma.kotlinandroidstarter.home.HomeFragment
+import com.gammagamma.logging.plank
 
-// @todo update deprecated class
-class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class MainPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
     
-    override fun getItem(position: Int): Fragment =
-        when (position) {
-            0 -> HomeFragment()
-            1 -> FeedFragment()
-            2 -> AboutFragment()
-            else -> HomeFragment()
-        }
-    
-    override fun getCount(): Int {
-        return 3
+    private val items by lazy {
+        listOf<Fragment>(
+            HomeFragment(),
+            FeedFragment(),
+            AboutFragment()
+        )
     }
     
-    @IdRes fun getItemId(position: Int) : Int? =
-        when (position) {
-            0 -> R.id.navigation_page_a
-            1 -> R.id.navigation_page_b
-            2 -> R.id.navigation_page_c
-            else -> null
-        }
+    override fun createFragment(position: Int): Fragment =
+        items[position].apply { plank("Creating frag @ pos $position") }
+    
+    override fun getItemCount(): Int = items.size
     
 }

@@ -2,8 +2,6 @@ apply from: rootProject.file(GradleTemplates.AndroidLibrary)
 
 android {
     defaultConfig {
-        dataBinding {
-            enabled = true
-        }
+        dataBinding.enabled = true
     }
 }

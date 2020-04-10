@@ -8,6 +8,6 @@ dependencies {
     implementation project(Modules.Storage)
     
     // Required for the ViewModel domain abstractions
-    implementation Libraries.ViewModelKtx
+    implementation Libraries.AndroidX.LifecycleViewModel
     
 }

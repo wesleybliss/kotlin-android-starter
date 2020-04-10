@@ -26,22 +26,18 @@ dependencies {
         exclude group: 'com.google.guava'
     }
     api Libraries.LifecycleExtensions
-    api Libraries.RecyclerView
     api Libraries.ConstraintLayout
+    api Libraries.RecyclerView
     api Libraries.CardView
     
     // Android KTX
-    api Libraries.AndroidKtx
-    api Libraries.FragmentsKtx
-    api Libraries.LiveDataKtx
-    api Libraries.ViewModelKtx
-    /*api(Libraries.WorkmanagerKtx) {
-        exclude group: 'com.google.guava'
-    }*/
+    api Libraries.AndroidX.Core
+    api Libraries.AndroidX.Fragment
+    api Libraries.AndroidX.LifecycleLiveData
+    api Libraries.AndroidX.LifecycleViewModel
     
     // Android Extra
     api Libraries.SwipeRefreshLayout
     api Libraries.GoogleMaterial
-    //api Libraries.GoogleFlexbox
     
 }

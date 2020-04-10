@@ -37,7 +37,7 @@ private fun buildOkHttpClientBuilder() : OkHttpClient.Builder =
             addInterceptor(httpLoggingInterceptor)
         }
         
-        if (BuildConfig.DEBUG /* @todo & override SSL in debug? */) {
+        if (BuildConfig.DEBUG) {
             
             plankW("Relaxing security on TLS certs")
             

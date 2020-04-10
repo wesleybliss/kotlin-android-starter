@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.gammagamma.kotlinandroidstarter.main.databinding.ActivityMainBinding
 import com.gammagamma.kotlinandroidstarter.ui.BaseActivity
 
@@ -12,9 +12,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     //region Class Members
     
-    private val pagerAdapter by lazy(mode = LazyThreadSafetyMode.NONE) {
-        MainPagerAdapter(supportFragmentManager)
-    }
+    private val pagerAdapter by lazy { MainPagerAdapter(this) }
     
     //endregion Class Members
     
@@ -24,27 +22,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         
         super.onCreate(savedInstanceState)
         
-        /*if (is not signed in) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            return
-        }*/
-    
         setupNavigation()
         
-    }
-    
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        
-        if (data == null)
-            return super.onActivityResult(requestCode, resultCode, data)
-        
-        if (resultCode == RESULT_OK) {
-            
-            when (requestCode) {
-                123 -> {}
-            }
-            
-        }
     }
     
     //endregion Lifecycle
@@ -72,25 +51,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private fun setupNavigation() {
         
-        // Enable Toolbar as Actionbar
         setSupportActionBar(binding.toolbar)
         
-        // Bottom tab navigation handler
         binding.bottomNavigation.setOnNavigationItemSelectedListener { changeFragment(it.itemId) }
         
-        // Watch page swipes & update bottom nav to reflect changes
-        binding.container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-            override fun onPageScrollStateChanged(state: Int) {}
+        binding.viewPagerMain.adapter = pagerAdapter
+        binding.viewPagerMain.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                
+                super.onPageSelected(position)
                 val itemId = pagerAdapter.getItemId(position)
-                if (itemId != null) binding.bottomNavigation.selectedItemId = itemId
-                
+                binding.bottomNavigation.selectedItemId = itemId.toInt()
             }
         })
-        
-        binding.container.adapter = pagerAdapter
         
     }
     
@@ -98,17 +70,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         
         when (id) {
             R.id.navigation_page_a -> {
-                binding.container.currentItem = 0
+                binding.viewPagerMain.currentItem = 0
                 binding.toolbar.title = getString(R.string.home_title)
                 return true
             }
             R.id.navigation_page_b -> {
-                binding.container.currentItem = 1
+                binding.viewPagerMain.currentItem = 1
                 binding.toolbar.title = getString(R.string.feed_title)
                 return true
             }
             R.id.navigation_page_c -> {
-                binding.container.currentItem = 2
+                binding.viewPagerMain.currentItem = 2
                 binding.toolbar.title = getString(R.string.about_title)
                 return true
             }
@@ -119,21 +91,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
     
     //endregion Navigation
-    
-    //region Permissions
-    
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        
-        /*if (requestCode == 123) {
-            if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED)
-                infoDialog("Missing Permissions", "Without the requested permissions, " +
-                    "this app cannot function.", { finish() })
-        }*/
-        
-    }
-    
-    //endregion Permissions
     
 }

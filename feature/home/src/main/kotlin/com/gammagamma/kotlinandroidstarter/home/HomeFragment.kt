@@ -9,9 +9,9 @@ import com.gammagamma.home.databinding.FragmentHomeBinding
 import com.gammagamma.kotlinandroidstarter.ui.BaseFragment
 import com.gammagamma.kotlinandroidstarter.ui.extensions.confirm
 import com.gammagamma.kotlinandroidstarter.ui.extensions.initWithDefaults
+import com.gammagamma.kotlinandroidstarter.ui.extensions.observe
 import com.gammagamma.kotlinandroidstarter.ui.extensions.toast
 import com.gammagamma.logging.plank
-import com.shopify.livedataktx.observe
 import kotlinx.android.synthetic.main.content_home.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

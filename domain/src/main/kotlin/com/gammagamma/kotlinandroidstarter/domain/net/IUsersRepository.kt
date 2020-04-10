@@ -1,9 +1,9 @@
 package com.gammagamma.kotlinandroidstarter.domain.net
 
-import com.gammagamma.kotlinandroidstarter.domain.model.IUser
+import com.gammagamma.kotlinandroidstarter.domain.model.User
 
-interface IUsersRepository : IRepository<IUser> {
+interface IUsersRepository : IRepository<User> {
     
-    suspend fun fetchByEmail(email: String): IUser
+    suspend fun fetchByEmail(email: String): User
     
 }

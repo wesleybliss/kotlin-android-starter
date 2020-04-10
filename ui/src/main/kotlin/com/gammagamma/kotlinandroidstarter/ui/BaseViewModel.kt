@@ -40,7 +40,7 @@ abstract class BaseViewModel : ViewModel() {
      * @param activity
      * @param handleEvent Callback to handle event
      */
-    inline fun <reified T : IViewModelEvents> observeEventDispatcher(
+    inline fun <reified T : IViewModelEvents> observeEvent(
         activity: LifecycleOwner,
         crossinline handleEvent: (event: T) -> Unit) {
         eventDispatcher.observe(activity, Observer {
@@ -51,7 +51,7 @@ abstract class BaseViewModel : ViewModel() {
         })
     }
     
-    inline fun <reified T : IViewModelEvents> observeEventDispatcher(
+    inline fun <reified T : IViewModelEvents> observeEvent(
         fragment: Fragment,
         crossinline handleEvent: (event: T) -> Unit) {
         eventDispatcher.observe(fragment, Observer {

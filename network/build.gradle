@@ -14,10 +14,7 @@ dependencies {
     
     // JSON
     implementation Libraries.Moshi
-    //implementation Libraries.MoshiKotlin
     kapt Libraries.MoshiKotlinCodeGen
-    //implementation Libraries.KotshiApi
-    //kapt Libraries.KotshiCompiler
     
     implementation Libraries.CoilBase
     implementation Libraries.CoilGif
