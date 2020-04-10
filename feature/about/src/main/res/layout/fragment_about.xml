@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.gammagamma.kotlinandroidstarter.about.AboutViewModel" />
+            type="com.gammagamma.kas.about.AboutViewModel" />
     </data>
     
     <LinearLayout
@@ -17,7 +17,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.gammagamma.kotlinandroidstarter.main.MainActivity">
+        tools:context="com.gammagamma.kas.main.MainActivity">
         
         <TextView
             android:id="@+id/textFragmentC"

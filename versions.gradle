@@ -17,6 +17,7 @@ ext.Versions = [
     CardView           : '1.0.0',
     
     AndroidX: [
+        AppCompat          : '1.1.0',
         Annotation         : '1.1.0',
         Core               : '1.2.0',
         Collection         : '1.1.0',

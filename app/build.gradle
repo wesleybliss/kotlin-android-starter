@@ -12,7 +12,7 @@ android {
     buildToolsVersion Meta.BuildToolsVersion
     
     defaultConfig {
-        applicationId "com.kotlinandroidstarter.app"
+        applicationId "com.kas.app"
         dataBinding.enabled = true
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.kotlinandroidstarter.app"
+    package="com.kas.app"
     xmlns:android="http://schemas.android.com/apk/res/android">
     
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -15,7 +15,7 @@
     -->
     
     <application
-        android:name=".App"
+        android:name="com.kas.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.gammagamma.kotlinandroidstarter.main.MainActivity"
+            android:name="com.gammagamma.kas.main.MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.gammagamma.kotlinandroidstarter.home.HomeViewModel" />
+            type="com.gammagamma.kas.home.HomeViewModel" />
     </data>
     
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:isRefreshing="@{vm.loading}"
-        tools:context="com.gammagamma.kotlinandroidstarter.main.MainActivity">
+        tools:context="com.gammagamma.kas.main.MainActivity">
         
         <FrameLayout
             android:layout_width="match_parent"

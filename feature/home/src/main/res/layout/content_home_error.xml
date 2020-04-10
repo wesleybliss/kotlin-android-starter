@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.gammagamma.kotlinandroidstarter.home.HomeViewModel" />
+            type="com.gammagamma.kas.home.HomeViewModel" />
     </data>
     
     <LinearLayout

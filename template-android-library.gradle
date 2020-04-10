@@ -11,4 +11,9 @@ dependencies {
     
     api Libraries.ThreeTenABP
     
+    testImplementation Libraries.JUnit
+    testImplementation Libraries.Truth
+    androidTestImplementation Libraries.EspressoCore
+    androidTestImplementation Libraries.EspressoIntents
+    
 }

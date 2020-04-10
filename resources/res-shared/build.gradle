@@ -2,6 +2,8 @@ apply from: rootProject.file(GradleTemplates.AndroidLibrary)
 
 dependencies {
     
+    implementation Libraries.AndroidX.AppCompat
+    implementation Libraries.AndroidX.AppCompatRes
     implementation Libraries.AndroidX.Annotation
     
 }

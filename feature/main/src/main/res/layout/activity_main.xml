@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.kotlinandroidstarter.feature.main.MainActivity">
+        tools:context="com.kas.feature.main.MainActivity">
         
         <!-- @todo Not sure if this is needed
             android:paddingTop="@dimen/appbar_padding_top" -->
