@@ -8,6 +8,7 @@ import com.gammagamma.kas.resources.error.filterError
 import com.gammagamma.kas.ui.extensions.addSources
 import com.gammagamma.kas.ui.extensions.mediatorLiveDataOf
 import com.gammagamma.kas.logging.plank
+import com.gammagamma.kas.ui.observable.ConnectivityLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

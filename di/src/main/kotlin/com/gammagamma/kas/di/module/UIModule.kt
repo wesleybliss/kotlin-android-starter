@@ -1,4 +1,4 @@
-package com.gammagamma.kas.di.modules
+package com.gammagamma.kas.di.module
 
 import org.koin.dsl.module
 

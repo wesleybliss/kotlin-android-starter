@@ -1,4 +1,4 @@
-package com.gammagamma.kas.network.modules
+package com.gammagamma.kas.network.module
 
 import android.content.Context
 import coil.ImageLoader

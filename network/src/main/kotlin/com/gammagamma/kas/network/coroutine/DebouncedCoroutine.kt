@@ -1,4 +1,4 @@
-package com.gammagamma.kas.network.coroutines
+package com.gammagamma.kas.network.coroutine
 
 import kotlinx.coroutines.*
 

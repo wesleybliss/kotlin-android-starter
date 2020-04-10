@@ -1,4 +1,4 @@
-package com.gammagamma.kas.network.modules
+package com.gammagamma.kas.network.module
 
 import com.gammagamma.kas.network.adapter.DateTimeAdapter
 import com.squareup.moshi.Moshi

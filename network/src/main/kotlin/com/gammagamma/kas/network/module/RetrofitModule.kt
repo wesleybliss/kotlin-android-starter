@@ -1,4 +1,4 @@
-package com.gammagamma.kas.network.modules
+package com.gammagamma.kas.network.module
 
 import com.gammagamma.kas.network.BuildConfig
 import com.gammagamma.kas.network.service.ApiService

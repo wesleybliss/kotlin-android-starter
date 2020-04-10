@@ -1,4 +1,4 @@
-package com.gammagamma.kas.di.modules
+package com.gammagamma.kas.di.module
 
 import com.gammagamma.kas.domain.net.IUsersRepository
 import com.gammagamma.kas.main.MainViewModel

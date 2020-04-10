@@ -1,4 +1,4 @@
-package com.gammagamma.kas.ui.observables
+package com.gammagamma.kas.ui.observable
 
 import android.content.Context
 import android.content.SharedPreferences

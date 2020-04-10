@@ -1,4 +1,4 @@
-package com.gammagamma.kas.ui
+package com.gammagamma.kas.ui.observable
 
 import android.content.Context
 import android.net.ConnectivityManager
