@@ -8,21 +8,16 @@ interface IUser {
     
     var email: String
     
-    var firstName: String
-    var lastName: String
-    var dob: OffsetDateTime
-    var gender: Int
+    var name: String
+    //var dob: OffsetDateTime
     
-    var address: String
-    var city: String
-    var state: String
-    var zipCode: String
-    var country: String
+    var address: IAddress
     
     var phone: String
     
     //
     
-    val fullName: String
+    val firstName: String
+    val lastName: String
     
 }

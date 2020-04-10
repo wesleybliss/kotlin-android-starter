@@ -1,4 +1,4 @@
-package com.gammagamma.kotlinandroidstarter.network.repository.impl
+package com.gammagamma.kotlinandroidstarter.network.repository
 
 import com.gammagamma.kotlinandroidstarter.domain.model.IUser
 import com.gammagamma.kotlinandroidstarter.domain.net.Result

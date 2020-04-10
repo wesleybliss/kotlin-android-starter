@@ -16,7 +16,7 @@ class UsersAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         
         fun bind(item: IUser, listener: ((IUser) -> Unit)? = null) = with(itemView) {
-            textName.text = item.fullName
+            textName.text = item.name
             textEmail.text = item.email
             setOnClickListener { listener?.invoke(item) }
         }
