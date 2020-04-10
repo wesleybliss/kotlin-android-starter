@@ -28,7 +28,6 @@ android {
 dependencies {
     
     implementation project(Modules.DI)
-    implementation project(Modules.Network)
     implementation project(Modules.UIResources)
     
     // Google Proprietary
