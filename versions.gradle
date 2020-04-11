@@ -58,6 +58,9 @@ ext.Versions = [
     // JSON
     Moshi               : '1.9.2',
     
+    // Permissions
+    Dexter: '6.1.0',
+    
     // Extras
     Splitties: '3.0.0-alpha06',
     MaterialDesignIcons : '1.0',

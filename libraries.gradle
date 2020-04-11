@@ -68,8 +68,11 @@ ext.Libraries = [
     MoshiKotlin: "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}",
     MoshiKotlinCodeGen: "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Moshi}",
     
-    MaterialDesignIcons   : "com.pavelsikun:materialdesignicons:${Versions.MaterialDesignIcons}",
+    // Permissions
+    Dexter: "com.karumi:dexter:${Versions.Dexter}",
     
+    // Extras
+    MaterialDesignIcons   : "com.pavelsikun:materialdesignicons:${Versions.MaterialDesignIcons}",
     Splitties: [
         Activities: "com.louiscad.splitties:splitties-activities:${Versions.Splitties}",
         AlertDialog: "com.louiscad.splitties:splitties-alertdialog:${Versions.Splitties}",

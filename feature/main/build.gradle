@@ -16,5 +16,6 @@ dependencies {
     implementation project(Modules.About)
     
     implementation Libraries.ViewPager2
+    implementation Libraries.Dexter
     
 }
