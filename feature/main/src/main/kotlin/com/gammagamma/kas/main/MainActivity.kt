@@ -37,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.action_settings -> return true.apply { }
         }
         
         return super.onOptionsItemSelected(item)

@@ -42,6 +42,7 @@ ext.Modules = [
     Home            : ':feature:home',
     About           : ':feature:about',
     Feed            : ':feature:feed',
+    Settings        : ':feature:settings',
     
 ]
 
@@ -50,7 +51,8 @@ ext.FeatureModules = [
     Modules.Main,
     Modules.Home,
     Modules.About,
-    Modules.Feed
+    Modules.Feed,
+    Modules.Settings
 ]
 
 ext.GradleTemplates = [
