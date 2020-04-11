@@ -1,0 +1,8 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+
+dependencies {
+    
+    implementation project(Modules.UI)
+    implementation project(Modules.Main)
+    
+}

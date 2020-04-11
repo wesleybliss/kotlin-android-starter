@@ -70,6 +70,24 @@ ext.Libraries = [
     
     MaterialDesignIcons   : "com.pavelsikun:materialdesignicons:${Versions.MaterialDesignIcons}",
     
+    Splitties: [
+        Activities: "com.louiscad.splitties:splitties-activities:${Versions.Splitties}",
+        AlertDialog: "com.louiscad.splitties:splitties-alertdialog:${Versions.Splitties}",
+        AlertDialogAppCompat: "com.louiscad.splitties:splitties-alertdialog-appcompat:${Versions.Splitties}",
+        AlertDialogAppCompatCoroutines: "com.louiscad.splitties:splitties-alertdialog-appcompat-coroutines:${Versions.Splitties}",
+        ArchRoom: "com.louiscad.splitties:splitties-arch-room:${Versions.Splitties}",
+        Bundle: "com.louiscad.splitties:splitties-bundle:${Versions.Splitties}",
+        Dimensions: "com.louiscad.splitties:splitties-dimensions:${Versions.Splitties}",
+        Fragments: "com.louiscad.splitties:splitties-fragments:${Versions.Splitties}",
+        FragmentArgs: "com.louiscad.splitties:splitties-fragmentargs:${Versions.Splitties}",
+        Intents: "com.louiscad.splitties:splitties-intents:${Versions.Splitties}",
+        MaterialColors: "com.louiscad.splitties:splitties-material-colors:${Versions.Splitties}",
+        Resources: "com.louiscad.splitties:splitties-resources:${Versions.Splitties}",
+        Toast: "com.louiscad.splitties:splitties-toast:${Versions.Splitties}",
+        Snackbar: "com.louiscad.splitties:splitties-snackbar:${Versions.Splitties}",
+        SystemServices: "com.louiscad.splitties:splitties-systemservices:${Versions.Splitties}"
+    ],
+    
     // Google Proprietary
     PlayServices: "com.google.android.gms:play-services-auth:${Versions.PlayServices}",
     FirebaseAnalytics: "com.google.firebase:firebase-core:${Versions.FirebaseAnalytics}",

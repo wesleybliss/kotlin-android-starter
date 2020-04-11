@@ -37,7 +37,7 @@ ext.Modules = [
     
     UI              : ':ui',
     
-    Splash          : ':ui_splash',
+    Splash          : ':feature:splash',
     Main            : ':feature:main',
     Home            : ':feature:home',
     About           : ':feature:about',
@@ -46,7 +46,7 @@ ext.Modules = [
 ]
 
 ext.FeatureModules = [
-    //Modules.Splash,
+    Modules.Splash,
     Modules.Main,
     Modules.Home,
     Modules.About,

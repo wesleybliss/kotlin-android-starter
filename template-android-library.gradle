@@ -11,6 +11,21 @@ dependencies {
     
     api Libraries.ThreeTenABP
     
+    api Libraries.Splitties.Activities
+    api Libraries.Splitties.AlertDialog
+    api Libraries.Splitties.AlertDialogAppCompat
+    api Libraries.Splitties.AlertDialogAppCompatCoroutines
+    api Libraries.Splitties.ArchRoom
+    api Libraries.Splitties.Bundle
+    api Libraries.Splitties.Dimensions
+    api Libraries.Splitties.Fragments
+    api Libraries.Splitties.FragmentArgs
+    api Libraries.Splitties.Intents
+    api Libraries.Splitties.MaterialColors
+    api Libraries.Splitties.Resources
+    api Libraries.Splitties.Toast
+    api Libraries.Splitties.Snackbar
+    
     testImplementation Libraries.JUnit
     testImplementation Libraries.Truth
     androidTestImplementation Libraries.EspressoCore
