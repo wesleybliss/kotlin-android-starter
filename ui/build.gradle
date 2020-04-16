@@ -13,22 +13,20 @@ dependencies {
     api Libraries.Coroutines
     api Libraries.CoroutinesAndroid
     
-    // Android
-    api Libraries.LifecycleExtensions
-    api Libraries.ConstraintLayout
-    api Libraries.RecyclerView
-    api Libraries.CardView
-    kapt Libraries.LifecycleCompiler
-    
-    // Android KTX
     api Libraries.AndroidX.Core
     api Libraries.AndroidX.Fragment
     api Libraries.AndroidX.LifecycleRuntime
     api Libraries.AndroidX.LifecycleLiveData
     api Libraries.AndroidX.LifecycleViewModel
+    api Libraries.AndroidX.LifecycleExtensions
+    api Libraries.AndroidX.ConstraintLayout
+    api Libraries.AndroidX.RecyclerView
+    api Libraries.AndroidX.CardView
+    api Libraries.AndroidX.SwipeRefreshLayout
+    
+    kapt Libraries.AndroidX.LifecycleCompiler
     
     // Android Extra
-    api Libraries.SwipeRefreshLayout
     api Libraries.GoogleMaterial
     
 }

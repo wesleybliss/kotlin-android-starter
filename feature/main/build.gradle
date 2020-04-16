@@ -13,7 +13,7 @@ dependencies {
     implementation project(Modules.Feed)
     implementation project(Modules.About)
     
-    implementation Libraries.ViewPager2
+    implementation Libraries.AndroidX.ViewPager2
     implementation Libraries.Dexter
     
 }
