@@ -9,4 +9,6 @@ dependencies {
     
     implementation project(Modules.UI)
     
+    implementation Libraries.AndroidX.Preference
+    
 }

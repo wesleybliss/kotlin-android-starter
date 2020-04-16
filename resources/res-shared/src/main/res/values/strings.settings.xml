@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Category Titles -->
+    <string name="settings_title_general">General</string>
+    <string name="settings_title_secondary">Secondary</string>
+    
+    <string name="settings_text_key">text_option</string>
+    <string name="settings_text_title">Text Option</string>
+    <string name="settings_text_summary">A Custom Text Option</string>
+    <string name="settings_text_default_value">(Nothing Yet)</string>
+    
+    <string name="settings_check_key">check_option</string>
+    <string name="settings_check_title">Check Option</string>
+    <string name="settings_check_summary">A Checkable Option</string>
+    <bool name="settings_check_default_value">true</bool>
+    
+    <string name="settings_list_key">list_option</string>
+    <string name="settings_list_title">List Option</string>
+    <string name="settings_list_summary">A List Option</string>
+    <string name="settings_list_dialog_title">Select An Option</string>
+    <string name="settings_list_default_value">foo</string>
+    <string-array name="settings_list_entries">
+        <item>Foo</item>
+        <item>Bar</item>
+        <item>Biz</item>
+        <item>Bat</item>
+    </string-array>
+    <string-array name="settings_list_values">
+        <item>@string/settings_list_default_value</item>
+        <item>bar</item>
+        <item>biz</item>
+        <item>bat</item>
+    </string-array>
+    
+    <string name="settings_switch_key">switch_option</string>
+    <string name="settings_switch_title">Switch Option</string>
+    <bool name="settings_switch_default_value">true</bool>
+    
+</resources>

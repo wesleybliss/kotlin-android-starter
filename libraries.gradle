@@ -20,6 +20,7 @@ ext.Libraries = [
         LifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.Lifecycle}",
         LifecycleLiveData: "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.Lifecycle}",
         LifecycleViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidX.Lifecycle}",
+        Preference: "androidx.preference:preference-ktx:${Versions.AndroidX.Preference}",
         NavigationRuntime: "androidx.navigation:navigation-runtime-ktx:${Versions.AndroidX.Navigation}",
         NavigationFragment: "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.Navigation}",
         NavigationUI: "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.Navigation}",

@@ -1,6 +1,7 @@
 package com.gammagamma.kas.settings
 
 import android.os.Bundle
+import com.gammagamma.kas.logging.plank
 import com.gammagamma.kas.settings.databinding.ActivitySettingsBinding
 import com.gammagamma.kas.ui.BaseActivity
 
@@ -10,7 +11,10 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(R.layout.activity
         
         super.onCreate(savedInstanceState)
         
-        val foo = binding
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.settingsContainer, SettingsFragment())
+            .commit()
         
     }
     

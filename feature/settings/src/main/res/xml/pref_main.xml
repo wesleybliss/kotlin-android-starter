@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- https://www.androidhive.info/2017/07/android-implementing-preferences-settings-screen -->
+    
+    <PreferenceCategory android:title="@string/settings_title_general">
+        
+        <EditTextPreference
+            android:key="@string/settings_text_key"
+            android:title="@string/settings_text_title"
+            android:summary="@string/settings_text_summary"
+            android:defaultValue="@string/settings_text_default_value" />
+        
+        <CheckBoxPreference
+            android:key="@string/settings_check_key"
+            android:title="@string/settings_check_title"
+            android:summary="@string/settings_check_summary"
+            android:defaultValue="@bool/settings_check_default_value" />
+        
+        <ListPreference
+            android:key="@string/settings_list_key"
+            android:title="@string/settings_list_title"
+            android:summary="@string/settings_list_summary"
+            android:dialogTitle="@string/settings_list_dialog_title"
+            android:entries="@array/settings_list_entries"
+            android:entryValues="@array/settings_list_values"
+            android:defaultValue="@string/settings_list_default_value" />
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/settings_title_secondary">
+    
+        <SwitchPreference
+            android:key="@string/settings_switch_key"
+            android:title="@string/settings_switch_title"
+            android:defaultValue="@bool/settings_switch_default_value"
+            />
+        
+    </PreferenceCategory>
+    
+</PreferenceScreen>
