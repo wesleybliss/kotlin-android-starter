@@ -2,15 +2,7 @@ apply from: rootProject.file(GradleTemplates.AndroidLibrary)
 apply plugin: 'kotlin-kapt'
 
 android {
-    
-    defaultConfig {
-    
-        dataBinding {
-            enabled = true
-        }
-        
-    }
-    
+    dataBinding.enabled = true
 }
 
 dependencies {
@@ -22,17 +14,16 @@ dependencies {
     api Libraries.CoroutinesAndroid
     
     // Android
-    kapt(Libraries.LifecycleCompiler) {
-        exclude group: 'com.google.guava'
-    }
     api Libraries.LifecycleExtensions
     api Libraries.ConstraintLayout
     api Libraries.RecyclerView
     api Libraries.CardView
+    kapt Libraries.LifecycleCompiler
     
     // Android KTX
     api Libraries.AndroidX.Core
     api Libraries.AndroidX.Fragment
+    api Libraries.AndroidX.LifecycleRuntime
     api Libraries.AndroidX.LifecycleLiveData
     api Libraries.AndroidX.LifecycleViewModel
     

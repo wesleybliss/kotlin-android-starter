@@ -5,12 +5,15 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.gammagamma.kas.main.databinding.ActivityMainBinding
+import com.gammagamma.kas.navigation.Navigation.launchSettingsActivity
 import com.gammagamma.kas.ui.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     //region Class Members
     
+    private val vm: MainViewModel by viewModel()
     private val pagerAdapter by lazy { MainPagerAdapter(this) }
     
     //endregion Class Members
@@ -20,6 +23,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         
         super.onCreate(savedInstanceState)
+        
+        binding.vm = vm
         
         setupNavigation()
         
@@ -37,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         
         when (item.itemId) {
-            R.id.action_settings -> return true.apply { }
+            R.id.action_settings -> return true.apply { this@MainActivity.launchSettingsActivity() }
         }
         
         return super.onOptionsItemSelected(item)

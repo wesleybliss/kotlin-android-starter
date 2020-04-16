@@ -1,4 +1,4 @@
-package com.kas.app;
+package com.gammagamma.kas.app;
 
 import org.junit.Test;
 

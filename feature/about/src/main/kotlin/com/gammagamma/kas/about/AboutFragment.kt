@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gammagamma.about.R
-import com.gammagamma.about.databinding.FragmentAboutBinding
+import com.gammagamma.kas.about.databinding.FragmentAboutBinding
 import com.gammagamma.kas.ui.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

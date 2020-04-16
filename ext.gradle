@@ -17,7 +17,9 @@ ext.Meta = [
     BuildToolsVersion  : '28.0.3',
     
     VersionCode        : 1,
-    VersionName        : '1.0.0'
+    VersionName        : '1.0.0',
+    
+    PackageNamespace   : 'com.gammagamma.kas'
     
 ]
 
@@ -31,7 +33,7 @@ ext.Modules = [
     UIResources     : ':resources:res-ui',
     SharedResources : ':resources:res-shared',
     library         : ':library',
-    navigation      : ':navigation',
+    Navigation      : ':navigation',
     Network         : ':network',
     Storage         : ':storage',
     

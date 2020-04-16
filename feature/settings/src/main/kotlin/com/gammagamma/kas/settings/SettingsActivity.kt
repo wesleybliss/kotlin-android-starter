@@ -10,6 +10,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(R.layout.activity
         
         super.onCreate(savedInstanceState)
         
+        val foo = binding
+        
     }
     
 }

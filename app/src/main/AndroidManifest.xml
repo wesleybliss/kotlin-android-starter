@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.kas.app"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gammagamma.kas">
     
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +19,7 @@
     -->
     
     <application
-        android:name="com.kas.app.App"
+        android:name=".app.App"
         android:label="@string/app_name"
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -32,23 +32,23 @@
         tools:replace="android:allowBackup"
         tools:overrideLibrary="de.mannodermaus.junit5">
         
-        <activity
+        <!--<activity
             android:name="com.gammagamma.kas.splash.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             
-            <!-- Required for app to appear in app drawer -->
+            &lt;!&ndash; Required for app to appear in app drawer &ndash;&gt;
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             
-        </activity>
+        </activity>-->
         
-        <activity
+        <!--<activity
             android:name="com.gammagamma.kas.main.MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" />-->
         
         <!--<activity
             android:name="Settings"

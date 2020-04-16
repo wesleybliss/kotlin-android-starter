@@ -1,4 +1,4 @@
-package com.gammagamma.about
+package com.gammagamma.kas.navigation
 
 import org.junit.Test
 

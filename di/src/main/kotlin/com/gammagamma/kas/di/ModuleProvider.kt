@@ -14,6 +14,7 @@ object ModuleProvider {
         RetrofitModule,
         CoilModule,
         MoshiModule,
+        NavigationModule,
         StorageModule,
         UIModule,
         MainModule,

@@ -4,4 +4,6 @@ import com.gammagamma.kas.ui.BaseViewModel
 
 class MainViewModel : BaseViewModel() {
     
+    
+    
 }

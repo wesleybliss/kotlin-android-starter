@@ -6,10 +6,11 @@ ext.Libraries = [
     Kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}",
     Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines}",
     CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines}",
+    JavaXAnnotations: "javax.inject:javax.inject:${Versions.JavaXAnnotations}",
     
     // Android
-    LifecycleCompiler: "androidx.lifecycle:lifecycle-common-java8:${Versions.AndroidX.Lifecycle}",
-    LifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.Lifecycle}",
+    LifecycleCompiler: "androidx.lifecycle:lifecycle-common-java8:${Versions.AndroidXLifecycle}",
+    LifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidXLifecycle}",
     ConstraintLayout: "androidx.constraintlayout:constraintlayout:${Versions.ConstraintLayout}",
     RecyclerView: "androidx.recyclerview:recyclerview:${Versions.RecyclerView}",
     ViewPager2: "androidx.viewpager2:viewpager2:${Versions.ViewPager2}",
@@ -17,22 +18,26 @@ ext.Libraries = [
     CardView: "androidx.cardview:cardview:${Versions.CardView}",
     
     AndroidX: [
-        AppCompat: "androidx.appcompat:appcompat:${Versions.AndroidX.AppCompat}",
-        AppCompatRes: "androidx.appcompat:appcompat-resources:${Versions.AndroidX.AppCompat}",
-        Annotation: "androidx.annotation:annotation:${Versions.AndroidX.Annotation}",
-        Core: "androidx.core:core-ktx:${Versions.AndroidX.Core}",
-        Collection: "androidx.collection:collection-ktx:${Versions.AndroidX.Collection}",
-        Fragment: "androidx.fragment:fragment-ktx:${Versions.AndroidX.Fragment}",
-        LifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.Lifecycle}",
-        LifecycleLiveData: "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.Lifecycle}",
-        NavigationRuntime: "androidx.navigation:navigation-runtime-ktx:${Versions.AndroidX.NavigationRuntime}",
-        NavigationFragment: "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.NavigationFragment}",
-        NavigationUI: "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.NavigationUI}",
-        Palette: "androidx.palette:palette-ktx:${Versions.AndroidX.Palette}",
-        Room: "androidx.room:room-ktx:${Versions.AndroidX.Room}",
-        Sqlite: "androidx.sqlite:sqlite-ktx:${Versions.AndroidX.Sqlite}",
-        LifecycleViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidX.Lifecycle}",
-        WorkRuntime: "androidx.work:work-runtime-ktx:${Versions.AndroidX.WorkRuntime}"
+        AppCompat: "androidx.appcompat:appcompat:${Versions.AndroidX}",
+        AppCompatRes: "androidx.appcompat:appcompat-resources:${Versions.AndroidXAnnotation}",
+        Annotation: "androidx.annotation:annotation:${Versions.AndroidXAnnotation}",
+        Core: "androidx.core:core-ktx:${Versions.AndroidX}",
+        Collection: "androidx.collection:collection-ktx:${Versions.AndroidX}",
+        Fragment: "androidx.fragment:fragment-ktx:${Versions.AndroidXFragment}",
+        LifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidXLifecycle}",
+        LifecycleLiveData: "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidXLifecycle}",
+        NavigationRuntime: "androidx.navigation:navigation-runtime-ktx:${Versions.AndroidXNavigation}",
+        NavigationFragment: "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidXNavigation}",
+        NavigationUI: "androidx.navigation:navigation-ui-ktx:${Versions.AndroidXNavigation}",
+        Palette: "androidx.palette:palette-ktx:${Versions.AndroidX}",
+        Room: "androidx.room:room-ktx:${Versions.AndroidXRoom}",
+        
+        Sqlite: "androidx.sqlite:sqlite-ktx:${Versions.AndroidXX.Sqlite}",
+        
+        LifecycleViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidXLifecycle}",
+        
+        WorkRuntime: "androidx.work:work-runtime-ktx:${Versions.AndroidXX.WorkRuntime}"
+        
     ],
     
     // Android Extra

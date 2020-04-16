@@ -1,4 +1,4 @@
-package com.gammagamma.domain
+package com.gammagamma.kas.about
 
 import org.junit.Test
 

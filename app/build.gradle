@@ -5,14 +5,14 @@ apply plugin: 'kotlin-kapt'
 
 apply from: rootProject.file(GradleIncludes.BuildTypes)
 apply from: rootProject.file(GradleIncludes.SigningConfigs)
-apply from: rootProject.file(GradleIncludes.FeatureModules)
+//apply from: rootProject.file(GradleIncludes.FeatureModules)
 
 android {
     
     buildToolsVersion Meta.BuildToolsVersion
     
     defaultConfig {
-        applicationId "com.kas.app"
+        applicationId Meta.PackageNamespace
         dataBinding.enabled = true
     }
     

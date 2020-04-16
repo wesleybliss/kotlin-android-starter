@@ -81,6 +81,8 @@ dependencies {
     api Libraries.Koin
     api Libraries.KoinViewModel
     
+    api Libraries.JavaXAnnotations
+    
     testApi Libraries.JUnit
     /*testImplementation Libraries.KoinTest
     androidTestImplementation Libraries.TestRunner

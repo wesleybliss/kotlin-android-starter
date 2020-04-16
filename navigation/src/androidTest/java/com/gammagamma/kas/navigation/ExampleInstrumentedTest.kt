@@ -1,4 +1,4 @@
-package com.gammagamma.about
+package com.gammagamma.kas.navigation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.gammagamma.about.test", appContext.packageName)
+        assertEquals("com.gammagamma.kas.navigation.test", appContext.packageName)
     }
 }

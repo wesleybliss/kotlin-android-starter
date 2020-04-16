@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gammagamma.home.R
-import com.gammagamma.home.databinding.FragmentHomeBinding
+import com.gammagamma.kas.home.databinding.FragmentHomeBinding
 import com.gammagamma.kas.ui.BaseFragment
 import com.gammagamma.kas.ui.extensions.confirm
 import com.gammagamma.kas.ui.extensions.initWithDefaults

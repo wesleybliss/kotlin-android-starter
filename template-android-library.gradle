@@ -6,8 +6,11 @@ dependencies {
     if (!["logging", "res-shared"].any { name.contains(it) })
         api project(Modules.SharedResources)
     
-    api Libraries.Koin
-    api Libraries.KoinViewModel
+    if (!["navigation", "logging", "res-shared", "ui"].any { name.contains(it) })
+        api project(Modules.Navigation)
+    
+    /*api Libraries.Koin
+    api Libraries.KoinViewModel*/
     
     api Libraries.ThreeTenABP
     

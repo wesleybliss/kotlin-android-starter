@@ -1,11 +1,12 @@
 package com.gammagamma.kas.di.module
 
-import com.gammagamma.kas.di.Navigation
-import com.kas.app.INavigation
+import android.app.Activity
+import com.gammagamma.kas.navigation.TopActivityProvider
 import org.koin.dsl.module
+import javax.inject.Provider
 
 val NavigationModule = module { 
     
-    single<com.kas.app.INavigation> { Navigation }
+    single<Provider<Activity>> { TopActivityProvider() }
     
 }

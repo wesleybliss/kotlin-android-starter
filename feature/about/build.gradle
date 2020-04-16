@@ -2,11 +2,7 @@ apply from: rootProject.file(GradleTemplates.AndroidLibrary)
 apply plugin: 'kotlin-kapt'
 
 android {
-    defaultConfig {
-        dataBinding {
-            enabled = true
-        }
-    }
+    dataBinding.enabled = true
 }
 
 dependencies {

@@ -4,5 +4,8 @@ dependencies {
     
     api Libraries.Kotlin
     
+    testImplementation Libraries.JUnit
+    testImplementation Libraries.Truth
+    
 }
 

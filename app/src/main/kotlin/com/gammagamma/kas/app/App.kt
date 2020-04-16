@@ -1,4 +1,4 @@
-package com.kas.app
+package com.gammagamma.kas.app
 
 import android.app.Application
 import com.gammagamma.kas.di.ModuleProvider
@@ -34,6 +34,7 @@ class App : Application() {
         }
         
         getKoin().get<IStorageProvider>().init()
+        //registerActivityLifecycleCallbacks(getKoin().get<Provider<Activity>>().callbacks)
         
     }
     

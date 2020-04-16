@@ -1,11 +1,19 @@
 apply from: rootProject.file(GradleTemplates.AndroidLibrary)
 apply from: rootProject.file(GradleIncludes.FeatureModules)
+apply plugin: 'kotlin-kapt'
+
+// All modules that depend on modules using databinding must also
+// enable databinding or you will get extremely confusing errors
+android {
+    dataBinding.enabled = true
+}
 
 dependencies {
     
     implementation project(Modules.UI)
     implementation project(Modules.Network)
     implementation project(Modules.Storage)
+    implementation project(Modules.Navigation)
     
     // Required for the ViewModel domain abstractions
     implementation Libraries.AndroidX.LifecycleViewModel

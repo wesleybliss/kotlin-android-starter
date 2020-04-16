@@ -3,7 +3,6 @@ package com.gammagamma.kas.home
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.gammagamma.home.R
 import com.gammagamma.kas.domain.model.User
 import com.gammagamma.kas.ui.extensions.inflate
 import kotlinx.android.synthetic.main.row_user.view.*
