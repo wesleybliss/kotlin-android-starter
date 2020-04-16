@@ -83,7 +83,7 @@ dependencies {
     
     api Libraries.JavaXAnnotations
     
-    testApi Libraries.JUnit
+    testImplementation Libraries.JUnit
     /*testImplementation Libraries.KoinTest
     androidTestImplementation Libraries.TestRunner
     androidTestImplementation Libraries.TestEspresso*/

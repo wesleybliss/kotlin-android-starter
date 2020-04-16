@@ -12,7 +12,7 @@ ext.Libraries = [
         
         // Support
         Core: "androidx.core:core-ktx:${Versions.AndroidX.Core}",
-        AppCompat: "androidx.appcompat:appcompat:${Versions.AndroidX.Core}",
+        AppCompat: "androidx.appcompat:appcompat:${Versions.AndroidX.AppCompat}",
         AppCompatRes: "androidx.appcompat:appcompat-resources:${Versions.AndroidX.AppCompat}",
         Annotation: "androidx.annotation:annotation:${Versions.AndroidX.Annotation}",
         Collection: "androidx.collection:collection-ktx:${Versions.AndroidX.Core}",

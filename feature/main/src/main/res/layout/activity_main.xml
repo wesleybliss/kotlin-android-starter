@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
     
     <data>
+        
         <variable
             name="vm"
             type="com.gammagamma.kas.main.MainViewModel" />
+        
     </data>
     
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,22 +19,7 @@
         android:fitsSystemWindows="true"
         tools:context="com.gammagamma.kas.main.MainActivity">
         
-        <!-- @todo Not sure if this is needed
-            android:paddingTop="@dimen/appbar_padding_top" -->
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-            
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimaryDark"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-        
-        </com.google.android.material.appbar.AppBarLayout>
+        <include layout="@layout/app_bar" />
         
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerMain"
@@ -48,7 +35,7 @@
             android:layout_gravity="bottom"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/navigation" />
-        
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
     
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="vm"
+            type="com.gammagamma.kas.kitchensink.KitchenSinkViewModel" />
+    </data>
+    
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.gammagamma.kas.kitchensink.KitchenSinkActivity">
+        
+        <include layout="@layout/app_bar" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:gravity="center"
+                android:text="@string/kitchensink_overview"
+                />
+            
+            <include
+                bind:vm="@{vm}"
+                layout="@layout/partial_permissions_check" />
+            
+        </LinearLayout>
+        
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    
+</layout>

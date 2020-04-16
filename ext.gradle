@@ -44,6 +44,7 @@ ext.Modules = [
     Home            : ':feature:home',
     About           : ':feature:about',
     Feed            : ':feature:feed',
+    KitchenSink     : ':feature:kitchensink',
     Settings        : ':feature:settings',
     
 ]
@@ -54,6 +55,7 @@ ext.FeatureModules = [
     Modules.Home,
     Modules.About,
     Modules.Feed,
+    Modules.KitchenSink,
     Modules.Settings
 ]
 

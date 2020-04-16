@@ -35,4 +35,8 @@
         
     </style>
     
+    <style name="KitchenSinkSection">
+        <item name="android:padding">20dp</item>
+    </style>
+    
 </resources>

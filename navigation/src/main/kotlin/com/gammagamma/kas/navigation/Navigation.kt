@@ -47,6 +47,7 @@ object Navigation : KoinComponent {
     
     private const val ACTIVITY_SPLASH = "SplashActivity"
     private const val ACTIVITY_MAIN = "MainActivity"
+    private const val ACTIVITY_KITCHEN_SINK = "KitchenSinkActivity"
     private const val ACTIVITY_SETTINGS = "SettingsActivity"
     
     
@@ -276,6 +277,13 @@ object Navigation : KoinComponent {
         newTask: Boolean = false,
         clearTask: Boolean = false) =
         launch(ACTIVITY_MAIN, options, newTask, clearTask, *extras)
+    
+    fun Context.launchKitchenSinkActivity(
+        vararg extras: Pair<String, Any?>?,
+        options: ActivityOptionsCompat? = null,
+        newTask: Boolean = false,
+        clearTask: Boolean = false) =
+        launch(ACTIVITY_KITCHEN_SINK, options, newTask, clearTask, *extras)
     
     fun Context.launchSettingsActivity(
         vararg extras: Pair<String, Any?>?,

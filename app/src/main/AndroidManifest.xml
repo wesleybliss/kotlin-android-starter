@@ -32,29 +32,6 @@
         tools:replace="android:allowBackup"
         tools:overrideLibrary="de.mannodermaus.junit5">
         
-        <!--<activity
-            android:name="com.gammagamma.kas.splash.SplashActivity"
-            android:label="@string/app_name"
-            android:theme="@style/SplashTheme">
-            
-            &lt;!&ndash; Required for app to appear in app drawer &ndash;&gt;
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            
-        </activity>-->
-        
-        <!--<activity
-            android:name="com.gammagamma.kas.main.MainActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" />-->
-        
-        <!--<activity
-            android:name="Settings"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" />-->
-        
     </application>
     
 </manifest>

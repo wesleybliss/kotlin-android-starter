@@ -14,6 +14,7 @@ dependencies {
     api Libraries.CoroutinesAndroid
     
     api Libraries.AndroidX.Core
+    api Libraries.AndroidX.AppCompat
     api Libraries.AndroidX.Fragment
     api Libraries.AndroidX.LifecycleRuntime
     api Libraries.AndroidX.LifecycleLiveData

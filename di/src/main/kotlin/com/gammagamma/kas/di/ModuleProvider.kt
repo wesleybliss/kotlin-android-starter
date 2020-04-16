@@ -20,7 +20,8 @@ object ModuleProvider {
         MainModule,
         AboutModule,
         HomeModule,
-        FeedModule
+        FeedModule,
+        KitchenSinkModule
     )
     
 }

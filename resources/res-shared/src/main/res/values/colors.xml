@@ -10,4 +10,8 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
     
+    <color name="colorDangerText">#BB2222</color>
+    
+    <color name="colorSuccessText">#22BB22</color>
+    
 </resources>

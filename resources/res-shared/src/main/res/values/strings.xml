@@ -3,6 +3,7 @@
 
     <string name="app_name">Kotlin Android Starter</string>
     
+    <string name="action_kitchen_sink">Kitchen Sink</string>
     <string name="action_settings">Settings</string>
     
     <string name="tab_home">HOME</string>

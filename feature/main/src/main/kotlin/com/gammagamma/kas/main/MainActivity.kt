@@ -5,11 +5,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.gammagamma.kas.main.databinding.ActivityMainBinding
+import com.gammagamma.kas.navigation.Navigation.launchKitchenSinkActivity
 import com.gammagamma.kas.navigation.Navigation.launchSettingsActivity
 import com.gammagamma.kas.ui.BaseActivity
+import com.gammagamma.kas.ui.BaseToolbarActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : BaseToolbarActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     //region Class Members
     
@@ -42,6 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         
         when (item.itemId) {
+            R.id.action_kitchen_sink -> return true.apply { this@MainActivity.launchKitchenSinkActivity() }
             R.id.action_settings -> return true.apply { this@MainActivity.launchSettingsActivity() }
         }
         
@@ -55,7 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private fun setupNavigation() {
         
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(toolbar)
         
         binding.bottomNavigation.setOnNavigationItemSelectedListener { changeFragment(it.itemId) }
         
@@ -75,17 +78,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         when (id) {
             R.id.navigation_page_a -> {
                 binding.viewPagerMain.currentItem = 0
-                binding.toolbar.title = getString(R.string.home_title)
+                toolbar.title = getString(R.string.home_title)
                 return true
             }
             R.id.navigation_page_b -> {
                 binding.viewPagerMain.currentItem = 1
-                binding.toolbar.title = getString(R.string.feed_title)
+                toolbar.title = getString(R.string.feed_title)
                 return true
             }
             R.id.navigation_page_c -> {
                 binding.viewPagerMain.currentItem = 2
-                binding.toolbar.title = getString(R.string.about_title)
+                toolbar.title = getString(R.string.about_title)
                 return true
             }
         }

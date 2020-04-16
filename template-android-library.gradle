@@ -9,9 +9,6 @@ dependencies {
     if (!["navigation", "logging", "res-shared", "ui"].any { name.contains(it) })
         api project(Modules.Navigation)
     
-    /*api Libraries.Koin
-    api Libraries.KoinViewModel*/
-    
     api Libraries.ThreeTenABP
     
     api Libraries.Splitties.Activities

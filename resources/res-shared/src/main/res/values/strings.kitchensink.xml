@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="kitchensink_title">Kitchen Sink</string>
+    <string name="kitchensink_overview">
+        A growing collection of miscellaneous examples.
+    </string>
+    
+</resources>
