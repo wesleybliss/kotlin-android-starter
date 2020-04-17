@@ -1,12 +1,12 @@
-apply from: rootProject.file(GradleTemplates.AndroidLibrary)
-/*apply plugin: 'com.squareup.sqldelight'
+apply from: rootProject.file(GradleTemplates.KotlinLibrary)
+apply plugin: 'com.squareup.sqldelight'
 
 sqldelight {
     
     // Database name
     Database {
         
-        // Package name used for the generated MyDatabase.kt
+        // Package name used for the generated Database.kt
         packageName = Meta.PackageNamespace
         
         // An array of folders where the plugin will read your '.sq' and '.sqm' 
@@ -19,7 +19,7 @@ sqldelight {
         // of the project. These files are used to verify that migrations yield 
         // a database with the latest schema. Defaults to null so the verification 
         // tasks will not be created.
-        schemaOutputDirectory = file("storage/src/main/sqldelight/com/gammagamma/kas/storage")
+        schemaOutputDirectory = file("db/src/main/sqldelight/com/gammagamma/kas/db")
         
         // Optionally specify schema dependencies on other gradle projects
         // dependency project(':OtherProject')
@@ -30,15 +30,13 @@ sqldelight {
     // Defaults to true.
     // linkSqlite = false
     
-}*/
+}
 
 dependencies {
-    
-    implementation Libraries.Hawk
     
     //implementation Libraries.Room
     //kapt Libraries.RoomCompiler
     
-    //api Libraries.SQLDelightAndroidDriver
+    api Libraries.SQLDelightAndroidDriver
     
 }

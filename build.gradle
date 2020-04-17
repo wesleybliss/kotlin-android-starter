@@ -2,6 +2,9 @@
 buildscript {
     
     apply from: rootProject.file('versions.gradle')
+    ext {
+        kotlin_version = '1.4-M1'
+    }
     
     repositories {
         google()

@@ -1,0 +1,17 @@
+import com.gammagamma.kas.db.data.Address;
+
+CREATE TABLE user (
+    id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    email TEXT NOT NULL,
+    name TEXT,
+    address INTEGER as Address,
+    phone TEXT,
+    
+    FOREIGN KEY(address) REFERENCES address(id)
+);
+
+selectAll:
+SELECT * FROM user;
+
+insert:
+INSERT INTO user (id, email, name, address, phone) VALUES (?, ?, ?, ?, ?);

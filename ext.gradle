@@ -36,6 +36,7 @@ ext.Modules = [
     Navigation      : ':navigation',
     Network         : ':network',
     Storage         : ':storage',
+    DB              : ':db',
     
     UI              : ':ui',
     

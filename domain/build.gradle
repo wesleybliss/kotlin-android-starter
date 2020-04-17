@@ -3,7 +3,8 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     
-    // Logging
+    api project(Modules.DB)
+    
     implementation Libraries.Timber
     
     implementation Libraries.ThreeTenABP

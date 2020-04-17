@@ -1,0 +1,19 @@
+CREATE TABLE address (
+    id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    street TEXT NOT NULL,
+    suite TEXT,
+    city TEXT,
+    zipcode TEXT
+);
+
+selectAll:
+SELECT * FROM address;
+
+insert:
+INSERT INTO address (
+    id,
+    street,
+    suite,
+    city,
+    zipcode
+) VALUES (?, ?, ?, ?, ?);

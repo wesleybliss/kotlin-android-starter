@@ -14,6 +14,7 @@ dependencies {
     implementation project(Modules.UI)
     implementation project(Modules.Network)
     implementation project(Modules.Storage)
+    implementation project(Modules.DB)
     implementation project(Modules.Navigation)
     
     // Required for the ViewModel domain abstractions

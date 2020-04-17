@@ -1,25 +1,22 @@
 package com.gammagamma.kas.domain.model
 
-import com.gammagamma.kas.db.data.Address
-import com.gammagamma.kas.db.data.User
 import com.squareup.moshi.JsonClass
 
-@Suppress("unused")
 @JsonClass(generateAdapter = true)
-data class User(
+data class UserX(
     
-    override var id: Long,
-
-    override var email: String,
-
-    override var name: String,
+    var id: Int,
+    
+    var email: String,
+    
+    var name: String,
     //var dob: OffsetDateTime,
+    
+    var address: Address,
+    
+    var phone: String
 
-    override var address: Address,
-
-    override var phone: String
-
-) : User {
+) {
     
     val firstName get() = getNamePart(0)
     val lastName get() = getNamePart(1)
@@ -28,4 +25,3 @@ data class User(
         try { name.split(" ")[part] } catch (e: Exception) { "" }
     
 }
-
