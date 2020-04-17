@@ -53,7 +53,9 @@ ext.Libraries = [
     // Storage
     Hawk: "com.orhanobut:hawk:${Versions.Hawk}",
     Room: "androidx.room:room-runtime:${Versions.AndroidX.Room}",
-    RoomCompiler: "androidx.room:room-compiler:${Versions.Room}",
+    RoomCompiler: "androidx.room:room-compiler:${Versions.AndroidX.Room}",
+    RoomExtensions: "androidx.room:room-ktx:${Versions.AndroidX.Room}",
+    RoomTestHelpers: "androidx.room:room-testing:${Versions.AndroidX.Room}",
     SQLDelightAndroidDriver: "com.squareup.sqldelight:android-driver:${Versions.SQLDelightAndroidDriver}",
     
     // Networking
