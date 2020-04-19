@@ -1,6 +1,12 @@
 package com.gammagamma.kas.di.module
 
-import com.gammagamma.kas.Database
+import android.content.Context
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.gammagamma.kas.db.adapter.UserIdSqlAdapter
+import com.gammagamma.kas.db.adapter.AddressIdSqlAdapter
+import com.gammagamma.kas.sqldelight.Database
+import com.gammagamma.kas.sqldelight.data.Address
+import com.gammagamma.kas.sqldelight.data.User
 import com.gammagamma.kas.domain.storage.IStorageProvider
 import com.gammagamma.kas.storage.HawkStorageProvider
 import com.squareup.sqldelight.android.AndroidSqliteDriver
@@ -11,7 +17,25 @@ val StorageModule = module {
     
     single<IStorageProvider> { HawkStorageProvider() }
     
-    single<SqlDriver> { AndroidSqliteDriver(Database.Schema, get(), "kas.db") }
-    single { Database(get()) }
+    single<SqlDriver> { createAndroidSqliteDriver(get()) }
+    single { createDatabase(get()) }
     
 }
+
+private fun createAndroidSqliteDriver(context: Context) = AndroidSqliteDriver(
+    schema = Database.Schema,
+    context = context,
+    name = "kas.db",
+    callback = object : AndroidSqliteDriver.Callback(Database.Schema) {
+        // Enable foreign keys
+        override fun onOpen(db: SupportSQLiteDatabase) {
+            db.execSQL("PRAGMA foreign_keys=ON;")
+        }
+    }
+)
+
+private fun createDatabase(driver: SqlDriver) = Database(
+    driver,
+    Address.Adapter(AddressIdSqlAdapter),
+    User.Adapter(UserIdSqlAdapter, AddressIdSqlAdapter)
+)

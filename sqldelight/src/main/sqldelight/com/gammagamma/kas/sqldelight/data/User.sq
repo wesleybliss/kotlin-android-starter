@@ -1,0 +1,23 @@
+import com.gammagamma.kas.domain.db.UserId;
+import com.gammagamma.kas.domain.db.AddressId;
+import com.gammagamma.kas.db.data.Address;
+
+CREATE TABLE user (
+    id INTEGER AS UserId NOT NULL UNIQUE PRIMARY KEY,
+    email TEXT NOT NULL,
+    name TEXT,
+    address_id INTEGER AS AddressId,
+    phone TEXT,
+    
+    FOREIGN KEY(address_id)
+        REFERENCES address(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+selectAll:
+SELECT * FROM user
+LEFT JOIN address ON address_id = address.id;
+
+insert:
+INSERT INTO user (id, email, name, address_id, phone) VALUES (?, ?, ?, ?, ?);

@@ -1,5 +1,7 @@
+import com.gammagamma.kas.domain.db.AddressId;
+
 CREATE TABLE address (
-    id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    id INTEGER AS AddressId NOT NULL UNIQUE PRIMARY KEY,
     street TEXT NOT NULL,
     suite TEXT,
     city TEXT,
