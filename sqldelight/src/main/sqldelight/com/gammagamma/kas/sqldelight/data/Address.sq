@@ -8,8 +8,16 @@ CREATE TABLE address (
     zipcode TEXT
 );
 
+selectCount:
+SELECT COUNT(address.id) FROM address;
+
 selectAll:
-SELECT * FROM address;
+SELECT * FROM address
+ORDER BY address.id DESC;
+
+selectById:
+SELECT * FROM address
+WHERE address.id = ?;
 
 insert:
 INSERT INTO address (
@@ -19,3 +27,12 @@ INSERT INTO address (
     city,
     zipcode
 ) VALUES (?, ?, ?, ?, ?);
+
+insertObject:
+INSERT INTO address (
+    id,
+    street,
+    suite,
+    city,
+    zipcode
+) VALUES ?;

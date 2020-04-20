@@ -55,6 +55,7 @@ ext.Libraries = [
     Room: "androidx.room:room-runtime:${Versions.AndroidX.Room}",
     RoomCompiler: "androidx.room:room-compiler:${Versions.Room}",
     SQLDelightAndroidDriver: "com.squareup.sqldelight:android-driver:${Versions.SQLDelightAndroidDriver}",
+    SQLDelightCoroutines: "com.squareup.sqldelight:coroutines-extensions-jvm:${Versions.SQLDelightAndroidDriver}",
     
     // Networking
     ThreeTenABP: "com.jakewharton.threetenabp:threetenabp:${Versions.ThreeTenABP}",

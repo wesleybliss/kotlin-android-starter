@@ -3,6 +3,7 @@ package com.gammagamma.kas.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import com.gammagamma.kas.domain.model.User
 import com.gammagamma.kas.domain.net.Result
 import com.gammagamma.kas.resources.error.filterError
 import com.gammagamma.kas.ui.extensions.addSources
@@ -11,9 +12,11 @@ import com.gammagamma.kas.logging.plank
 import com.gammagamma.kas.ui.observable.ConnectivityLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.threeten.bp.Instant
+import kotlin.reflect.KSuspendFunction0
 
 /**
  * Base, native, Android Architecture Components ViewModel,
@@ -71,6 +74,45 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
         })
     }
     
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun <T> storageRequest(
+        onRequest: KSuspendFunction0<Flow<T>>,
+        onError: (t: Throwable) -> Unit,
+        onSuccess: (data: T?) -> Unit
+    ) {
+        
+        viewModelScope.launch {
+            
+            val result = onRequest()
+            
+            /*if (result is Result.Error) {
+                
+                error.postValue(filterError(result.exception).message)
+                onError(result.exception)
+                
+                return@launch
+                
+            }*/
+            
+            error.postValue(null)
+            loading.postValue(false)
+            
+            //onSuccess(result)
+            
+        }
+        
+    }
+    
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun <T> storageRequest(
+        onRequest: KSuspendFunction0<Flow<T>>,
+        onSuccess: (data: T?) -> Unit
+    ) = storageRequest(
+        onRequest = onRequest,
+        onError = {},
+        onSuccess = onSuccess
+    )
+    
     /**
      * Makes a network/API request, automatically setting error on
      * failure, else running the [onSuccess] callback if successful
@@ -88,7 +130,7 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
         requestId: Long = Instant.now().toEpochMilli(),
         onRequest: suspend () -> Result<T>,
         onError: (t: Throwable) -> Unit,
-        onSuccess: (data: T) -> Unit,
+        onSuccess: (data: T?) -> Unit,
         retryLimit: Int? = null,
         retryIntervalMillis: Long? = null,
         isRetry: Boolean = false
@@ -100,11 +142,12 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
             
             if (!isRetry) error.postValue(null)
             loading.postValue(true)
-    
+            
             val result = onRequest()
             
             if (result is Result.Error) {
                 
+                result.exception.printStackTrace()
                 error.postValue(filterError(result.exception).message)
                 onError(result.exception)
                 
@@ -157,7 +200,7 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
      */
     fun <T : Any> networkRequest(
         onRequest: suspend () -> Result<T>,
-        onSuccess: (data: T) -> Unit,
+        onSuccess: (data: T?) -> Unit,
         retryLimit: Int? = null,
         retryIntervalMillis: Long? = null
     ) = networkRequest(

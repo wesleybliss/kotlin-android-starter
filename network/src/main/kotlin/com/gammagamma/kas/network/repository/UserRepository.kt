@@ -6,7 +6,7 @@ import com.gammagamma.kas.network.service.ApiService
 import com.gammagamma.kas.domain.net.IUsersRepository
 import com.gammagamma.kas.logging.plankE
 
-class UsersRepository(private val apiService: ApiService) : IUsersRepository {
+class UserRepository(private val apiService: ApiService) : IUsersRepository {
     
     override suspend fun fetchAll(): Result<List<User>> = try {
         Result.Success(apiService.getUsers())

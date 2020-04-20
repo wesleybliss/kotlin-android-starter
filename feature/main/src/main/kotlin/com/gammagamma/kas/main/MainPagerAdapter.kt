@@ -7,7 +7,9 @@ import com.gammagamma.kas.about.AboutFragment
 import com.gammagamma.kas.feed.FeedFragment
 import com.gammagamma.kas.home.HomeFragment
 import com.gammagamma.kas.logging.plank
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class MainPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
     
     private val items by lazy {

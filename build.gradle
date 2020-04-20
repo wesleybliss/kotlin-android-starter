@@ -2,11 +2,10 @@
 buildscript {
     
     apply from: rootProject.file('versions.gradle')
-    ext {
-        kotlin_version = '1.4-M1'
-    }
     
     repositories {
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url 'https://kotlin.bintray.com/kotlinx' }
         google()
         jcenter()
         maven { url 'https://maven.fabric.io/public' }
@@ -32,6 +31,8 @@ buildscript {
 allprojects {
     
     repositories {
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url 'https://kotlin.bintray.com/kotlinx' }
         google()
         jcenter()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }

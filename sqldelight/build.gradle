@@ -41,5 +41,6 @@ dependencies {
     //kapt Libraries.RoomCompiler
     
     api Libraries.SQLDelightAndroidDriver
+    api Libraries.SQLDelightCoroutines
     
 }

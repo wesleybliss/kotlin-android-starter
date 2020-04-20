@@ -9,8 +9,10 @@ import com.gammagamma.kas.navigation.Navigation.launchKitchenSinkActivity
 import com.gammagamma.kas.navigation.Navigation.launchSettingsActivity
 import com.gammagamma.kas.ui.BaseActivity
 import com.gammagamma.kas.ui.BaseToolbarActivity
+import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@InternalCoroutinesApi
 class MainActivity : BaseToolbarActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     //region Class Members

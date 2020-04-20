@@ -4,12 +4,14 @@ import android.app.Application
 import com.gammagamma.kas.di.ModuleProvider
 import com.gammagamma.kas.domain.storage.IStorageProvider
 import com.gammagamma.kas.logging.Plank
+import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.core.logger.PrintLogger
 
+@InternalCoroutinesApi
 class App : Application() {
     
     companion object {

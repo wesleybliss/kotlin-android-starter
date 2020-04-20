@@ -3,7 +3,7 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     
-    //implementation project(Modules.DB)
+    implementation Libraries.Coroutines
     
     implementation Libraries.Timber
     

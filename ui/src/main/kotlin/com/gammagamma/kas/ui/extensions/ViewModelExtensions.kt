@@ -16,12 +16,23 @@ inline fun <reified T> mutableLiveDataOf(
     initialValue: T?,
     defaultValue: T? = null,
     post: Boolean = false,
-    noinline fn: (MutableLiveData<T>.() -> Unit)? = null
+    noinline fn: (() -> Unit)? = null
 ) = MutableLiveData<T>().apply {
     if (!post) value = initialValue ?: defaultValue
     else postValue(initialValue ?: defaultValue)
-    fn?.invoke(this)
+    fn?.invoke()
 }
+
+inline fun <reified T> mutableLiveDataOf(
+    initialValue: T?,
+    post: Boolean = false,
+    noinline fn: (() -> Unit)? = null
+) = mutableLiveDataOf(initialValue, initialValue, post, fn)
+
+inline fun <reified T> mutableLiveDataOf(
+    initialValue: T?,
+    noinline fn: (() -> Unit)? = null
+) = mutableLiveDataOf(initialValue, initialValue, false, fn)
 
 inline fun <reified T> mediatorLiveDataOf(
     initialValue: T?,

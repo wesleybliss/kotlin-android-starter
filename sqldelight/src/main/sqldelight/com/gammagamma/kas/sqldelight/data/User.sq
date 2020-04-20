@@ -1,6 +1,5 @@
 import com.gammagamma.kas.domain.db.UserId;
 import com.gammagamma.kas.domain.db.AddressId;
-import com.gammagamma.kas.db.data.Address;
 
 CREATE TABLE user (
     id INTEGER AS UserId NOT NULL UNIQUE PRIMARY KEY,
@@ -15,9 +14,18 @@ CREATE TABLE user (
         ON DELETE CASCADE
 );
 
+selectCount:
+SELECT COUNT(user.id) FROM user;
+
 selectAll:
 SELECT * FROM user
-LEFT JOIN address ON address_id = address.id;
+LEFT JOIN address ON address_id = address.id
+ORDER BY user.id DESC;
+
+selectById:
+SELECT * FROM user
+LEFT JOIN address ON address_id = address.id
+WHERE user.id = ?;
 
 insert:
-INSERT INTO user (id, email, name, address_id, phone) VALUES (?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO user (id, email, name, address_id, phone) VALUES (?, ?, ?, ?, ?);

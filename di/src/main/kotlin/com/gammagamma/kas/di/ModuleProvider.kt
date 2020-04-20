@@ -5,7 +5,9 @@ import com.gammagamma.kas.network.module.CoilModule
 import com.gammagamma.kas.network.module.MoshiModule
 import com.gammagamma.kas.network.module.OkHttpModule
 import com.gammagamma.kas.network.module.RetrofitModule
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 object ModuleProvider {
     
     val modules = listOf(
@@ -14,6 +16,7 @@ object ModuleProvider {
         RetrofitModule,
         CoilModule,
         MoshiModule,
+        DatabaseModule,
         NavigationModule,
         StorageModule,
         UIModule,
