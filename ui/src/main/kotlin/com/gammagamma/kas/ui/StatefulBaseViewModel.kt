@@ -3,7 +3,6 @@ package com.gammagamma.kas.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.gammagamma.kas.domain.model.User
 import com.gammagamma.kas.domain.net.Result
 import com.gammagamma.kas.resources.error.filterError
 import com.gammagamma.kas.ui.extensions.addSources

@@ -2,8 +2,6 @@ package com.gammagamma.kas.di.module
 
 import android.content.Context
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.gammagamma.kas.db.adapter.UserIdSqlAdapter
-import com.gammagamma.kas.db.adapter.AddressIdSqlAdapter
 import com.gammagamma.kas.sqldelight.Database
 import com.gammagamma.kas.sqldelight.data.Address
 import com.gammagamma.kas.sqldelight.data.User
@@ -35,7 +33,7 @@ private fun createAndroidSqliteDriver(context: Context) = AndroidSqliteDriver(
 )
 
 private fun createDatabase(driver: SqlDriver) = Database(
-    driver,
+    driver/*,
     Address.Adapter(AddressIdSqlAdapter),
-    User.Adapter(UserIdSqlAdapter, AddressIdSqlAdapter)
+    User.Adapter(UserIdSqlAdapter, AddressIdSqlAdapter)*/
 )

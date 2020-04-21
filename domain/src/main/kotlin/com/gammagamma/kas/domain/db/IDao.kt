@@ -10,7 +10,7 @@ interface IDao<ID, T> {
     suspend fun getCount(): Flow<Long>
     
     suspend fun getAll(): Flow<List<T>?>
-    suspend fun getById(id: ID): Flow<T?>
+    suspend fun getById(id: Long): Flow<T?>
     
     suspend fun insert(value: T)
     

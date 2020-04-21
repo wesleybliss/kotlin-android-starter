@@ -1,13 +1,11 @@
 package com.gammagamma.kas.home
 
 import androidx.lifecycle.viewModelScope
-import com.gammagamma.kas.domain.db.AddressId
 import com.gammagamma.kas.domain.db.IAddressDao
 import com.gammagamma.kas.domain.db.IUserDao
-import com.gammagamma.kas.domain.db.UserId
-import com.gammagamma.kas.domain.model.Address
-import com.gammagamma.kas.domain.model.User
 import com.gammagamma.kas.domain.net.IUsersRepository
+import com.gammagamma.kas.sqldelight.data.Address
+import com.gammagamma.kas.sqldelight.data.User
 import com.gammagamma.kas.ui.StatefulBaseViewModel
 import com.gammagamma.kas.ui.extensions.collectNotNull
 import com.gammagamma.kas.ui.extensions.mutableLiveDataOf
@@ -54,8 +52,8 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
         val userCount = userDao.getCountOnce()
         val addressCount = addressDao.getCountOnce()
         
-        val newAddress = Address(
-            AddressId(addressCount + 1),
+        val newAddress = Address.Impl(
+            addressCount + 1,
             "123 John St.",
             "Fl 4",
             "New York",
@@ -66,11 +64,11 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
         
         delay(1000)
         
-        val newUser = User(
-            id = UserId(userCount + 1),
+        val newUser = User.Impl(
+            id = userCount + 1,
             email = "john@doe.com",
             name = "John Doe",
-            address = newAddress,
+            addressId = newAddress.id,
             phone = ""
         )
             

@@ -1,14 +1,12 @@
 package com.gammagamma.kas.network.adapter
 
-import com.gammagamma.kas.domain.db.AddressId
-import com.gammagamma.kas.domain.db.UserId
 import com.gammagamma.kas.logging.plankE
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
-@Suppress("unused")
+/*@Suppress("unused")
 class AddressIdAdapter {
     
     @FromJson
@@ -31,4 +29,4 @@ class AddressIdAdapter {
         null
     }
     
-}
+}*/

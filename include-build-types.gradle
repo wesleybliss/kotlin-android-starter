@@ -14,7 +14,7 @@ android {
         debug {
             debuggable true
             signingConfig signingConfigs.debug
-            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
+            buildConfigField "String", "API_BASE_URL", "\"https://kas-demo-server.herokuapp.com\""
         }
         
         release {
@@ -22,7 +22,7 @@ android {
             shrinkResources false
             //signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE_URL", "\"https://jsonplaceholder.typicode.com\""
+            buildConfigField "String", "API_BASE_URL", "\"https://https://kas-demo-server.herokuapp.com\""
             
         }
         

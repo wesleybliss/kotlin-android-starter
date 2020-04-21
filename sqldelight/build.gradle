@@ -35,7 +35,7 @@ sqldelight {
 
 dependencies {
     
-    implementation project(Modules.Domain)
+    //implementation project(Modules.Domain)
     
     //implementation Libraries.Room
     //kapt Libraries.RoomCompiler

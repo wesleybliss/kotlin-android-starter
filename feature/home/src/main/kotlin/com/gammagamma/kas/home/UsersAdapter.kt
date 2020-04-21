@@ -3,7 +3,7 @@ package com.gammagamma.kas.home
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.gammagamma.kas.domain.model.User
+import com.gammagamma.kas.sqldelight.data.User
 import com.gammagamma.kas.ui.extensions.inflate
 import kotlinx.android.synthetic.main.row_user.view.*
 
@@ -15,7 +15,7 @@ class UsersAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         
         fun bind(item: User, listener: ((User) -> Unit)? = null) = with(itemView) {
-            textId.text = item.id?.value.toString()
+            textId.text = item.id.toString()
             textName.text = item.name
             textEmail.text = item.email
             setOnClickListener { listener?.invoke(item) }

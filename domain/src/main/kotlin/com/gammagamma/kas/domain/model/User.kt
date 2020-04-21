@@ -1,9 +1,8 @@
 package com.gammagamma.kas.domain.model
 
-import com.gammagamma.kas.domain.db.UserId
-import com.squareup.moshi.JsonClass
+import com.gammagamma.kas.sqldelight.data.User
 
-@Suppress("unused")
+/*@Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class User(
     
@@ -14,7 +13,7 @@ data class User(
     var name: String?,
     //var dob: OffsetDateTime,
     
-    var address: Address,
+    var address: Address?,
     
     var phone: String?
 
@@ -27,5 +26,11 @@ data class User(
         try { (name ?: "").split(" ")[part] }
         catch (e: Exception) { "" }
     
-}
+}*/
 
+val User.firstName get() = getNamePart(0)
+val User.lastName get() = getNamePart(1)
+
+private fun User.getNamePart(part: Int) =
+    try { (name ?: "").split(" ")[part] }
+    catch (e: Exception) { "" }

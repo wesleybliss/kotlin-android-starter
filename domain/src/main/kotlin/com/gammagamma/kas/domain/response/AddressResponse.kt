@@ -1,12 +1,12 @@
-package com.gammagamma.kas.domain.model
+package com.gammagamma.kas.domain.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-/*@JsonClass(generateAdapter = true)
-data class Address(
+@JsonClass(generateAdapter = true)
+data class AddressResponse(
     
-    var id: Long?,
+    var id: Long,
     
     var street: String?,
     var suite: String?,
@@ -15,4 +15,4 @@ data class Address(
     @Json(name = "zipcode")
     var zipCode: String?
 
-)*/
+)

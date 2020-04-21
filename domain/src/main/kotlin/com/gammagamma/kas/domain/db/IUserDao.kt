@@ -1,5 +1,5 @@
 package com.gammagamma.kas.domain.db
 
-import com.gammagamma.kas.domain.model.User
+import com.gammagamma.kas.sqldelight.data.User
 
-interface IUserDao : IDao<UserId, User>
+interface IUserDao : IDao<Long, User>

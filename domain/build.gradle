@@ -3,6 +3,8 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     
+    api project(Modules.SqlDelight)
+    
     implementation Libraries.Coroutines
     
     implementation Libraries.Timber

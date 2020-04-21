@@ -1,9 +1,8 @@
 package com.gammagamma.kas.db.dao
 
-import com.gammagamma.kas.domain.db.AddressId
 import com.gammagamma.kas.domain.db.IAddressDao
-import com.gammagamma.kas.domain.model.Address
 import com.gammagamma.kas.sqldelight.Database
+import com.gammagamma.kas.sqldelight.data.Address
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList
 import com.squareup.sqldelight.runtime.coroutines.mapToOne
@@ -15,13 +14,14 @@ class AddressDao(private val db: Database) : IAddressDao {
     // @todo this too?
     private val queries by lazy { db.addressQueries }
     
-    override suspend fun getCountOnce(): Long = queries.selectCount().executeAsOne()
+    override suspend fun getCountOnce(): Long = queries.selectCountAddress().executeAsOne()
     
-    override suspend fun getCount(): Flow<Long> = queries.selectCount().asFlow().mapToOne()
+    override suspend fun getCount(): Flow<Long> = queries.selectCountAddress().asFlow().mapToOne()
     
-    override suspend fun getAll(): Flow<List<Address>?> = queries.selectAll(
-        mapper = {
-            id: AddressId,
+    override suspend fun getAll(): Flow<List<Address>?> =
+        queries.selectAllAddress(
+        /*mapper = {
+            id: Long,
             street: String,
             suite: String?,
             city: String?,
@@ -33,12 +33,12 @@ class AddressDao(private val db: Database) : IAddressDao {
                 city,
                 zipCode
             )
-        }
+        }*/
     ).asFlow().mapToList()
     
-    override suspend fun getById(id: AddressId): Flow<Address?> = queries
-        .selectById(id, mapper = {
-            id: AddressId,
+    override suspend fun getById(id: Long): Flow<Address?> = queries
+        .selectByIdAddress(id/*, mapper = {
+            id: Long,
             street: String,
             suite: String?,
             city: String?,
@@ -50,16 +50,16 @@ class AddressDao(private val db: Database) : IAddressDao {
                 city,
                 zipcode
             )
-        })
+        }*/)
         .asFlow().mapToOne()
     
     override suspend fun insert(value: Address) {
-        queries.insert(
+        queries.insertAddress(
             value.id,
             value.street ?: "",
             value.suite,
             value.city,
-            value.zipCode
+            value.zipcode
         )
     }
 }

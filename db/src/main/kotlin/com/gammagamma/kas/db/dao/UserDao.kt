@@ -1,15 +1,16 @@
 package com.gammagamma.kas.db.dao
 
-import com.gammagamma.kas.domain.db.AddressId
 import com.gammagamma.kas.domain.db.IUserDao
-import com.gammagamma.kas.domain.db.UserId
-import com.gammagamma.kas.domain.model.Address
-import com.gammagamma.kas.domain.model.User
 import com.gammagamma.kas.sqldelight.Database
+import com.gammagamma.kas.sqldelight.data.User
+import com.gammagamma.kas.sqldelight.data.UserWithAddress
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList
 import com.squareup.sqldelight.runtime.coroutines.mapToOne
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.coroutines.flow.transform
 
 class UserDao(private val db: Database) : IUserDao {
     
@@ -20,8 +21,41 @@ class UserDao(private val db: Database) : IUserDao {
         .selectCount().asFlow().mapToOne()
     
     override suspend fun getAll(): Flow<List<User>?> = db.userQueries
-        //.selectAll().asFlow().mapToList() as Flow<List<User>?>
-        .selectAll(mapper = {
+        /*.selectAll().asFlow().mapToList().map*/
+        .usersOrderedById().asFlow().mapToList().mapNotNull { list -> 
+            list.map { it: UserWithAddress ->
+                it as User
+            }
+        }
+        /*.selectAll(mapper = {
+            id,
+            email,
+            name,
+            address,
+            phone,
+            addressId,
+            street,
+            suite,
+            city,
+            zipcode ->
+            User(
+                id = id,
+                email = email,
+                name = name,
+                address = Address(
+                    addressId,
+                    street,
+                    suite,
+                    city,
+                    zipcode
+                ),
+                phone = phone
+            )
+        }).asFlow().mapToList()*/
+    
+    override suspend fun getById(id: Long): Flow<User?> = db.userQueries
+        .selectById(id).asFlow().mapToOne() as Flow<User?>
+        /*.selectById(id, mapper = {
             userId: UserId,
             email: String,
             name: String?,
@@ -45,41 +79,14 @@ class UserDao(private val db: Database) : IUserDao {
                 ),
                 phone = phone
             )
-        }).asFlow().mapToList()
-    
-    override suspend fun getById(id: UserId): Flow<User?> = db.userQueries
-            .selectById(id, mapper = {
-                userId: UserId,
-                email: String,
-                name: String?,
-                _: AddressId?,
-                phone: String?,
-                addressId: AddressId?,
-                street: String?,
-                suite: String?,
-                city: String?,
-                zipcode: String? ->
-                User(
-                    id = userId,
-                    email = email,
-                    name = name,
-                    address = Address(
-                        addressId,
-                        street,
-                        suite,
-                        city,
-                        zipcode
-                    ),
-                    phone = phone
-                )
-            }).asFlow().mapToOne()
+        }).asFlow().mapToOne()*/
     
     override suspend fun insert(value: User) {
         db.userQueries.insert(
             value.id,
-            value.email ?: "",
+            value.email,
             value.name,
-            value.address.id,
+            value.addressId,
             value.phone
         )
     }
