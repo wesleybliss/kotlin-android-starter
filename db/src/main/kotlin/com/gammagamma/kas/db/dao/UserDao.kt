@@ -1,94 +1,39 @@
 package com.gammagamma.kas.db.dao
 
-import com.gammagamma.kas.domain.db.IUserDao
-import com.gammagamma.kas.sqldelight.Database
-import com.gammagamma.kas.sqldelight.data.User
-import com.gammagamma.kas.sqldelight.data.UserWithAddress
-import com.squareup.sqldelight.runtime.coroutines.asFlow
-import com.squareup.sqldelight.runtime.coroutines.mapToList
-import com.squareup.sqldelight.runtime.coroutines.mapToOne
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.mapNotNull
-import kotlinx.coroutines.flow.transform
+import androidx.lifecycle.LiveData
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
+import com.gammagamma.kas.db.model.User
+import org.threeten.bp.OffsetDateTime
 
-class UserDao(private val db: Database) : IUserDao {
+abstract class UserDao : BaseDao<User>() {
     
-    override suspend fun getCountOnce(): Long = db.userQueries
-        .selectCount().executeAsOne()
+    @Query("SELECT COUNT(*) FROM user")
+    abstract fun countRaw(): Int
     
-    override suspend fun getCount(): Flow<Long> = db.userQueries
-        .selectCount().asFlow().mapToOne()
+    @Query("SELECT COUNT(*) FROM user")
+    abstract fun count(): LiveData<Int>
     
-    override suspend fun getAll(): Flow<List<User>?> = db.userQueries
-        /*.selectAll().asFlow().mapToList().map*/
-        .usersOrderedById().asFlow().mapToList().mapNotNull { list -> 
-            list.map { it: UserWithAddress ->
-                it as User
-            }
-        }
-        /*.selectAll(mapper = {
-            id,
-            email,
-            name,
-            address,
-            phone,
-            addressId,
-            street,
-            suite,
-            city,
-            zipcode ->
-            User(
-                id = id,
-                email = email,
-                name = name,
-                address = Address(
-                    addressId,
-                    street,
-                    suite,
-                    city,
-                    zipcode
-                ),
-                phone = phone
-            )
-        }).asFlow().mapToList()*/
+    @Query("SELECT * FROM user ORDER BY modified_at desc")
+    abstract fun getAllRaw(): List<User>
     
-    override suspend fun getById(id: Long): Flow<User?> = db.userQueries
-        .selectById(id).asFlow().mapToOne() as Flow<User?>
-        /*.selectById(id, mapper = {
-            userId: UserId,
-            email: String,
-            name: String?,
-            _: AddressId?,
-            phone: String?,
-            addressId: AddressId?,
-            street: String?,
-            suite: String?,
-            city: String?,
-            zipcode: String? ->
-            User(
-                id = userId,
-                email = email,
-                name = name,
-                address = Address(
-                    addressId,
-                    street,
-                    suite,
-                    city,
-                    zipcode
-                ),
-                phone = phone
-            )
-        }).asFlow().mapToOne()*/
+    @Query("SELECT * FROM user ORDER BY modified_at desc")
+    abstract fun getAll(): LiveData<MutableList<User>>
     
-    override suspend fun insert(value: User) {
-        db.userQueries.insert(
-            value.id,
-            value.email,
-            value.name,
-            value.addressId,
-            value.phone
-        )
-    }
+    @Query("SELECT * FROM user WHERE id = :id LIMIT 1")
+    abstract fun getById(id: Int): User?
+    
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun updateTabRaw(obj: User)
+    
+    /*@Update(onConflict = OnConflictStrategy.REPLACE)
+    open suspend fun update(obj: User) {
+        
+        updateTabRaw(obj.apply {
+            modifiedAt = OffsetDateTime.now()
+        })
+        
+    }*/
     
 }

@@ -1,65 +1,24 @@
 package com.gammagamma.kas.db.dao
 
-import com.gammagamma.kas.domain.db.IAddressDao
-import com.gammagamma.kas.sqldelight.Database
-import com.gammagamma.kas.sqldelight.data.Address
-import com.squareup.sqldelight.runtime.coroutines.asFlow
-import com.squareup.sqldelight.runtime.coroutines.mapToList
-import com.squareup.sqldelight.runtime.coroutines.mapToOne
-import kotlinx.coroutines.flow.Flow
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import com.gammagamma.kas.db.model.Address
+import com.gammagamma.kas.db.model.User
+import com.gammagamma.kas.domain.db.IDao
 
-// @todo I*dao should be abstract not iface, include db constructor??
-class AddressDao(private val db: Database) : IAddressDao {
+interface AddressDao : IDao<Address> {
     
-    // @todo this too?
-    private val queries by lazy { db.addressQueries }
+    @Query("SELECT * FROM user")
+    override fun getAll(): List<Address>
     
-    override suspend fun getCountOnce(): Long = queries.selectCountAddress().executeAsOne()
+    @Query("SELECT * FROM user WHERE id = :userId")
+    override fun getById(userId: Int): Address
     
-    override suspend fun getCount(): Flow<Long> = queries.selectCountAddress().asFlow().mapToOne()
+    @Insert
+    override fun insertAll(vararg users: Address)
     
-    override suspend fun getAll(): Flow<List<Address>?> =
-        queries.selectAllAddress(
-        /*mapper = {
-            id: Long,
-            street: String,
-            suite: String?,
-            city: String?,
-            zipCode: String? ->
-            Address(
-                id,
-                street,
-                suite,
-                city,
-                zipCode
-            )
-        }*/
-    ).asFlow().mapToList()
+    @Delete
+    override fun delete(user: Address)
     
-    override suspend fun getById(id: Long): Flow<Address?> = queries
-        .selectByIdAddress(id/*, mapper = {
-            id: Long,
-            street: String,
-            suite: String?,
-            city: String?,
-            zipcode: String? ->
-            Address(
-                id,
-                street,
-                suite,
-                city,
-                zipcode
-            )
-        }*/)
-        .asFlow().mapToOne()
-    
-    override suspend fun insert(value: Address) {
-        queries.insertAddress(
-            value.id,
-            value.street ?: "",
-            value.suite,
-            value.city,
-            value.zipcode
-        )
-    }
 }

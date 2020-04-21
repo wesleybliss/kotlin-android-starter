@@ -1,5 +1,6 @@
 package com.gammagamma.kas.home
 
+import android.location.Address
 import androidx.lifecycle.viewModelScope
 import com.gammagamma.kas.domain.db.IAddressDao
 import com.gammagamma.kas.domain.db.IUserDao
@@ -20,7 +21,7 @@ import splitties.toast.toast
 @InternalCoroutinesApi
 class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
     
-    private val userDao: IUserDao by inject()
+    private val userDao: UserDao by inject()
     private val addressDao: IAddressDao by inject()
     private val usersRepository: IUsersRepository by inject()
     

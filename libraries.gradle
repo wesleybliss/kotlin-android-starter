@@ -28,6 +28,12 @@ ext.Libraries = [
         Sqlite: "androidx.sqlite:sqlite-ktx:${Versions.AndroidX.Sqlite}",
         WorkRuntime: "androidx.work:work-runtime-ktx:${Versions.AndroidX.WorkRuntime}",
         
+        // Database
+        Room: "androidx.room:room-runtime:${Versions.AndroidX.Room}",
+        RoomKtx: "androidx.room:room-ktx:${Versions.AndroidX.Room}",
+        RoomCompiler: "androidx.room:room-compiler:${Versions.AndroidX.Room}",
+        RoomTestHelpers: "androidx.room:room-testing:${Versions.AndroidX.Room}",
+        
         // Views
         LifecycleCompiler: "androidx.lifecycle:lifecycle-common-java8:${Versions.AndroidX.Lifecycle}",
         LifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.Lifecycle}",
@@ -52,8 +58,6 @@ ext.Libraries = [
     
     // Storage
     Hawk: "com.orhanobut:hawk:${Versions.Hawk}",
-    Room: "androidx.room:room-runtime:${Versions.AndroidX.Room}",
-    RoomCompiler: "androidx.room:room-compiler:${Versions.Room}",
     SQLDelightAndroidDriver: "com.squareup.sqldelight:android-driver:${Versions.SQLDelightAndroidDriver}",
     SQLDelightCoroutines: "com.squareup.sqldelight:coroutines-extensions-jvm:${Versions.SQLDelightAndroidDriver}",
     

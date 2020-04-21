@@ -1,14 +1,20 @@
 package com.gammagamma.kas.di.module
 
-import com.gammagamma.kas.db.dao.AddressDao
-import com.gammagamma.kas.db.dao.UserDao
-import com.gammagamma.kas.domain.db.IAddressDao
-import com.gammagamma.kas.domain.db.IUserDao
+import androidx.room.Room
+import com.gammagamma.kas.db.AppDatabase
 import org.koin.dsl.module
 
 val DatabaseModule = module { 
     
-    single<IUserDao> { UserDao(get()) }
-    single<IAddressDao> { AddressDao(get()) }
+    single {
+        Room.databaseBuilder(
+            get(),
+            AppDatabase::class.java,
+            AppDatabase.databaseName!!
+        ).build()
+    }
+    
+    single { (db: AppDatabase) -> db.userDao() }
+    single { (db: AppDatabase) -> db.addressDao() }
     
 }

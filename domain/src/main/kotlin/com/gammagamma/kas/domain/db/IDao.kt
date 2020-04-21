@@ -1,17 +1,13 @@
 package com.gammagamma.kas.domain.db
 
-import kotlinx.coroutines.flow.Flow
-
-// @todo make ID have iface like CustomDatabaseID
-interface IDao<ID, T> {
+interface IDao<T> {
     
-    suspend fun getCountOnce(): Long
+    fun getAll(): List<T>
     
-    suspend fun getCount(): Flow<Long>
+    fun getById(userId: Int): T
     
-    suspend fun getAll(): Flow<List<T>?>
-    suspend fun getById(id: Long): Flow<T?>
+    fun insertAll(vararg users: T)
     
-    suspend fun insert(value: T)
+    fun delete(user: T)
     
 }
