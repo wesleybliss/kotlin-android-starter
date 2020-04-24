@@ -12,8 +12,10 @@ import com.gammagamma.kas.ui.extensions.observe
 import com.gammagamma.kas.ui.extensions.toast
 import com.gammagamma.kas.logging.plank
 import kotlinx.android.synthetic.main.content_home.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@InternalCoroutinesApi
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     
     private val vm: HomeViewModel by viewModel()

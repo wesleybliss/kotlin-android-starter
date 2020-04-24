@@ -16,5 +16,5 @@ inline fun <T : Any> LiveData<T>.observe(
 
 inline fun <T : Any> MutableLiveData<T>.observe(
     owner: LifecycleOwner,
-    crossinline observer: (T) -> Unit
+    noinline observer: (T) -> Unit
 ) = (this as LiveData<T>).observe(owner, observer)

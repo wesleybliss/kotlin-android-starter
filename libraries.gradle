@@ -25,7 +25,6 @@ ext.Libraries = [
         NavigationFragment: "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.Navigation}",
         NavigationUI: "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.Navigation}",
         Palette: "androidx.palette:palette-ktx:${Versions.AndroidX.Core}",
-        Room: "androidx.room:room-ktx:${Versions.AndroidX.Room}",
         Sqlite: "androidx.sqlite:sqlite-ktx:${Versions.AndroidX.Sqlite}",
         WorkRuntime: "androidx.work:work-runtime-ktx:${Versions.AndroidX.WorkRuntime}",
         
@@ -53,8 +52,10 @@ ext.Libraries = [
     
     // Storage
     Hawk: "com.orhanobut:hawk:${Versions.Hawk}",
-    Room: "androidx.room:room-runtime:${Versions.Room}",
+    Room: "androidx.room:room-runtime:${Versions.AndroidX.Room}",
     RoomCompiler: "androidx.room:room-compiler:${Versions.Room}",
+    SQLDelightAndroidDriver: "com.squareup.sqldelight:android-driver:${Versions.SQLDelightAndroidDriver}",
+    SQLDelightCoroutines: "com.squareup.sqldelight:coroutines-extensions-jvm:${Versions.SQLDelightAndroidDriver}",
     
     // Networking
     ThreeTenABP: "com.jakewharton.threetenabp:threetenabp:${Versions.ThreeTenABP}",

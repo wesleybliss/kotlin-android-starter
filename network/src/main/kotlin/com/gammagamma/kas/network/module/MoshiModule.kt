@@ -9,6 +9,8 @@ val MoshiModule = module {
     single {
         Moshi.Builder()
             .add(DateTimeAdapter())
+            /*.add(UserIdAdapter())
+            .add(AddressIdAdapter())*/
             .build()
     }
     

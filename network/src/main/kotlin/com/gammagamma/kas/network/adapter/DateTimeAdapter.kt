@@ -18,6 +18,7 @@ class DateTimeAdapter {
             plankE(e, "Failed to parse date")
             null
         }
+        
     }
     
     @ToJson

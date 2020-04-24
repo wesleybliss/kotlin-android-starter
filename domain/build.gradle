@@ -3,7 +3,10 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     
-    // Logging
+    api project(Modules.SqlDelight)
+    
+    implementation Libraries.Coroutines
+    
     implementation Libraries.Timber
     
     implementation Libraries.ThreeTenABP

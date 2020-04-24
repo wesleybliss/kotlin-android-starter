@@ -1,0 +1,17 @@
+apply from: rootProject.file(GradleTemplates.KotlinLibrary)
+
+dependencies {
+    
+    implementation project(Modules.Domain)
+    
+    // SqlDelight needs to be passed upward so
+    // DI can properly construct it's modules
+    api project(Modules.SqlDelight)
+    
+    implementation Libraries.Coroutines
+    implementation Libraries.SQLDelightCoroutines
+    
+    //implementation Libraries.Room
+    //kapt Libraries.RoomCompiler
+    
+}

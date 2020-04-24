@@ -1,0 +1,85 @@
+import com.gammagamma.kas.sqldelight.data.Address;
+
+CREATE TABLE user (
+    id          INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    email       TEXT NOT NULL,
+    name        TEXT,
+    addressId   INTEGER,
+    phone       TEXT,
+    
+    FOREIGN KEY(addressId)
+        REFERENCES address(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+-- userWithAddress:
+-- CREATE VIEW userWithAddress AS
+-- SELECT
+--     user.*,
+--     address.*
+-- FROM user
+-- JOIN address ON user.addressId = address.id;
+CREATE VIEW userWithAddress AS
+SELECT
+    user.id AS id,
+    user.email,
+    user.name,
+    user.addressId,
+    user.phone,
+    address.id AS addressId,
+    address.street,
+    address.suite,
+    address.city,
+    address.zipcode
+FROM user user
+JOIN address address ON user.addressId = address.id;
+
+
+userLastRowId:
+SELECT last_insert_rowid();
+
+
+usersOrderedById:
+SELECT *
+FROM userWithAddress
+ORDER BY id ASC;
+
+
+selectCount:
+SELECT COUNT(user.id) FROM user;
+
+
+selectAll:
+SELECT * FROM user
+LEFT JOIN address ON addressId = address.id
+ORDER BY user.id ASC;
+
+
+selectById:
+SELECT * FROM user
+LEFT JOIN address ON addressId = address.id
+WHERE user.id = ?;
+
+
+
+
+insert:
+INSERT OR REPLACE INTO user (
+    id,
+    email,
+    name,
+    addressId,
+    phone
+) VALUES (?, ?, ?, ?, ?);
+
+
+insertObject:
+INSERT OR REPLACE INTO user (
+    id,
+    email,
+    name,
+    addressId,
+    phone
+) VALUES ?;

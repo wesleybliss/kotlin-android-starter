@@ -1,0 +1,40 @@
+
+CREATE TABLE address (
+    id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    street TEXT,
+    suite TEXT,
+    city TEXT,
+    zipcode TEXT
+);
+
+selectCountAddress:
+SELECT COUNT(address.id) FROM address;
+
+selectAllAddress:
+SELECT * FROM address
+ORDER BY address.id DESC;
+
+selectByIdAddress:
+SELECT * FROM address
+WHERE address.id = ?;
+
+
+
+
+insert:
+INSERT OR REPLACE INTO address (
+    id,
+    street,
+    suite,
+    city,
+    zipcode
+) VALUES (?, ?, ?, ?, ?);
+
+insertObject:
+INSERT OR REPLACE INTO address (
+    id,
+    street,
+    suite,
+    city,
+    zipcode
+) VALUES ?;

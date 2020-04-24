@@ -1,0 +1,9 @@
+apply from: rootProject.file(GradleTemplates.AndroidLibrary)
+
+dependencies {
+    
+    implementation project(Modules.Domain)
+    implementation project(Modules.DB)
+    implementation project(Modules.Storage)
+    
+}

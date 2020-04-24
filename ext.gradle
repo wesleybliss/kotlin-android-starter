@@ -36,6 +36,8 @@ ext.Modules = [
     Navigation      : ':navigation',
     Network         : ':network',
     Storage         : ':storage',
+    DB              : ':db',
+    SqlDelight      : ':sqldelight',
     
     UI              : ':ui',
     

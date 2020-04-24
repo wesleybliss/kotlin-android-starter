@@ -6,8 +6,8 @@ ext.Versions = [
     GradleVersions: '0.20.0',
     
     // Core
-    Kotlin: '1.3.71',
-    Coroutines: '1.0.0',
+    Kotlin: '1.4-M1', //''1.3.71',
+    Coroutines: '1.3.5-1.4-M1', //''1.3.2',
     JavaXAnnotations: '1',
     
     AndroidX: [
@@ -47,7 +47,8 @@ ext.Versions = [
     
     // Storage
     Hawk: '2.0.1',
-    Room: '2.0.0-rc01',
+    SQLDelight: '1.3.0',
+    SQLDelightAndroidDriver: '1.2.2',
     
     // Networking
     ThreeTenABP: '1.2.3',
