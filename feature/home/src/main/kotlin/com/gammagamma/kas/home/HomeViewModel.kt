@@ -42,7 +42,10 @@ class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
         //networkRequest(usersRepository::fetchAll, { users.postValue(it) }, 5)
         networkRequest(usersRepository::fetchAll, { users ->
             viewModelScope.launch(Dispatchers.IO) {
-                users?.forEach { userDao.insert(it) }
+                users?.forEach {
+                    addressDao.insert()
+                    userDao.insert(it)
+                }
             }
         }, 5)
     }

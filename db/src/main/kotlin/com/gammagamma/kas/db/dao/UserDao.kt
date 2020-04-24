@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.transform
 
 class UserDao(private val db: Database) : IUserDao {
     
+    override suspend fun lastRowId(): Long = db.userQueries.userLastRowId().executeAsOne()
+    
     override suspend fun getCountOnce(): Long = db.userQueries
         .selectCount().executeAsOne()
     
@@ -22,11 +24,25 @@ class UserDao(private val db: Database) : IUserDao {
     
     override suspend fun getAll(): Flow<List<User>?> = db.userQueries
         /*.selectAll().asFlow().mapToList().map*/
-        .usersOrderedById().asFlow().mapToList().mapNotNull { list -> 
-            list.map { it: UserWithAddress ->
-                it as User
-            }
-        }
+        .usersOrderedById(mapper = {
+            id,
+            email,
+            name,
+            addressId,
+            phone,
+            addressId_,
+            street,
+            suite,
+            city,
+            zipcode ->  
+            User.Impl(
+                id,
+                email,
+                name,
+                addressId,
+                phone,
+            )
+        }).asFlow().mapToList()
         /*.selectAll(mapper = {
             id,
             email,

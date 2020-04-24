@@ -1,19 +1,42 @@
 package com.gammagamma.kas.network.repository
 
+import com.gammagamma.kas.domain.db.IAddressDao
+import com.gammagamma.kas.domain.db.IUserDao
 import com.gammagamma.kas.domain.net.Result
 import com.gammagamma.kas.network.service.ApiService
 import com.gammagamma.kas.domain.net.IUsersRepository
 import com.gammagamma.kas.logging.plankE
+import com.gammagamma.kas.network.mapper.AddressResponseMapper
 import com.gammagamma.kas.network.mapper.UserResponseMapper
 import com.gammagamma.kas.sqldelight.data.User
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class UserRepository(private val apiService: ApiService) : IUsersRepository {
+class UserRepository(private val apiService: ApiService) : KoinComponent, IUsersRepository {
     
     // @todo DI
     private val mapper by lazy { UserResponseMapper() }
+    private val addressMapper by lazy { AddressResponseMapper() }
+    
+    private val userDao: IUserDao by inject()
+    private val addressDao: IAddressDao by inject()
     
     override suspend fun fetchAll(): Result<List<User>> = try {
-        Result.Success(mapper.map(apiService.getUsers()))
+        val res = apiService.getUsers()
+        val pendingUsers = mutableListOf<User>()
+        res.forEach { user ->
+            if (user.address != null) {
+                val address = addressMapper.map(user.address!!)
+                addressDao.insert(address)
+                val addressId = userDao.lastRowId()
+                val pendingUser = mapper.map(user)
+                pendingUser.addressId = addressId
+                pendingUsers.add(pendingUser)
+            }
+        }
+        val pendingUsers = mapper.map(res)
+        pendingUsers.forEach { userDao.insert(it) }
+        Result.Success(pendingUsers)
     } catch (e: Exception) {
         plankE(e)
         Result.Error(e)

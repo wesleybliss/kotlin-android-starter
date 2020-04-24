@@ -37,6 +37,10 @@ FROM user user
 JOIN address address ON user.addressId = address.id;
 
 
+userLastRowId:
+SELECT last_insert_rowid();
+
+
 usersOrderedById:
 SELECT *
 FROM userWithAddress
