@@ -1,7 +1,7 @@
 package com.gammagamma.kas.home
 
 import androidx.lifecycle.viewModelScope
-import com.gammagamma.kas.domain.db.IUserDao
+import com.gammagamma.kas.domain.db.AUserDao
 import com.gammagamma.kas.domain.net.IUserRepository
 import com.gammagamma.kas.sqldelight.data.User
 import com.gammagamma.kas.ui.StatefulBaseViewModel
@@ -16,7 +16,7 @@ import org.koin.core.inject
 @InternalCoroutinesApi
 class HomeViewModel : KoinComponent, StatefulBaseViewModel() {
     
-    private val userDao: IUserDao by inject()
+    private val userDao: AUserDao by inject()
     private val userRepository: IUserRepository by inject()
     
     val users = liveDataOf(listOf<User>()) {

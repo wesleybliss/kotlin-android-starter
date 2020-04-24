@@ -1,6 +1,6 @@
 package com.gammagamma.kas.db.dao
 
-import com.gammagamma.kas.domain.db.IUserDao
+import com.gammagamma.kas.domain.db.AUserDao
 import com.gammagamma.kas.sqldelight.Database
 import com.gammagamma.kas.sqldelight.data.User
 import com.squareup.sqldelight.runtime.coroutines.asFlow
@@ -8,9 +8,9 @@ import com.squareup.sqldelight.runtime.coroutines.mapToList
 import com.squareup.sqldelight.runtime.coroutines.mapToOne
 import kotlinx.coroutines.flow.Flow
 
-class UserDao(private val db: Database) : IUserDao {
+class UserDao(db: Database) : AUserDao(db) {
     
-    private val queries by lazy { db.userQueries }
+    override val queries by lazy { db.userQueries }
     
     //override suspend fun lastRowId(): Long = db.userQueries.userLastRowId().executeAsOne()
     
@@ -45,7 +45,7 @@ class UserDao(private val db: Database) : IUserDao {
         .selectById(id).asFlow().mapToOne() as User?
     
     override suspend fun insert(value: User) {
-        db.userQueries.insert(
+        queries.insert(
             value.id,
             value.email,
             value.name,

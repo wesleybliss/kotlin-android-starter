@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.gammagamma.kas.db.dao.AddressDao
 import com.gammagamma.kas.db.dao.UserDao
-import com.gammagamma.kas.domain.db.IAddressDao
-import com.gammagamma.kas.domain.db.IUserDao
+import com.gammagamma.kas.domain.db.AAddressDao
+import com.gammagamma.kas.domain.db.AUserDao
 import com.gammagamma.kas.sqldelight.Database
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
@@ -16,8 +16,8 @@ val DatabaseModule = module {
     single<SqlDriver> { createAndroidSqliteDriver(get()) }
     single { createDatabase(get()) }
     
-    single<IUserDao> { UserDao(get()) }
-    single<IAddressDao> { AddressDao(get()) }
+    single<AUserDao> { UserDao(get()) }
+    single<AAddressDao> { AddressDao(get()) }
     
 }
 

@@ -1,7 +1,7 @@
 package com.gammagamma.kas.network.repository
 
-import com.gammagamma.kas.domain.db.IAddressDao
-import com.gammagamma.kas.domain.db.IUserDao
+import com.gammagamma.kas.domain.db.AAddressDao
+import com.gammagamma.kas.domain.db.AUserDao
 import com.gammagamma.kas.domain.net.Result
 import com.gammagamma.kas.network.service.ApiService
 import com.gammagamma.kas.domain.net.IUserRepository
@@ -18,8 +18,8 @@ class UserRepository(private val apiService: ApiService) : KoinComponent, IUserR
     private val mapper by lazy { UserResponseMapper() }
     private val addressMapper by lazy { AddressResponseMapper() }
     
-    private val userDao: IUserDao by inject()
-    private val addressDao: IAddressDao by inject()
+    private val userDao: AUserDao by inject()
+    private val addressDao: AAddressDao by inject()
     
     override suspend fun fetchAll(): Result<List<User>> = try {
         
