@@ -3,6 +3,9 @@ package com.gammagamma.kas.home
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.NonNull
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.gammagamma.kas.sqldelight.data.User
 import com.gammagamma.kas.ui.extensions.inflate
 import kotlinx.android.synthetic.main.row_user.view.*
@@ -10,7 +13,25 @@ import kotlinx.android.synthetic.main.row_user.view.*
 class UsersAdapter(
     private var items: List<User>? = listOf(),
     var onClick: ((User) -> Unit)? = null
-) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+) : /*RecyclerView.Adapter<UsersAdapter.ViewHolder>()*/ ListAdapter<User, UsersAdapter.ViewHolder>(DIFF_CALLBACK) {
+    
+    companion object {
+    
+        private val DIFF_CALLBACK: DiffUtil.ItemCallback<User> =
+            object : DiffUtil.ItemCallback<User>() {
+                override fun areItemsTheSame(oldUser: User, newUser: User) : Boolean {
+                    // User properties may have changed if reloaded from the DB, but ID is fixed
+                    return oldUser.id == newUser.id
+                }
+                override fun areContentsTheSame(oldUser: User, newUser: User) : Boolean {
+                    // NOTE: if you use equals, your object must properly override Object#equals()
+                    // Incorrectly returning false here will result in too many animations.
+                    //return oldUser.equals(newUser) // @todo
+                    return true
+                }
+            }
+        
+    }
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         

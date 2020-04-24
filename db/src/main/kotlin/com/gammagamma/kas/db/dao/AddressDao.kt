@@ -25,7 +25,13 @@ class AddressDao(db: Database) : AAddressDao(db) {
         queries.selectByIdAddress(id).asFlow().mapToOne() as Address?
     
     override suspend fun insert(value: Address) {
-        queries.insertObjectAddress(value)
+        queries.insertObject(value)
+    }
+    
+    override suspend fun insert(values: List<Address>) {
+        queries.transaction {
+            values.forEach(queries::insertObject)
+        }
     }
     
 }

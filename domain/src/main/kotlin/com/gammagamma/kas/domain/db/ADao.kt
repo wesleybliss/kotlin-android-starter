@@ -17,4 +17,6 @@ abstract class ADao<T>(protected val db: Database) {
     
     abstract suspend fun insert(value: T)
     
+    abstract suspend fun insert(values: List<T>)
+    
 }

@@ -144,6 +144,8 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
             if (!isRetry) error.postValue(null)
             loading.postValue(true)
             
+            // @todo refactor this to use a while instead of recursion
+            
             val result = onRequest()
             
             if (result is Result.Error) {
@@ -175,7 +177,9 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
                             onSuccess,
                             (retryLimit - 1),
                             newDelayMillis,
-                            true
+                            true,
+                            backOff,
+                            backOffFactor
                         )
                     }
                     

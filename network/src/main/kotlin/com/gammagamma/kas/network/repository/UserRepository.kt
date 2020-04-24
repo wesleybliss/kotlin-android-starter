@@ -5,6 +5,7 @@ import com.gammagamma.kas.domain.db.AUserDao
 import com.gammagamma.kas.domain.net.Result
 import com.gammagamma.kas.network.service.ApiService
 import com.gammagamma.kas.domain.net.IUserRepository
+import com.gammagamma.kas.domain.response.UserResponse
 import com.gammagamma.kas.logging.plankE
 import com.gammagamma.kas.network.mapper.AddressResponseMapper
 import com.gammagamma.kas.network.mapper.UserResponseMapper
@@ -12,43 +13,59 @@ import com.gammagamma.kas.sqldelight.data.User
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class UserRepository(private val apiService: ApiService) : KoinComponent, IUserRepository {
-    
-    // @todo DI
-    private val mapper by lazy { UserResponseMapper() }
-    private val addressMapper by lazy { AddressResponseMapper() }
-    
-    private val userDao: AUserDao by inject()
-    private val addressDao: AAddressDao by inject()
+class UserRepository(
+    private val apiService: ApiService,
+    private val userMapper: UserResponseMapper,
+    private val addressMapper: AddressResponseMapper,
+    private val userDao: AUserDao,
+    private val addressDao: AAddressDao
+) : IUserRepository {
     
     override suspend fun fetchAll(): Result<List<User>> = try {
         
         val res = apiService.getUsers()
+        val users = saveResponseData(res)
         
-        val addresses = res.mapNotNull { it.address }
-        addressMapper.map(addresses).forEach {
-            //plank("Saving address $it")
-            addressDao.insert(it)
-        }
-        
-        val pendingUsers = mapper.map(res)
-        pendingUsers.forEach { userDao.insert(it) }
-        
-        Result.Success(pendingUsers)
+        Result.Success(users)
         
     } catch (e: Exception) {
+        
         plankE(e)
         Result.Error(e)
+        
     }
     
     override suspend fun fetchById(id: Int): Result<User> = try {
-        Result.Success(mapper.map(apiService.getUserById(id)))
+        
+        val res = apiService.getUserById(id)
+        val user = saveResponseData(res)
+        
+        Result.Success(user)
+        
     } catch (e: Exception) {
+        
         plankE(e)
         Result.Error(e)
+        
     }
     
     override suspend fun fetchByEmail(email: String): User =
-        mapper.map(apiService.getUserByEmail(email))
+        userMapper.map(apiService.getUserByEmail(email))
+    
+    override suspend fun saveResponseData(data: UserResponse): User =
+        saveResponseData(listOf(data)).first()
+    
+    override suspend fun saveResponseData(data: List<UserResponse>) : List<User> {
+        
+        val addresses = data.mapNotNull { it.address }
+        val pendingUsers = userMapper.map(data)
+        val pendingAddresses = addressMapper.map(addresses)
+    
+        addressDao.insert(pendingAddresses)
+        userDao.insert(pendingUsers)
+        
+        return pendingUsers
+        
+    }
     
 }

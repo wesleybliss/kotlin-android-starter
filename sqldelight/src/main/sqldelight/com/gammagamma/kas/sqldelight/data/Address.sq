@@ -21,7 +21,7 @@ WHERE address.id = ?;
 
 
 
-insertAddress:
+insert:
 INSERT OR REPLACE INTO address (
     id,
     street,
@@ -30,7 +30,7 @@ INSERT OR REPLACE INTO address (
     zipcode
 ) VALUES (?, ?, ?, ?, ?);
 
-insertObjectAddress:
+insertObject:
 INSERT OR REPLACE INTO address (
     id,
     street,

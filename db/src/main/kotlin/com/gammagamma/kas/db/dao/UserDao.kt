@@ -12,8 +12,6 @@ class UserDao(db: Database) : AUserDao(db) {
     
     override val queries by lazy { db.userQueries }
     
-    //override suspend fun lastRowId(): Long = db.userQueries.userLastRowId().executeAsOne()
-    
     override suspend fun getCountOnce(): Long = queries
         .selectCount().executeAsOne()
     
@@ -45,13 +43,13 @@ class UserDao(db: Database) : AUserDao(db) {
         .selectById(id).asFlow().mapToOne() as User?
     
     override suspend fun insert(value: User) {
-        queries.insert(
-            value.id,
-            value.email,
-            value.name,
-            value.addressId,
-            value.phone
-        )
+        queries.insertObject(value)
+    }
+    
+    override suspend fun insert(values: List<User>) {
+        queries.transaction { 
+            values.forEach(queries::insertObject)
+        }
     }
     
 }
