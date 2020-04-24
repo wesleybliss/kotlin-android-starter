@@ -44,7 +44,7 @@ SELECT last_insert_rowid();
 usersOrderedById:
 SELECT *
 FROM userWithAddress
-ORDER BY id DESC;
+ORDER BY id ASC;
 
 
 selectCount:
@@ -54,7 +54,7 @@ SELECT COUNT(user.id) FROM user;
 selectAll:
 SELECT * FROM user
 LEFT JOIN address ON addressId = address.id
-ORDER BY user.id DESC;
+ORDER BY user.id ASC;
 
 
 selectById:

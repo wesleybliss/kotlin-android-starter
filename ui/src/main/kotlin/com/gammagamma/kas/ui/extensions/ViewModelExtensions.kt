@@ -6,11 +6,28 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 
+/**
+ * Shorthand to create a new [LiveData] instance
+ *
+ * @param T Data type for value
+ * @param initialValue Initial value
+ * @param defaultValue Default value, if initial is null
+ * @param post If postValue should be used instead of setValue
+ * @param fn Callback to do initial setup, fetch data, etc.
+ *           This is scoped to [MutableLiveData] so we have the
+ *           opportunity to manipulate the LiveData before it becomes immutable
+ * @return [LiveData] of [T] after the [fn] has applied any changes
+ */
 inline fun <reified T> liveDataOf(
     initialValue: T?,
     defaultValue: T? = null,
-    post: Boolean = false
-) : LiveData<T> = mutableLiveDataOf(initialValue, defaultValue, post)
+    post: Boolean = false,
+    noinline fn: (MutableLiveData<T>.() -> Unit)? = null
+) : LiveData<T> {
+    val instance = mutableLiveDataOf(initialValue, defaultValue, post)
+    fn?.invoke(instance)
+    return instance
+}
 
 inline fun <reified T> mutableLiveDataOf(
     initialValue: T?,

@@ -14,52 +14,20 @@ class AddressDao(private val db: Database) : IAddressDao {
     // @todo this too?
     private val queries by lazy { db.addressQueries }
     
-    override suspend fun getCountOnce(): Long = queries.selectCountAddress().executeAsOne()
+    override suspend fun getCountOnce(): Long =
+        queries.selectCountAddress().executeAsOne()
     
-    override suspend fun getCount(): Flow<Long> = queries.selectCountAddress().asFlow().mapToOne()
+    override suspend fun getCount(): Flow<Long> =
+        queries.selectCountAddress().asFlow().mapToOne()
     
     override suspend fun getAll(): Flow<List<Address>?> =
-        queries.selectAllAddress(
-        /*mapper = {
-            id: Long,
-            street: String,
-            suite: String?,
-            city: String?,
-            zipCode: String? ->
-            Address(
-                id,
-                street,
-                suite,
-                city,
-                zipCode
-            )
-        }*/
-    ).asFlow().mapToList()
+        queries.selectAllAddress().asFlow().mapToList()
     
-    override suspend fun getById(id: Long): Flow<Address?> = queries
-        .selectByIdAddress(id/*, mapper = {
-            id: Long,
-            street: String,
-            suite: String?,
-            city: String?,
-            zipcode: String? ->
-            Address(
-                id,
-                street,
-                suite,
-                city,
-                zipcode
-            )
-        }*/)
-        .asFlow().mapToOne()
+    override suspend fun getById(id: Long): Address? =
+        queries.selectByIdAddress(id).asFlow().mapToOne() as Address?
     
     override suspend fun insert(value: Address) {
-        queries.insertAddress(
-            value.id,
-            value.street ?: "",
-            value.suite,
-            value.city,
-            value.zipcode
-        )
+        queries.insertObjectAddress(value)
     }
+    
 }

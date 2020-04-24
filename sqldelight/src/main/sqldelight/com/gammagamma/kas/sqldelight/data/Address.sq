@@ -18,8 +18,11 @@ selectByIdAddress:
 SELECT * FROM address
 WHERE address.id = ?;
 
+
+
+
 insertAddress:
-INSERT INTO address (
+INSERT OR REPLACE INTO address (
     id,
     street,
     suite,
@@ -28,7 +31,7 @@ INSERT INTO address (
 ) VALUES (?, ?, ?, ?, ?);
 
 insertObjectAddress:
-INSERT INTO address (
+INSERT OR REPLACE INTO address (
     id,
     street,
     suite,

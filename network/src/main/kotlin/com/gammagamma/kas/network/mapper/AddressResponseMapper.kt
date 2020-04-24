@@ -1,18 +1,20 @@
 package com.gammagamma.kas.network.mapper
 
+import com.gammagamma.kas.domain.net.INetworkResponseMapper
 import com.gammagamma.kas.domain.response.AddressResponse
 import com.gammagamma.kas.sqldelight.data.Address
 
-class AddressResponseMapper {
+@Suppress("MemberVisibilityCanBePrivate")
+class AddressResponseMapper : INetworkResponseMapper<AddressResponse, Address> {
     
-    fun map(value: AddressResponse) = Address.Impl(
-        value.id,
-        value.street,
-        value.suite,
-        value.city,
-        value.zipCode,
+    override fun map(value: AddressResponse): Address = Address.Impl(
+        id = value.id,
+        street = value.street,
+        suite = value.suite,
+        city = value.city,
+        zipcode = value.zipCode,
     )
     
-    fun map(values: List<AddressResponse>) = values.map { map(it) }
+    override fun map(values: List<AddressResponse>): List<Address> = values.map { map(it) }
     
 }

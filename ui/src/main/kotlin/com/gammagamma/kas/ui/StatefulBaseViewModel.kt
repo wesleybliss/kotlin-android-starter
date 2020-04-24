@@ -132,7 +132,9 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
         onSuccess: (data: T?) -> Unit,
         retryLimit: Int? = null,
         retryIntervalMillis: Long? = null,
-        isRetry: Boolean = false
+        isRetry: Boolean = false,
+        backOff: Boolean = true,
+        backOffFactor: Long = 2
     ) {
         
         plank("networkRequest ID# $requestId")
@@ -157,6 +159,10 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
                     loading.postValue(false)
                     
                     val delayMillis = retryIntervalMillis ?: 5000
+                    var newDelayMillis = delayMillis
+                    
+                    // If using the doubling backoff strategy, lengthen the delay
+                    if (backOff) newDelayMillis *= minOf(delayMillis * backOffFactor, 60_000)
                     
                     delay(delayMillis)
                     
@@ -168,7 +174,7 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
                             onError,
                             onSuccess,
                             (retryLimit - 1),
-                            delayMillis,
+                            newDelayMillis,
                             true
                         )
                     }
@@ -207,6 +213,29 @@ abstract class StatefulBaseViewModel(isNetworkAware: Boolean? = false) : BaseVie
         onRequest = onRequest,
         onError = {},
         onSuccess = onSuccess,
+        retryLimit = retryLimit,
+        retryIntervalMillis = retryIntervalMillis
+    )
+    
+    /**
+     * Makes a network/API request, automatically setting error on
+     * failure, else running the [onSuccess] callback if successful
+     *
+     * @param T Expected API call result data type
+     * @param onRequest A block to run the actual API call
+     * @param onSuccess A block to handle success
+     * @param retryLimit Optional number of times to retry
+     * @param retryIntervalMillis Optional delay between retries (requires [retryLimit] to be > 0)
+     */
+    fun <T : Any> networkRequest(
+        onRequest: suspend () -> Result<T>,
+        retryLimit: Int? = null,
+        retryIntervalMillis: Long? = null
+    ) = networkRequest(
+        requestId = Instant.now().toEpochMilli(),
+        onRequest = onRequest,
+        onError = {},
+        onSuccess = {},
         retryLimit = retryLimit,
         retryIntervalMillis = retryIntervalMillis
     )

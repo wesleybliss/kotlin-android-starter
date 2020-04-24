@@ -1,13 +1,12 @@
 package com.gammagamma.kas.network.mapper
 
+import com.gammagamma.kas.domain.net.INetworkResponseMapper
 import com.gammagamma.kas.domain.response.UserResponse
 import com.gammagamma.kas.sqldelight.data.User
 
-class UserResponseMapper() {
+class UserResponseMapper : INetworkResponseMapper<UserResponse, User> {
     
-    private val addressMapper = AddressResponseMapper()
-    
-    fun map(value: UserResponse) = User.Impl(
+    override fun map(value: UserResponse): User = User.Impl(
         value.id,
         value.email,
         value.name,
@@ -15,6 +14,6 @@ class UserResponseMapper() {
         value.phone,
     )
     
-    fun map(values: List<UserResponse>) = values.map { map(it) }
+    override fun map(values: List<UserResponse>): List<User> = values.map { map(it) }
     
 }

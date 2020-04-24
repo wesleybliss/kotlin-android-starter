@@ -1,20 +1,21 @@
 package com.gammagamma.kas.domain.response
 
+import com.gammagamma.kas.domain.net.NetworkResponseObject
 import com.squareup.moshi.JsonClass
 
 @Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class UserResponse(
     
-    var id: Long,
+    val id: Long,
     
-    var email: String,
+    val email: String,
     
-    var name: String?,
-    //var dob: OffsetDateTime,
+    val name: String?,
+    //val dob: OffsetDateTime,
     
-    var address: AddressResponse?,
+    val address: AddressResponse?,
     
-    var phone: String?
+    val phone: String?
 
-)
+) : NetworkResponseObject
