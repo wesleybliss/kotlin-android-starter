@@ -26,8 +26,7 @@ class UsersAdapter(
                 override fun areContentsTheSame(oldUser: User, newUser: User) : Boolean {
                     // NOTE: if you use equals, your object must properly override Object#equals()
                     // Incorrectly returning false here will result in too many animations.
-                    //return oldUser.equals(newUser) // @todo
-                    return true
+                    return oldUser.equals(newUser) // @todo How to do a real compare?
                 }
             }
         
