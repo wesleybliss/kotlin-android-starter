@@ -1,5 +1,7 @@
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.jlleitschuh.gradle.ktlint'
+apply plugin: 'com.diffplug.gradle.spotless'
 
 apply from: rootProject.file('versions.gradle')
 apply from: rootProject.file(GradleIncludes.BuildTypes)
@@ -90,4 +92,29 @@ dependencies {
     androidTestImplementation Libraries.TestRunner
     androidTestImplementation Libraries.TestEspresso*/
     
+}
+
+ktlint {
+    version = "${Versions.KtLint}"
+    debug = false
+    verbose = false
+    android = true
+    outputToConsole = true
+    //reporters = [ReporterType.JSON]
+    ignoreFailures = false
+    enableExperimentalRules = true
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}
+
+
+spotless {
+    kotlin {
+        ktlint("${Versions.KtLint}").userData([
+            'indent_size': '4',
+            'continuation_indent_size' : '4'
+        ])
+    }
 }

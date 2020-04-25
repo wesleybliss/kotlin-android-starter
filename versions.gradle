@@ -2,8 +2,11 @@ ext.Versions = [
     
     // Build/Tooling
     Java: JavaVersion.VERSION_1_8,
-    Dokka: '0.9.16',
     GradleVersions: '0.20.0',
+    KtLint: '0.35.0',
+    KtLintGradle: '9.2.1',
+    Dokka: '0.9.16',
+    Spotless: '3.28.1',
     
     // Core
     Kotlin: '1.4-M1', //''1.3.71',

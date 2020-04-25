@@ -4,12 +4,13 @@ buildscript {
     apply from: rootProject.file('versions.gradle')
     
     repositories {
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-        maven { url 'https://kotlin.bintray.com/kotlinx' }
         google()
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
         mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url 'https://kotlin.bintray.com/kotlinx' }
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     
     dependencies {
@@ -24,6 +25,9 @@ buildscript {
         //classpath "com.github.ben-manes:gradle-versions-plugin:${versions.gradleVersions}"
         classpath "com.squareup.sqldelight:gradle-plugin:${Versions.SQLDelight}"
         
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:${Versions.KtLintGradle}"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:${Versions.Spotless}"
+        
     }
     
 }
@@ -31,12 +35,12 @@ buildscript {
 allprojects {
     
     repositories {
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-        maven { url 'https://kotlin.bintray.com/kotlinx' }
         google()
         jcenter()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://kotlin.bintray.com/kotlinx' }
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
         maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     
     apply from: rootProject.file('ext.gradle')
@@ -87,7 +91,7 @@ allprojects {
         }
         
     }
-
+    
 }
 
 task clean(type: Delete) {
