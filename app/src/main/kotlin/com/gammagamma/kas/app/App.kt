@@ -11,6 +11,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.core.logger.PrintLogger
 
+@Suppress("unused")
 @InternalCoroutinesApi
 class App : Application() {
     
@@ -22,7 +23,7 @@ class App : Application() {
     }
     
     override fun onCreate() {
-    
+        
         super.onCreate()
     
         instance = this
@@ -36,7 +37,7 @@ class App : Application() {
         }
         
         getKoin().get<IStorageProvider>().init()
-        //registerActivityLifecycleCallbacks(getKoin().get<Provider<Activity>>().callbacks)
+        // registerActivityLifecycleCallbacks(getKoin().get<Provider<Activity>>().callbacks)
         
     }
     
