@@ -1,6 +1,7 @@
 package com.gammagamma.kas.network.module
 
 import android.annotation.SuppressLint
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.gammagamma.kas.network.BuildConfig
 import com.gammagamma.kas.logging.plankW
 import okhttp3.OkHttpClient
@@ -25,16 +26,22 @@ private fun buildOkHttpClientBuilder() : OkHttpClient.Builder =
         connectTimeout(BuildConfig.API_TIMEOUT_SECONDS, TimeUnit.SECONDS)
         
         if (BuildConfig.DEBUG) {
+            
             // Enable logging
             val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+            
             @Suppress("ConstantConditionIf")
             val level =
                 if (BuildConfig.HTTP_LOGGING_ENABLED)
                     HttpLoggingInterceptor.Level.BODY
                 else
                     HttpLoggingInterceptor.Level.NONE
+            
             httpLoggingInterceptor.level = level
+            
             addInterceptor(httpLoggingInterceptor)
+            addNetworkInterceptor(StethoInterceptor())
+            
         }
         
         if (BuildConfig.DEBUG) {

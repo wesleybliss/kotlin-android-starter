@@ -20,4 +20,7 @@ dependencies {
     implementation Libraries.CoilGif
     implementation Libraries.CoilTransformations
     
+    // Debug
+    debugImplementation Libraries.StethoOkHttp
+    
 }

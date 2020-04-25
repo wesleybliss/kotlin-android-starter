@@ -29,6 +29,8 @@ dependencies {
     implementation project(Modules.DI)
     implementation project(Modules.UIResources)
     
+    debugImplementation Libraries.Stetho
+    
     // Google Proprietary
     /*implementation Libraries.PlayServices
     implementation Libraries.FirebaseAnalytics

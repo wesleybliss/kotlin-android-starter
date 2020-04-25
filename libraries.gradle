@@ -102,6 +102,10 @@ ext.Libraries = [
     FirebaseAnalytics: "com.google.firebase:firebase-core:${Versions.FirebaseAnalytics}",
     FirebaseCloudMessage: "com.google.firebase:firebase-messaging:${Versions.FirebaseCloudMessage}",
     
+    // Development Tools
+    Stetho: "com.facebook.stetho:stetho:${Versions.Stetho}",
+    StethoOkHttp: "com.facebook.stetho:stetho-okhttp3:${Versions.Stetho}",
+    
     // For testing
     JUnit: "junit:junit:${Versions.JUnit}",
     Truth: "com.google.truth:truth:${Versions.Truth}",
