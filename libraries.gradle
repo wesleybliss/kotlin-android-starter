@@ -105,6 +105,8 @@ ext.Libraries = [
     // Development Tools
     Stetho: "com.facebook.stetho:stetho:${Versions.Stetho}",
     StethoOkHttp: "com.facebook.stetho:stetho-okhttp3:${Versions.Stetho}",
+    Chuck: "com.readystatesoftware.chuck:library:${Versions.Chuck}",
+    ChuckNoOp: "com.readystatesoftware.chuck:library-no-op:${Versions.Chuck}",
     
     // For testing
     JUnit: "junit:junit:${Versions.JUnit}",

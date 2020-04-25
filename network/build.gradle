@@ -20,7 +20,9 @@ dependencies {
     implementation Libraries.CoilGif
     implementation Libraries.CoilTransformations
     
-    // Debug
+    // Debug/Development Tools
     debugImplementation Libraries.StethoOkHttp
+    debugImplementation Libraries.Chuck
+    releaseImplementation Libraries.ChuckNoOp
     
 }

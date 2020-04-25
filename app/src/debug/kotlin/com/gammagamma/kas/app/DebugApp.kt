@@ -15,21 +15,6 @@ class DebugApp : App() {
         
     }
     
-    @Suppress("RedundantOverride")
-    override fun initKoin() {
-        
-        // @todo Remove once using actual Koin overrides
-        super.initKoin()
-        
-        /*startKoin(
-            this,
-            koinModules.toMutableList().apply {
-                add(DebugApiModule.module)
-            }
-        )*/
-        
-    }
-    
     private fun initStetho() {
         
         val dumpApp = Stetho

@@ -79,6 +79,7 @@ ext.Versions = [
     
     // Development Tools
     Stetho: '1.5.1',
+    Chuck: '1.1.0',
     
     // For testing
     JUnit: '4.13',
